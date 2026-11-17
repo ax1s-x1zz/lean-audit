@@ -1,0 +1,4130 @@
+{
+  "modules": {
+    "AxiomCheck": [
+      "Main",
+      "RubikSTM.Diameter",
+      "RubikSTM.OBTMDiameter"
+    ],
+    "Check": [
+      "Main",
+      "RubikSTM.Diameter"
+    ],
+    "Main": [
+      "RubikSTM.Conventions",
+      "RubikSTM.Diameter",
+      "RubikSTM.OBTMDiameter",
+      "RubikSTM.SolvedRadii"
+    ],
+    "RubikSTM": [
+      "RubikSTM.Conventions",
+      "RubikSTM.Diameter",
+      "RubikSTM.OBTMDiameter",
+      "RubikSTM.SolvedRadii"
+    ],
+    "RubikSTM.Conventions": [
+      "RubikSTM.Lemmas.Conventions.FreeRotationSharpDiameter",
+      "RubikSTM.Lemmas.Conventions.RotationQuotientSharpDiameter",
+      "RubikSTM.Lemmas.Conventions.ShortOnlySharpDiameter",
+      "RubikSTM.Lemmas.Conventions.UnitRotationSharpDiameter"
+    ],
+    "RubikSTM.Definitions.Bands.Band": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Definitions.Channel.ArrayLaw": [
+      "RubikSTM.Definitions.Channel.Transition"
+    ],
+    "RubikSTM.Definitions.Channel.Colour.Orbit": [],
+    "RubikSTM.Definitions.Channel.Colour.OrbitAction": [
+      "RubikSTM.Definitions.Channel.Colour.Orbit"
+    ],
+    "RubikSTM.Definitions.Channel.Colour.PairAction": [
+      "RubikSTM.Definitions.Channel.Colour.OrbitAction"
+    ],
+    "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet": [],
+    "RubikSTM.Definitions.Channel.EqualParitySubgroup": [],
+    "RubikSTM.Definitions.Channel.Paired.P": [
+      "RubikSTM.Definitions.Channel.Colour.PairAction",
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Channel.Transition",
+      "RubikSTM.Definitions.OrbitGeometry.NormalTable"
+    ],
+    "RubikSTM.Definitions.Channel.Transition": [
+      "RubikSTM.Definitions.Codebook.LayerwiseUnion",
+      "RubikSTM.Definitions.FiniteProbability.ProductLaw"
+    ],
+    "RubikSTM.Definitions.Codebook.Conditional.OverlapLaw": [
+      "RubikSTM.Definitions.FiniteProbability.ProductLaw"
+    ],
+    "RubikSTM.Definitions.Codebook.Conditional.SampleEquiv": [],
+    "RubikSTM.Definitions.Codebook.LayerwiseUnion": [],
+    "RubikSTM.Definitions.Construction.Control.K": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves": [
+      "RubikSTM.Definitions.Construction.Control.K"
+    ],
+    "RubikSTM.Definitions.Conventions.Metrics": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph"
+    ],
+    "RubikSTM.Definitions.Core.CoreAction": [
+      "RubikSTM.Definitions.Core.Project"
+    ],
+    "RubikSTM.Definitions.Core.Project": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Definitions.ExceptionalCentres.CrossThreeCycle": [
+      "RubikSTM.Definitions.ExceptionalCentres.WordPerm"
+    ],
+    "RubikSTM.Definitions.ExceptionalCentres.DiagQuarterMove": [
+      "RubikSTM.Definitions.ExceptionalCentres.DiagonalThreeCycle"
+    ],
+    "RubikSTM.Definitions.ExceptionalCentres.DiagonalThreeCycle": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Definitions.ExceptionalCentres.WordPerm": [
+      "RubikSTM.Definitions.ExceptionalCentres.DiagQuarterMove"
+    ],
+    "RubikSTM.Definitions.FiniteProbability.FiniteLaw": [],
+    "RubikSTM.Definitions.FiniteProbability.ProductLaw": [
+      "RubikSTM.Definitions.FiniteProbability.FiniteLaw"
+    ],
+    "RubikSTM.Definitions.Geometry.StmGraph": [],
+    "RubikSTM.Definitions.GlobalWords.Region": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Definitions.Surface.GenericRange"
+    ],
+    "RubikSTM.Definitions.Grouping.GroupOf": [],
+    "RubikSTM.Definitions.Intertwiners.SurfaceFlip": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Definitions.JointProbabilities.DictionaryLaw": [
+      "RubikSTM.Definitions.Channel.ArrayLaw",
+      "RubikSTM.Definitions.Codebook.Conditional.SampleEquiv"
+    ],
+    "RubikSTM.Definitions.LocalActions.Generic.ModelEval": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Definitions.OBTM.Band.CleanAction": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OBTM.ObtmGraph"
+    ],
+    "RubikSTM.Definitions.OBTM.Band.Finite.ModelEval": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord"
+    ],
+    "RubikSTM.Definitions.OBTM.Band.SlabWord": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction"
+    ],
+    "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile"
+    ],
+    "RubikSTM.Definitions.OBTM.Compiler.NativePhaseModel": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord"
+    ],
+    "RubikSTM.Definitions.OBTM.Compiler.NativeProgram": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Definitions.Rectangles.Framed"
+    ],
+    "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile": [],
+    "RubikSTM.Definitions.OBTM.Compiler.VectorAction": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Definitions.OBTM.Periodic.SampleLaw"
+    ],
+    "RubikSTM.Definitions.OBTM.Finite.Act": [
+      "RubikSTM.Definitions.Channel.Paired.P"
+    ],
+    "RubikSTM.Definitions.OBTM.Finite.DoubledSubgroup": [
+      "RubikSTM.Definitions.OBTM.Finite.Act"
+    ],
+    "RubikSTM.Definitions.OBTM.Finite.PhaseAct": [
+      "RubikSTM.Definitions.Channel.Transition",
+      "RubikSTM.Definitions.FiniteProbability.ProductLaw",
+      "RubikSTM.Definitions.OBTM.Finite.Act"
+    ],
+    "RubikSTM.Definitions.OBTM.Global.RectangleCompiler": [
+      "RubikSTM.Definitions.OBTM.Finite.PhaseAct",
+      "RubikSTM.Definitions.OBTM.Global.WordCostEnvelope",
+      "RubikSTM.Definitions.OBTM.Periodic.SampleLaw"
+    ],
+    "RubikSTM.Definitions.OBTM.Global.WordCostEnvelope": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Definitions.WordBounds.CostEnvelope"
+    ],
+    "RubikSTM.Definitions.OBTM.Grouping.GroupOf": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Definitions.Grouping.GroupOf"
+    ],
+    "RubikSTM.Definitions.OBTM.ObtmGraph": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Definitions.OBTM.Periodic.CoordinateBounds": [
+      "RubikSTM.Definitions.Channel.ArrayLaw",
+      "RubikSTM.Definitions.OBTM.Periodic.UniformMomentBounds"
+    ],
+    "RubikSTM.Definitions.OBTM.Periodic.LayerwiseUnion": [
+      "RubikSTM.Definitions.OBTM.Periodic.SampleLaw"
+    ],
+    "RubikSTM.Definitions.OBTM.Periodic.SampleLaw": [
+      "RubikSTM.Definitions.FiniteProbability.ProductLaw",
+      "RubikSTM.Definitions.Overlap.OverlapGraph"
+    ],
+    "RubikSTM.Definitions.OBTM.Periodic.UniformMomentBounds": [
+      "RubikSTM.Definitions.OBTM.Periodic.SampleLaw"
+    ],
+    "RubikSTM.Definitions.OBTM.Spectral.ActualPeriodPositive": [
+      "RubikSTM.Definitions.OBTM.Finite.PhaseAct",
+      "RubikSTM.Definitions.OBTM.Spectral.SingleWordMatrix"
+    ],
+    "RubikSTM.Definitions.OBTM.Spectral.PhaseKernel": [
+      "RubikSTM.Definitions.Channel.Transition"
+    ],
+    "RubikSTM.Definitions.OBTM.Spectral.SingleWordMatrix": [
+      "RubikSTM.Definitions.OBTM.Periodic.CoordinateBounds",
+      "RubikSTM.Definitions.OBTM.Spectral.PhaseKernel"
+    ],
+    "RubikSTM.Definitions.OrbitGeometry.GenPerm": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Definitions.OrbitGeometry.NormalTable"
+    ],
+    "RubikSTM.Definitions.OrbitGeometry.NormalTable": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Definitions.Orbits.RigidLabelPermutation": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Definitions.Orbits.SwapPhi": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Definitions.Intertwiners.SurfaceFlip",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Definitions.Overlap.OverlapGraph": [
+      "RubikSTM.Definitions.FiniteProbability.ProductLaw"
+    ],
+    "RubikSTM.Definitions.Payloads.Realizes": [
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.Orbits.SwapPhi"
+    ],
+    "RubikSTM.Definitions.Rectangles.ColumnRealizes": [
+      "RubikSTM.Definitions.Rectangles.Framed"
+    ],
+    "RubikSTM.Definitions.Rectangles.Framed": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface"
+    ],
+    "RubikSTM.Definitions.Rectangles.Layout": [
+      "RubikSTM.Definitions.Rectangles.ColumnRealizes"
+    ],
+    "RubikSTM.Definitions.Rectangles.PayloadInterface": [
+      "RubikSTM.Definitions.Channel.Paired.P",
+      "RubikSTM.Definitions.Codebook.LayerwiseUnion",
+      "RubikSTM.Definitions.Payloads.Realizes"
+    ],
+    "RubikSTM.Definitions.Solved.Metrics": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Definitions.Solved.NormalizedMetrics": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Definitions.Solved.Metrics"
+    ],
+    "RubikSTM.Definitions.Surface.GenericRange": [
+      "RubikSTM.Definitions.Core.Project",
+      "RubikSTM.Definitions.ExceptionalCentres.DiagonalThreeCycle",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Definitions.Wings.FaceOnlyEval"
+    ],
+    "RubikSTM.Definitions.UniversalCodebooks.PathIndicator": [
+      "RubikSTM.Definitions.JointProbabilities.DictionaryLaw",
+      "RubikSTM.Definitions.Overlap.OverlapGraph"
+    ],
+    "RubikSTM.Definitions.Wings.Embed": [
+      "RubikSTM.Definitions.Wings.FaceOnlyEval"
+    ],
+    "RubikSTM.Definitions.Wings.FaceOnlyEval": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Definitions.Wings.IsMiddleSkeleton": [
+      "RubikSTM.Definitions.Wings.SolverWord"
+    ],
+    "RubikSTM.Definitions.Wings.K": [
+      "RubikSTM.Definitions.Wings.FaceOnlyEval"
+    ],
+    "RubikSTM.Definitions.Wings.Realizes": [
+      "RubikSTM.Definitions.Wings.Embed"
+    ],
+    "RubikSTM.Definitions.Wings.SolverWord": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Definitions.Wings.Realizes",
+      "RubikSTM.Definitions.Wings.UniformCost"
+    ],
+    "RubikSTM.Definitions.Wings.UniformCost": [
+      "RubikSTM.Definitions.Wings.K"
+    ],
+    "RubikSTM.Definitions.WordBounds.CostEnvelope": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Definitions.Grouping.GroupOf"
+    ],
+    "RubikSTM.Diameter": [
+      "RubikSTM.Lemmas.Construction.EntropySharpDiameter"
+    ],
+    "RubikSTM.Lemmas.Asymptotics.CostBridgeQIdentity": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Definitions.WordBounds.CostEnvelope",
+      "RubikSTM.Proofs.Asymptotics.CostBridgeQIdentity"
+    ],
+    "RubikSTM.Lemmas.Asymptotics.LowerTail": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Asymptotics.LowerTail"
+    ],
+    "RubikSTM.Lemmas.Asymptotics.UpperTail": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Asymptotics.UpperTail"
+    ],
+    "RubikSTM.Lemmas.Bands.SameAxisFourth": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Proofs.Bands.SameAxisFourth"
+    ],
+    "RubikSTM.Lemmas.Bands.SliceCommute": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Proofs.Bands.SliceCommute"
+    ],
+    "RubikSTM.Lemmas.Bands.SliceCoordinate": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Proofs.Bands.SliceCoordinate"
+    ],
+    "RubikSTM.Lemmas.Bands.WordBand": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Proofs.Bands.WordBand"
+    ],
+    "RubikSTM.Lemmas.Channel.Paired.LogCardDivEight": [
+      "RubikSTM.Definitions.Channel.Paired.P",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.Channel.Paired.LogCardDivEight"
+    ],
+    "RubikSTM.Lemmas.Channel.Paired.StateCard": [
+      "RubikSTM.Definitions.Channel.Paired.P",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.Channel.Paired.StateCard"
+    ],
+    "RubikSTM.Lemmas.Channel.Paired.UniversalCodebook": [
+      "RubikSTM.Definitions.Channel.Paired.P",
+      "RubikSTM.Definitions.UniversalCodebooks.PathIndicator",
+      "RubikSTM.Proofs.Channel.Paired.UniversalCodebook"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.AdjacentSwapEquation": [
+      "RubikSTM.Definitions.Construction.Control.K",
+      "RubikSTM.Proofs.Construction.Control.AdjacentSwapEquation"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.AllNActionBridge": [
+      "RubikSTM.Definitions.Construction.Control.K",
+      "RubikSTM.Proofs.Construction.Control.AllNActionBridge"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.BaseSwapEquation": [
+      "RubikSTM.Definitions.Construction.Control.K",
+      "RubikSTM.Proofs.Construction.Control.BaseSwapEquation"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.CertControlEquation": [
+      "RubikSTM.Definitions.Construction.Control.K",
+      "RubikSTM.Proofs.Construction.Control.CertControlEquation"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.Physical.ActualMovesAllowed": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Proofs.Construction.Control.Physical.ActualMovesAllowed"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.Physical.ActualMovesDeletion": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Proofs.Construction.Control.Physical.ActualMovesDeletion"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.Physical.ActualMovesEval": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Proofs.Construction.Control.Physical.ActualMovesEval"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.Physical.ChronologicalAlgebra": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Proofs.Construction.Control.Physical.ChronologicalAlgebra"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.Physical.ChronologicalApplyWord": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Proofs.Construction.Control.Physical.ChronologicalApplyWord"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.Physical.LabelsEqT": [
+      "RubikSTM.Definitions.Construction.Control.K",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.Construction.Control.Physical.LabelsEqT"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.Physical.QuarterInverse": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Construction.Control.Physical.QuarterInverse"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.Physical.SignedMoveEval": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Proofs.Construction.Control.Physical.SignedMoveEval"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.Physical.UniformSignedModel": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Proofs.Construction.Control.Physical.UniformSignedModel"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.Physical.WordAction": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Proofs.Construction.Control.Physical.WordAction"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.StrictAOnlyTop": [
+      "RubikSTM.Definitions.Construction.Control.K",
+      "RubikSTM.Proofs.Construction.Control.StrictAOnlyTop"
+    ],
+    "RubikSTM.Lemmas.Construction.Control.StrictDeletionRealization": [
+      "RubikSTM.Definitions.Construction.Control.K",
+      "RubikSTM.Proofs.Construction.Control.StrictDeletionRealization"
+    ],
+    "RubikSTM.Lemmas.Construction.EntropySharpDiameter": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Construction.EntropySharpDiameter"
+    ],
+    "RubikSTM.Lemmas.Conventions.FreeRotationSharpDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.FreeRotationSharpDiameter"
+    ],
+    "RubikSTM.Lemmas.Conventions.RotationQuotientSharpDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.RotationQuotientSharpDiameter"
+    ],
+    "RubikSTM.Lemmas.Conventions.ShortOnlySharpDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.ShortOnlySharpDiameter"
+    ],
+    "RubikSTM.Lemmas.Conventions.UnitRotationSharpDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.UnitRotationSharpDiameter"
+    ],
+    "RubikSTM.Lemmas.Conventions.attainableCosts_nonempty": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.attainableCosts_nonempty"
+    ],
+    "RubikSTM.Lemmas.Conventions.axial_central_axis_fixed": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.odd_mid_arithmetic",
+      "RubikSTM.Proofs.Conventions.axial_central_axis_fixed"
+    ],
+    "RubikSTM.Lemmas.Conventions.axial_central_preserved": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.odd_mid_arithmetic",
+      "RubikSTM.Proofs.Conventions.axial_central_preserved"
+    ],
+    "RubikSTM.Lemmas.Conventions.axial_conjugation_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.axial_conjugation_full"
+    ],
+    "RubikSTM.Lemmas.Conventions.axial_pair_identity": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.normal_pair_identity_cases",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected",
+      "RubikSTM.Proofs.Conventions.axial_pair_identity"
+    ],
+    "RubikSTM.Lemmas.Conventions.axial_proper_word_le_two": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.axial_proper_word_le_two"
+    ],
+    "RubikSTM.Lemmas.Conventions.axial_quarter_transport_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.axial_quarter_transport_full"
+    ],
+    "RubikSTM.Lemmas.Conventions.axial_rotation_coord": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.axial_rotation_coord"
+    ],
+    "RubikSTM.Lemmas.Conventions.axial_rotation_normal": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.axial_rotation_normal"
+    ],
+    "RubikSTM.Lemmas.Conventions.axial_short_word_le_two": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.axial_short_word_le_two"
+    ],
+    "RubikSTM.Lemmas.Conventions.blockPermutation_inverse_rev": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.blockPermutation_inverse_rev"
+    ],
+    "RubikSTM.Lemmas.Conventions.blockQuarter_inv_power": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.blockQuarter_inv_power"
+    ],
+    "RubikSTM.Lemmas.Conventions.blockQuarter_inverse_exponent": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.blockQuarter_inverse_exponent"
+    ],
+    "RubikSTM.Lemmas.Conventions.blockQuarter_signed_apply": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.blockQuarter_signed_apply"
+    ],
+    "RubikSTM.Lemmas.Conventions.block_after_rotate": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.block_after_rotate"
+    ],
+    "RubikSTM.Lemmas.Conventions.block_conjugation_colour": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.block_conjugation_colour"
+    ],
+    "RubikSTM.Lemmas.Conventions.block_conjugation_of_quarter_transport": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.block_conjugation_of_quarter_transport"
+    ],
+    "RubikSTM.Lemmas.Conventions.bounded_additive_normalized_transfer": [
+      "RubikSTM.Proofs.Conventions.bounded_additive_normalized_transfer"
+    ],
+    "RubikSTM.Lemmas.Conventions.central_frame_rotation_cancel": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.central_sticker_exists",
+      "RubikSTM.Lemmas.Conventions.rotation_central_preserved",
+      "RubikSTM.Lemmas.Conventions.rotation_normal_witness",
+      "RubikSTM.Proofs.Conventions.central_frame_rotation_cancel"
+    ],
+    "RubikSTM.Lemmas.Conventions.central_sticker_exists": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.central_sticker_exists"
+    ],
+    "RubikSTM.Lemmas.Conventions.chargedDistance_attained": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.chargedDistance_attained"
+    ],
+    "RubikSTM.Lemmas.Conventions.chargedDistance_le_word": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.chargedDistance_le_word"
+    ],
+    "RubikSTM.Lemmas.Conventions.chargedDistance_proper_normal_form": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.chargedDistance_proper_normal_form"
+    ],
+    "RubikSTM.Lemmas.Conventions.chargedDistance_short_normal_form": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.chargedDistance_short_normal_form"
+    ],
+    "RubikSTM.Lemmas.Conventions.chargedDistance_triangle": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.chargedDistance_triangle"
+    ],
+    "RubikSTM.Lemmas.Conventions.complementary_slabs_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.complementary_slabs_full"
+    ],
+    "RubikSTM.Lemmas.Conventions.coordinate_conjugation": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.coordinate_conjugation"
+    ],
+    "RubikSTM.Lemmas.Conventions.coordinate_conjugation_backward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.Conventions.coordinate_conjugation_backward"
+    ],
+    "RubikSTM.Lemmas.Conventions.coordinate_conjugation_forward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.Conventions.coordinate_conjugation_forward"
+    ],
+    "RubikSTM.Lemmas.Conventions.coordinate_transport_backward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.Conventions.coordinate_transport_backward"
+    ],
+    "RubikSTM.Lemmas.Conventions.coordinate_transport_forward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.Conventions.coordinate_transport_forward"
+    ],
+    "RubikSTM.Lemmas.Conventions.diameter_comparisons": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.diameter_comparisons"
+    ],
+    "RubikSTM.Lemmas.Conventions.even_half_cube_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.even_half_cube_full"
+    ],
+    "RubikSTM.Lemmas.Conventions.even_short_word_bound": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.even_short_word_bound"
+    ],
+    "RubikSTM.Lemmas.Conventions.freeDistance_le_quotientWalk": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.freeDistance_le_quotientWalk"
+    ],
+    "RubikSTM.Lemmas.Conventions.freeDistance_le_unitDistance": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.freeDistance_le_unitDistance"
+    ],
+    "RubikSTM.Lemmas.Conventions.freeDistance_of_orbit": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.freeDistance_of_orbit"
+    ],
+    "RubikSTM.Lemmas.Conventions.freeDistance_orbit_invariant": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.freeDistance_orbit_invariant"
+    ],
+    "RubikSTM.Lemmas.Conventions.mixedWordCost_zero_le": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.mixedWordCost_zero_le"
+    ],
+    "RubikSTM.Lemmas.Conventions.mixedWord_append_api": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.mixedWord_append_api"
+    ],
+    "RubikSTM.Lemmas.Conventions.mixed_proper_word": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.mixed_proper_word"
+    ],
+    "RubikSTM.Lemmas.Conventions.mixed_word_proper_normal_form": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.mixed_word_proper_normal_form"
+    ],
+    "RubikSTM.Lemmas.Conventions.mixed_word_short_normal_form": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.mixed_word_short_normal_form"
+    ],
+    "RubikSTM.Lemmas.Conventions.normal_conjugation": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.normal_conjugation"
+    ],
+    "RubikSTM.Lemmas.Conventions.normal_conjugation_backward": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.normal_conjugation_backward"
+    ],
+    "RubikSTM.Lemmas.Conventions.normal_conjugation_backward_axis0": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.normal_conjugation_backward_axis0"
+    ],
+    "RubikSTM.Lemmas.Conventions.normal_conjugation_backward_axis1": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.normal_conjugation_backward_axis1"
+    ],
+    "RubikSTM.Lemmas.Conventions.normal_conjugation_backward_axis2": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.normal_conjugation_backward_axis2"
+    ],
+    "RubikSTM.Lemmas.Conventions.normal_conjugation_forward": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.normal_conjugation_forward"
+    ],
+    "RubikSTM.Lemmas.Conventions.normal_conjugation_forward_axis0": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.normal_conjugation_forward_axis0"
+    ],
+    "RubikSTM.Lemmas.Conventions.normal_conjugation_forward_axis1": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.normal_conjugation_forward_axis1"
+    ],
+    "RubikSTM.Lemmas.Conventions.normal_conjugation_forward_axis2": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.normal_conjugation_forward_axis2"
+    ],
+    "RubikSTM.Lemmas.Conventions.normal_pair_identity_cases": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.normal_pair_identity_cases"
+    ],
+    "RubikSTM.Lemmas.Conventions.obtmDistance_le_freeDistance_add_four": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.obtmDistance_le_freeDistance_add_four"
+    ],
+    "RubikSTM.Lemmas.Conventions.odd_mid_arithmetic": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.odd_mid_arithmetic"
+    ],
+    "RubikSTM.Lemmas.Conventions.odd_restrictedShortGraph_connected": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.odd_shortVertexSet",
+      "RubikSTM.Proofs.Conventions.odd_restrictedShortGraph_connected"
+    ],
+    "RubikSTM.Lemmas.Conventions.odd_shortDiameter_eq_freeDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.freeDistance_orbit_invariant",
+      "RubikSTM.Lemmas.Conventions.odd_shortDistance_eq_freeDistance",
+      "RubikSTM.Lemmas.Conventions.odd_short_orbit_representative",
+      "RubikSTM.Lemmas.Conventions.pairMaximum_api",
+      "RubikSTM.Proofs.Conventions.odd_shortDiameter_eq_freeDiameter"
+    ],
+    "RubikSTM.Lemmas.Conventions.odd_shortDistance_eq_freeDistance": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.central_frame_rotation_cancel",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_le_word",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_short_normal_form",
+      "RubikSTM.Lemmas.Conventions.odd_restrictedShortGraph_connected",
+      "RubikSTM.Lemmas.Conventions.odd_shortVertexSet",
+      "RubikSTM.Lemmas.Conventions.odd_shortWalk_lift",
+      "RubikSTM.Lemmas.Conventions.shortGraph_walk_word",
+      "RubikSTM.Lemmas.Conventions.shortWord_central_fixed",
+      "RubikSTM.Lemmas.Conventions.shortWord_mixed",
+      "RubikSTM.Lemmas.Conventions.shortWord_walk",
+      "RubikSTM.Lemmas.Conventions.solved_component_has_frame",
+      "RubikSTM.Proofs.Conventions.odd_shortDistance_eq_freeDistance"
+    ],
+    "RubikSTM.Lemmas.Conventions.odd_shortVertexSet": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.odd_shortVertexSet"
+    ],
+    "RubikSTM.Lemmas.Conventions.odd_shortWalk_lift": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.odd_shortVertexSet",
+      "RubikSTM.Proofs.Conventions.odd_shortWalk_lift"
+    ],
+    "RubikSTM.Lemmas.Conventions.odd_short_orbit_representative": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_short_normal_form",
+      "RubikSTM.Lemmas.Conventions.odd_shortVertexSet",
+      "RubikSTM.Lemmas.Conventions.shortWord_reachable",
+      "RubikSTM.Lemmas.Conventions.solved_component_word_iff",
+      "RubikSTM.Proofs.Conventions.odd_short_orbit_representative"
+    ],
+    "RubikSTM.Lemmas.Conventions.pairMaximum_api": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.pairMaximum_api"
+    ],
+    "RubikSTM.Lemmas.Conventions.power_transport_conj": [
+      "RubikSTM.Proofs.Conventions.power_transport_conj"
+    ],
+    "RubikSTM.Lemmas.Conventions.power_transport_mul": [
+      "RubikSTM.Proofs.Conventions.power_transport_mul"
+    ],
+    "RubikSTM.Lemmas.Conventions.proper_complement_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.proper_complement_full"
+    ],
+    "RubikSTM.Lemmas.Conventions.quotientDiameter_eq_freeDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.quotientDiameter_eq_freeDiameter"
+    ],
+    "RubikSTM.Lemmas.Conventions.quotientDistance_eq_freeDistance": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.quotientDistance_eq_freeDistance"
+    ],
+    "RubikSTM.Lemmas.Conventions.quotientDistance_le_freeDistance": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.quotientDistance_le_freeDistance"
+    ],
+    "RubikSTM.Lemmas.Conventions.quotientGraph_connected": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.quotientGraph_connected"
+    ],
+    "RubikSTM.Lemmas.Conventions.quotient_walk_projection": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.quotient_walk_projection"
+    ],
+    "RubikSTM.Lemmas.Conventions.restrictedShortGraph_connected_even": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.restrictedShortGraph_connected_even"
+    ],
+    "RubikSTM.Lemmas.Conventions.rigid_conjugation_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.rigid_conjugation_full"
+    ],
+    "RubikSTM.Lemmas.Conventions.rigid_conjugation_permutation": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.rigid_conjugation_permutation"
+    ],
+    "RubikSTM.Lemmas.Conventions.rigid_conjugation_short": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.rigid_conjugation_short"
+    ],
+    "RubikSTM.Lemmas.Conventions.rotate_action": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.rotate_action"
+    ],
+    "RubikSTM.Lemmas.Conventions.rotate_preserves_position": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.rotate_preserves_position"
+    ],
+    "RubikSTM.Lemmas.Conventions.rotate_two_axial": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.rotate_two_axial"
+    ],
+    "RubikSTM.Lemmas.Conventions.rotation_central_preserved": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.axial_central_preserved",
+      "RubikSTM.Lemmas.Conventions.rotation_two_axial",
+      "RubikSTM.Proofs.Conventions.rotation_central_preserved"
+    ],
+    "RubikSTM.Lemmas.Conventions.rotation_normal_witness": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.axial_pair_identity",
+      "RubikSTM.Lemmas.Conventions.rotation_two_axial",
+      "RubikSTM.Lemmas.Conventions.surface_power_normal",
+      "RubikSTM.Proofs.Conventions.rotation_normal_witness"
+    ],
+    "RubikSTM.Lemmas.Conventions.rotation_proper_word_le_four": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.rotation_proper_word_le_four"
+    ],
+    "RubikSTM.Lemmas.Conventions.rotation_short_word_le_four": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.rotation_short_word_le_four"
+    ],
+    "RubikSTM.Lemmas.Conventions.rotation_two_axial": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.rotation_two_axial"
+    ],
+    "RubikSTM.Lemmas.Conventions.selected_rev": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.Conventions.selected_rev"
+    ],
+    "RubikSTM.Lemmas.Conventions.selected_transport": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.selected_transport"
+    ],
+    "RubikSTM.Lemmas.Conventions.selected_transport_backward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.Conventions.selected_transport_backward"
+    ],
+    "RubikSTM.Lemmas.Conventions.selected_transport_forward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.Conventions.selected_transport_forward"
+    ],
+    "RubikSTM.Lemmas.Conventions.shortDiameter_comparisons_even": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.shortDiameter_comparisons_even"
+    ],
+    "RubikSTM.Lemmas.Conventions.shortDistance_eq_full_even": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.shortDistance_eq_full_even"
+    ],
+    "RubikSTM.Lemmas.Conventions.shortGraph_connected_even": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.shortGraph_connected_even"
+    ],
+    "RubikSTM.Lemmas.Conventions.shortGraph_dist_bounds_even": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.shortGraph_dist_bounds_even"
+    ],
+    "RubikSTM.Lemmas.Conventions.shortGraph_walk_word": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.shortMove_inverse",
+      "RubikSTM.Proofs.Conventions.shortGraph_walk_word"
+    ],
+    "RubikSTM.Lemmas.Conventions.shortMove_inverse": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.blockPermutation_inverse_rev",
+      "RubikSTM.Proofs.Conventions.shortMove_inverse"
+    ],
+    "RubikSTM.Lemmas.Conventions.shortVertexSet_even": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.shortVertexSet_even"
+    ],
+    "RubikSTM.Lemmas.Conventions.shortWord_central_fixed": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.short_central_fixed",
+      "RubikSTM.Proofs.Conventions.shortWord_central_fixed"
+    ],
+    "RubikSTM.Lemmas.Conventions.shortWord_mixed": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.shortWord_mixed"
+    ],
+    "RubikSTM.Lemmas.Conventions.shortWord_reachable": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected",
+      "RubikSTM.Proofs.Conventions.shortWord_reachable"
+    ],
+    "RubikSTM.Lemmas.Conventions.shortWord_walk": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.shortWord_walk"
+    ],
+    "RubikSTM.Lemmas.Conventions.short_after_rotate": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.short_after_rotate"
+    ],
+    "RubikSTM.Lemmas.Conventions.short_central_fixed": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.axial_central_axis_fixed",
+      "RubikSTM.Proofs.Conventions.short_central_fixed"
+    ],
+    "RubikSTM.Lemmas.Conventions.short_complement_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.short_complement_full"
+    ],
+    "RubikSTM.Lemmas.Conventions.solved_component_has_frame": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.shortWord_central_fixed",
+      "RubikSTM.Lemmas.Conventions.solved_component_word_iff",
+      "RubikSTM.Proofs.Conventions.solved_component_has_frame"
+    ],
+    "RubikSTM.Lemmas.Conventions.solved_component_word_iff": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.shortGraph_walk_word",
+      "RubikSTM.Lemmas.Conventions.shortWord_walk",
+      "RubikSTM.Proofs.Conventions.solved_component_word_iff"
+    ],
+    "RubikSTM.Lemmas.Conventions.sticker_ext_components": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.sticker_ext_components"
+    ],
+    "RubikSTM.Lemmas.Conventions.sticker_perm_ext_components": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.sticker_perm_ext_components"
+    ],
+    "RubikSTM.Lemmas.Conventions.surfaceRotation_coord": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.surfaceRotation_coord"
+    ],
+    "RubikSTM.Lemmas.Conventions.surfaceRotation_inv_coord": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.surfaceRotation_inv_coord"
+    ],
+    "RubikSTM.Lemmas.Conventions.surfaceRotation_inv_normal": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.surfaceRotation_inv_normal"
+    ],
+    "RubikSTM.Lemmas.Conventions.surfaceRotation_normal": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Conventions.surfaceRotation_normal"
+    ],
+    "RubikSTM.Lemmas.Conventions.surface_conjugation": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Proofs.Conventions.surface_conjugation"
+    ],
+    "RubikSTM.Lemmas.Conventions.surface_power_normal": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.surfaceRotation_normal",
+      "RubikSTM.Proofs.Conventions.surface_power_normal"
+    ],
+    "RubikSTM.Lemmas.Conventions.unitDistance_le_obtmDistance": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_preserves_position",
+      "RubikSTM.Proofs.Conventions.unitDistance_le_obtmDistance"
+    ],
+    "RubikSTM.Lemmas.Core.CleanupToSolved": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Proofs.Core.CleanupToSolved"
+    ],
+    "RubikSTM.Lemmas.Core.CoreCardLe": [
+      "RubikSTM.Definitions.Core.Project",
+      "RubikSTM.Proofs.Core.CoreCardLe"
+    ],
+    "RubikSTM.Lemmas.Core.CoreColouringCardLe": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Proofs.Core.CoreColouringCardLe"
+    ],
+    "RubikSTM.Lemmas.Core.FinitePermutationWordRollback": [
+      "RubikSTM.Proofs.Core.FinitePermutationWordRollback"
+    ],
+    "RubikSTM.Lemmas.Core.FiniteWordCompression": [
+      "RubikSTM.Proofs.Core.FiniteWordCompression"
+    ],
+    "RubikSTM.Lemmas.Core.LevelCodeInj": [
+      "RubikSTM.Definitions.Core.Project",
+      "RubikSTM.Proofs.Core.LevelCodeInj"
+    ],
+    "RubikSTM.Lemmas.Core.MatchCorePointwise": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Proofs.Core.MatchCorePointwise"
+    ],
+    "RubikSTM.Lemmas.Core.MatchReachableCore": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Proofs.Core.MatchReachableCore"
+    ],
+    "RubikSTM.Lemmas.Core.ProjectMove": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Proofs.Core.ProjectMove"
+    ],
+    "RubikSTM.Lemmas.Core.ProjectWord": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Proofs.Core.ProjectWord"
+    ],
+    "RubikSTM.Lemmas.ExceptionalCentres.CrossUniformColoured": [
+      "RubikSTM.Definitions.ExceptionalCentres.CrossThreeCycle",
+      "RubikSTM.Proofs.ExceptionalCentres.CrossUniformColoured"
+    ],
+    "RubikSTM.Lemmas.ExceptionalCentres.DiagonalUniformColoured": [
+      "RubikSTM.Definitions.ExceptionalCentres.WordPerm",
+      "RubikSTM.Proofs.ExceptionalCentres.DiagonalUniformColoured"
+    ],
+    "RubikSTM.Lemmas.Geometry.ApplyWordAppend": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.Geometry.ApplyWordAppend"
+    ],
+    "RubikSTM.Lemmas.GlobalRates.PairedRectangleEnvelope": [
+      "RubikSTM.Proofs.GlobalRates.PairedRectangleEnvelope"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.Exceptional.CentreStep": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.Exceptional.CentreStep"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.Exceptional.CentresCleanup": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.Exceptional.CentresCleanup"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.Exceptional.CoreOutsideBand": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.Exceptional.CoreOutsideBand"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.Exceptional.FiniteCleanup": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.Exceptional.FiniteCleanup"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.Exceptional.FixedWordColour": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.Exceptional.FixedWordColour"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.Exceptional.MidpointUnique": [
+      "RubikSTM.Proofs.GlobalWords.Exceptional.MidpointUnique"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.Exceptional.WingOutsideBand": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.Exceptional.WingOutsideBand"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.Exceptional.WingsCleanup": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.Exceptional.WingsCleanup"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.ExceptionalPreprocessing": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.ExceptionalPreprocessing"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.FiniteGlobalWordBound": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.FiniteGlobalWordBound"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.GenericLocalRecolour": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.GenericLocalRecolour"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.GlobalCover": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.GlobalCover"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.GroupsAdmissible": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.GroupsAdmissible"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.RectangleRecolour": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.RectangleRecolour"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.RegionRectangle": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.RegionRectangle"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.RegionSame": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.RegionSame"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.RegionsDisjoint": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.RegionsDisjoint"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.SequentialRecolour": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.SequentialRecolour"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.TaskPairIff": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.TaskPairIff"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.TaskSameIff": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.TaskSameIff"
+    ],
+    "RubikSTM.Lemmas.GlobalWords.UndoWord": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.GlobalWords.UndoWord"
+    ],
+    "RubikSTM.Lemmas.Intertwiners.SliceCommute": [
+      "RubikSTM.Definitions.Intertwiners.SurfaceFlip",
+      "RubikSTM.Proofs.Intertwiners.SliceCommute"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.AlternatingRange": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.AlternatingRange"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.ChronologicalAppend": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.ChronologicalAppend"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.ConjugateBounded": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.ConjugateBounded"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.LocalActionConjugate": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.LocalActionConjugate"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.LocalActionInv": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.LocalActionInv"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.LocalActionMul": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.LocalActionMul"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.ModelEvalMk": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.ModelEvalMk"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.PrimitiveMoves": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.PrimitiveMoves"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.RealizeTokensCorrect": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.RealizeTokensCorrect"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.UniformEvenRealization": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.UniformEvenRealization"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.UniformModel": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.UniformModel"
+    ],
+    "RubikSTM.Lemmas.LocalActions.Generic.UniformReachableRecolour": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Proofs.LocalActions.Generic.UniformReachableRecolour"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.CleanActionInv": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.CleanActionInv"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.CleanActionMul": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.CleanActionMul"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.CleanActionOne": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.CleanActionOne"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.Finite.FiniteSignedWordBound": [
+      "RubikSTM.Definitions.OBTM.Band.Finite.ModelEval",
+      "RubikSTM.Proofs.OBTM.Band.Finite.FiniteSignedWordBound"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.NativeWordInverse": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.NativeWordInverse"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.PairedRangeIff": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.PairedRangeIff"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.PhysicalControlStrict": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.PhysicalControlStrict"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.RowActionBoth": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.RowActionBoth"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.RowFaceMinus"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus0": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.RowFaceMinus0"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus1": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.RowFaceMinus1"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus2": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.RowFaceMinus2"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus3": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.RowFaceMinus3"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus4": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.RowFaceMinus4"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus5": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.RowFaceMinus5"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.RowQuotientClean": [
+      "RubikSTM.Definitions.OBTM.Band.Finite.ModelEval",
+      "RubikSTM.Proofs.OBTM.Band.RowQuotientClean"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.RowSliceMinus": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.RowSliceMinus"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.SingleIntersectionRange": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.SingleIntersectionRange"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.SlabActionBoth": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.SlabActionBoth"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.SlabActionIf": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.SlabActionIf"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.SlabBandsIff": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.SlabBandsIff"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.SlabPermApply": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.SlabPermApply"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.SlabPrefixDifference": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.SlabPrefixDifference"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.SlabWordCorrect": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.SlabWordCorrect"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.StmWordBlocks": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.StmWordBlocks"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.StrictQuotientOutside": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Proofs.OBTM.Band.StrictQuotientOutside"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.UniformCleanEvenControl": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.UniformCleanEvenControl"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.UniformKernelWords": [
+      "RubikSTM.Definitions.OBTM.Band.Finite.ModelEval",
+      "RubikSTM.Proofs.OBTM.Band.UniformKernelWords"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.UniformRowWords": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.UniformRowWords"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.UniformTokenWords": [
+      "RubikSTM.Definitions.OBTM.Band.Finite.ModelEval",
+      "RubikSTM.Proofs.OBTM.Band.UniformTokenWords"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.WordPermAppend": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.WordPermAppend"
+    ],
+    "RubikSTM.Lemmas.OBTM.Band.WordPermApply": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Proofs.OBTM.Band.WordPermApply"
+    ],
+    "RubikSTM.Lemmas.OBTM.Bands.BaselineBand": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Proofs.OBTM.Bands.BaselineBand"
+    ],
+    "RubikSTM.Lemmas.OBTM.Bands.BaselineOutside": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Proofs.OBTM.Bands.BaselineOutside"
+    ],
+    "RubikSTM.Lemmas.OBTM.Bands.ConjugationOutside": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Proofs.OBTM.Bands.ConjugationOutside"
+    ],
+    "RubikSTM.Lemmas.OBTM.BlockInverse": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.BlockInverse"
+    ],
+    "RubikSTM.Lemmas.OBTM.BlockMoveCard": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.BlockMoveCard"
+    ],
+    "RubikSTM.Lemmas.OBTM.BlockPowerApply": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.BlockPowerApply"
+    ],
+    "RubikSTM.Lemmas.OBTM.BlockReachable": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.BlockReachable"
+    ],
+    "RubikSTM.Lemmas.OBTM.BlockSliceWordAction": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.BlockSliceWordAction"
+    ],
+    "RubikSTM.Lemmas.OBTM.BlockSliceWordPermutation": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.BlockSliceWordPermutation"
+    ],
+    "RubikSTM.Lemmas.OBTM.BlockWordAction": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.BlockWordAction"
+    ],
+    "RubikSTM.Lemmas.OBTM.BlockWordDistance": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.BlockWordDistance"
+    ],
+    "RubikSTM.Lemmas.OBTM.BlockWordReachable": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.BlockWordReachable"
+    ],
+    "RubikSTM.Lemmas.OBTM.BlockWordWalk": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.BlockWordWalk"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.BackwardSelection": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Proofs.OBTM.Compiler.BackwardSelection"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.BlockQuarterCommute": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Proofs.OBTM.Compiler.BlockQuarterCommute"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.BlockQuarterFour": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Proofs.OBTM.Compiler.BlockQuarterFour"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.CellBaselineTwo": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.CellBaselineTwo"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.CoalesceFinset": [
+      "RubikSTM.Proofs.OBTM.Compiler.CoalesceFinset"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.CoalescedSlab": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Proofs.OBTM.Compiler.CoalescedSlab"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.CommonFrameProgram": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Proofs.OBTM.Compiler.CommonFrameProgram"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.CommonLabels": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.CommonLabels"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.CommonReachableView": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.CommonReachableView"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.CutBaselineBand": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.CutBaselineBand"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.CutBaselineGrouped": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.CutBaselineGrouped"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.CutBaselineNative": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.CutBaselineNative"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.CutBaselinePair": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.CutBaselinePair"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.FullBaselineRectangles": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.FullBaselineRectangles"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.GroupedCommutingProd": [
+      "RubikSTM.Proofs.OBTM.Compiler.GroupedCommutingProd"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.HalfPrefixWordTwo": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Proofs.OBTM.Compiler.HalfPrefixWordTwo"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.LiftedBookCard": [
+      "RubikSTM.Definitions.OBTM.Compiler.VectorAction",
+      "RubikSTM.Proofs.OBTM.Compiler.LiftedBookCard"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.LiftedBookCover": [
+      "RubikSTM.Definitions.OBTM.Compiler.VectorAction",
+      "RubikSTM.Proofs.OBTM.Compiler.LiftedBookCover"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.LowerHalfCoalesces": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Proofs.OBTM.Compiler.LowerHalfCoalesces"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativeCoalescedAction": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Proofs.OBTM.Compiler.NativeCoalescedAction"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativeCoalescedLength": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Proofs.OBTM.Compiler.NativeCoalescedLength"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativeEvenConjugators": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Definitions.OBTM.Finite.PhaseAct",
+      "RubikSTM.Proofs.OBTM.Compiler.NativeEvenConjugators"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativeFramedWord": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.NativeFramedWord"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativeInverseWord": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Proofs.OBTM.Compiler.NativeInverseWord"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativeLayoutRowsCard": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.NativeLayoutRowsCard"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativeOddLayout": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.NativeOddLayout"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativePairColouring": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.NativePairColouring"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativePairOutsideRows": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.NativePairOutsideRows"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativePhaseOfPulse": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.NativePhaseOfPulse"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativePulse": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.NativePulse"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.NativeVectorData": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Definitions.OBTM.Compiler.VectorAction",
+      "RubikSTM.Proofs.OBTM.Compiler.NativeVectorData"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.OddPadding": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Proofs.OBTM.Compiler.OddPadding"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.OddRowFrame": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Proofs.OBTM.Compiler.OddRowFrame"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.OrderedBackwardSelection": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Proofs.OBTM.Compiler.OrderedBackwardSelection"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.OutsideRestoration": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Proofs.OBTM.Compiler.OutsideRestoration"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.PowModTwo": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Proofs.OBTM.Compiler.PowModTwo"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.PulseCleanSetup": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.PulseCleanSetup"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.PulseCutAction": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.PulseCutAction"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.PulseIntervalData": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.PulseIntervalData"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.PulseLabelsAvoidRow": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.PulseLabelsAvoidRow"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.ReadConcat": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativePhaseModel",
+      "RubikSTM.Proofs.OBTM.Compiler.ReadConcat"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.RectangleOfNativePulse": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.RectangleOfNativePulse"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.SlabBaselineTwo": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Proofs.OBTM.Compiler.SlabBaselineTwo"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.SlabCommute": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Proofs.OBTM.Compiler.SlabCommute"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.SuffixConsSucc": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Proofs.OBTM.Compiler.SuffixConsSucc"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.SuffixConsZero": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Proofs.OBTM.Compiler.SuffixConsZero"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.SuffixProduct": [
+      "RubikSTM.Proofs.OBTM.Compiler.SuffixProduct"
+    ],
+    "RubikSTM.Lemmas.OBTM.Compiler.WordConcat": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativePhaseModel",
+      "RubikSTM.Proofs.OBTM.Compiler.WordConcat"
+    ],
+    "RubikSTM.Lemmas.OBTM.CountingWordCover": [
+      "RubikSTM.Proofs.OBTM.CountingWordCover"
+    ],
+    "RubikSTM.Lemmas.OBTM.DiameterLeUniformWordBound": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.DiameterLeUniformWordBound"
+    ],
+    "RubikSTM.Lemmas.OBTM.DiameterWordCover": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.DiameterWordCover"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.ActualBookSupply": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Proofs.OBTM.Global.ActualBookSupply"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.ActualRectangleCompiler": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Proofs.OBTM.Global.ActualRectangleCompiler"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.ActualWordCostEnvelope": [
+      "RubikSTM.Definitions.OBTM.Global.WordCostEnvelope",
+      "RubikSTM.Proofs.OBTM.Global.ActualWordCostEnvelope"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.ApplyBlockWordAppend": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.Global.ApplyBlockWordAppend"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.CardPositionLePow": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.Global.CardPositionLePow"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.CardPositionLeSum": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.Global.CardPositionLeSum"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.CleanupScalarBound": [
+      "RubikSTM.Proofs.OBTM.Global.CleanupScalarBound"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.CountingLowerLinear": [
+      "RubikSTM.Proofs.OBTM.Global.CountingLowerLinear"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.DependentSumGroupPairs": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.OBTM.Global.DependentSumGroupPairs"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.FiniteGlobalBlockWordBound": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Proofs.OBTM.Global.FiniteGlobalBlockWordBound"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.LowerTail": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.Global.LowerTail"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.RecolourFromStm": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Proofs.OBTM.Global.RecolourFromStm"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.SequentialRecolour": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Proofs.OBTM.Global.SequentialRecolour"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.UpperTail": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.Global.UpperTail"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.UpperTailOfWordEnvelope": [
+      "RubikSTM.Definitions.OBTM.Global.WordCostEnvelope",
+      "RubikSTM.Proofs.OBTM.Global.UpperTailOfWordEnvelope"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.WordEnvelopeHd": [
+      "RubikSTM.Definitions.OBTM.Global.WordCostEnvelope",
+      "RubikSTM.Proofs.OBTM.Global.WordEnvelopeHd"
+    ],
+    "RubikSTM.Lemmas.OBTM.Global.WordEnvelopeOfCompilers": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Proofs.OBTM.Global.WordEnvelopeOfCompilers"
+    ],
+    "RubikSTM.Lemmas.OBTM.GlobalRates.RectCostUniform": [
+      "RubikSTM.Proofs.OBTM.GlobalRates.RectCostUniform"
+    ],
+    "RubikSTM.Lemmas.OBTM.GlobalRates.RectangleAggregationHd": [
+      "RubikSTM.Proofs.OBTM.GlobalRates.RectangleAggregationHd"
+    ],
+    "RubikSTM.Lemmas.OBTM.GlobalWords.SumGroupPairs": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Proofs.OBTM.GlobalWords.SumGroupPairs"
+    ],
+    "RubikSTM.Lemmas.OBTM.Grouping.ActualScalarFacts": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Proofs.OBTM.Grouping.ActualScalarFacts"
+    ],
+    "RubikSTM.Lemmas.OBTM.Grouping.CrossGroupProductsBound": [
+      "RubikSTM.Definitions.Grouping.GroupOf",
+      "RubikSTM.Proofs.OBTM.Grouping.CrossGroupProductsBound"
+    ],
+    "RubikSTM.Lemmas.OBTM.Grouping.DepthGroupInterval": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Proofs.OBTM.Grouping.DepthGroupInterval"
+    ],
+    "RubikSTM.Lemmas.OBTM.Grouping.DepthGroupLink": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Proofs.OBTM.Grouping.DepthGroupLink"
+    ],
+    "RubikSTM.Lemmas.OBTM.Grouping.FibreInterval": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Proofs.OBTM.Grouping.FibreInterval"
+    ],
+    "RubikSTM.Lemmas.OBTM.Grouping.GroupCardEq": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Proofs.OBTM.Grouping.GroupCardEq"
+    ],
+    "RubikSTM.Lemmas.OBTM.Grouping.GroupCardExact": [
+      "RubikSTM.Definitions.Grouping.GroupOf",
+      "RubikSTM.Proofs.OBTM.Grouping.GroupCardExact"
+    ],
+    "RubikSTM.Lemmas.OBTM.Grouping.GroupOfMonotone": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Proofs.OBTM.Grouping.GroupOfMonotone"
+    ],
+    "RubikSTM.Lemmas.OBTM.Grouping.SameGroupPairsBound": [
+      "RubikSTM.Definitions.Grouping.GroupOf",
+      "RubikSTM.Proofs.OBTM.Grouping.SameGroupPairsBound"
+    ],
+    "RubikSTM.Lemmas.OBTM.Grouping.SamePairsCardEq": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Proofs.OBTM.Grouping.SamePairsCardEq"
+    ],
+    "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.OBTMSharpDiameter"
+    ],
+    "RubikSTM.Lemmas.OBTM.ObtmDistLeDiameter": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.ObtmDistLeDiameter"
+    ],
+    "RubikSTM.Lemmas.OBTM.ObtmGraphConnected": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.ObtmGraphConnected"
+    ],
+    "RubikSTM.Lemmas.OBTM.ObtmGraphEdiamNeTop": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.ObtmGraphEdiamNeTop"
+    ],
+    "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.ObtmGraphWalkWord"
+    ],
+    "RubikSTM.Lemmas.OBTM.OrbitGeometry.G.SumPowersLe": [
+      "RubikSTM.Proofs.OBTM.OrbitGeometry.G.SumPowersLe"
+    ],
+    "RubikSTM.Lemmas.OBTM.ParallelSlicesApply": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.Bands.SliceCoordinate",
+      "RubikSTM.Proofs.OBTM.ParallelSlicesApply"
+    ],
+    "RubikSTM.Lemmas.OBTM.Periodic.NativeBookSupplyOfCoordinates": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Definitions.OBTM.Periodic.CoordinateBounds",
+      "RubikSTM.Proofs.OBTM.Periodic.NativeBookSupplyOfCoordinates"
+    ],
+    "RubikSTM.Lemmas.OBTM.ReachableEntropy": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OBTM.ReachableEntropy"
+    ],
+    "RubikSTM.Lemmas.OBTM.ReachableIff": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.ReachableIff"
+    ],
+    "RubikSTM.Lemmas.OBTM.SliceTwoBlocks": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.SliceTwoBlocks"
+    ],
+    "RubikSTM.Lemmas.OBTM.SliceWordToBlocks": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.SliceWordToBlocks"
+    ],
+    "RubikSTM.Lemmas.OBTM.Spectral.ActualPeriodGaps": [
+      "RubikSTM.Definitions.OBTM.Spectral.ActualPeriodPositive",
+      "RubikSTM.Proofs.OBTM.Spectral.ActualPeriodGaps"
+    ],
+    "RubikSTM.Lemmas.OBTM.Spectral.CoordinateBoundsOfPeriodGaps": [
+      "RubikSTM.Definitions.OBTM.Spectral.SingleWordMatrix",
+      "RubikSTM.Proofs.OBTM.Spectral.CoordinateBoundsOfPeriodGaps"
+    ],
+    "RubikSTM.Lemmas.OBTM.SurfaceRotationFour": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Proofs.OBTM.SurfaceRotationFour"
+    ],
+    "RubikSTM.Lemmas.OBTM.WordBounds.EventuallyBlockLarge": [
+      "RubikSTM.Definitions.WordBounds.CostEnvelope",
+      "RubikSTM.Proofs.OBTM.WordBounds.EventuallyBlockLarge"
+    ],
+    "RubikSTM.Lemmas.OBTM.WordBounds.RowCeilEqNatCeil": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Proofs.OBTM.WordBounds.RowCeilEqNatCeil"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.CardNormalTableOrbit": [
+      "RubikSTM.Definitions.Channel.Paired.P",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.CardNormalTableOrbit"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.CommEltLab": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.CommEltLab"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.CommEltOff": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.CommEltOff"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.ExistsEvenRep": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.ExistsEvenRep"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.F.ThreeT0": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.F.ThreeT0"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.MoveLab": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.MoveLab"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.T.CommutatorFixed": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.T.CommutatorFixed"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.T.IntersectionSticker": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.T.IntersectionSticker"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.T.InverseOnLabels": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.T.InverseOnLabels"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.T.QuarterSupport": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.T.QuarterSupport"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.T.RangeIff": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.T.RangeIff"
+    ],
+    "RubikSTM.Lemmas.OrbitGeometry.T.SupportIntersection": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Proofs.OrbitGeometry.T.SupportIntersection"
+    ],
+    "RubikSTM.Lemmas.Orbits.BandIntersection": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Orbits.BandIntersection"
+    ],
+    "RubikSTM.Lemmas.Orbits.FlipLabel": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Orbits.FlipLabel"
+    ],
+    "RubikSTM.Lemmas.Orbits.LabelBands": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Orbits.LabelBands"
+    ],
+    "RubikSTM.Lemmas.Orbits.MinusQuarter": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Orbits.MinusQuarter"
+    ],
+    "RubikSTM.Lemmas.Orbits.MinusRange": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Orbits.MinusRange"
+    ],
+    "RubikSTM.Lemmas.Orbits.MoveInvariant": [
+      "RubikSTM.Definitions.Channel.Colour.Orbit",
+      "RubikSTM.Definitions.Orbits.RigidLabelPermutation",
+      "RubikSTM.Proofs.Orbits.MoveInvariant"
+    ],
+    "RubikSTM.Lemmas.Orbits.PairedQuarter": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Orbits.PairedQuarter"
+    ],
+    "RubikSTM.Lemmas.Orbits.PlusQuarter": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Orbits.PlusQuarter"
+    ],
+    "RubikSTM.Lemmas.Orbits.ReachableColours": [
+      "RubikSTM.Definitions.Channel.Colour.Orbit",
+      "RubikSTM.Definitions.Orbits.RigidLabelPermutation",
+      "RubikSTM.Proofs.Orbits.ReachableColours"
+    ],
+    "RubikSTM.Lemmas.Payloads.AdmissibleGeneric": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.AdmissibleGeneric"
+    ],
+    "RubikSTM.Lemmas.Payloads.AllowedAvoidsColumn": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.AllowedAvoidsColumn"
+    ],
+    "RubikSTM.Lemmas.Payloads.BaselineAction": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.BaselineAction"
+    ],
+    "RubikSTM.Lemmas.Payloads.BaselineAlphabet": [
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Payloads.BaselineAlphabet"
+    ],
+    "RubikSTM.Lemmas.Payloads.BaselinePhysical": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.BaselinePhysical"
+    ],
+    "RubikSTM.Lemmas.Payloads.ChronologicalWord": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.ChronologicalWord"
+    ],
+    "RubikSTM.Lemmas.Payloads.CommonMinusAction": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.CommonMinusAction"
+    ],
+    "RubikSTM.Lemmas.Payloads.ConjugatePayload": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.ConjugatePayload"
+    ],
+    "RubikSTM.Lemmas.Payloads.DiagonalConjugator": [
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Payloads.DiagonalConjugator"
+    ],
+    "RubikSTM.Lemmas.Payloads.InverseMovePermutation": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.InverseMovePermutation"
+    ],
+    "RubikSTM.Lemmas.Payloads.InverseWordPermutation": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.InverseWordPermutation"
+    ],
+    "RubikSTM.Lemmas.Payloads.LabelOutsideThirdBand": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.LabelOutsideThirdBand"
+    ],
+    "RubikSTM.Lemmas.Payloads.PairAlphabetConjugate": [
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Payloads.PairAlphabetConjugate"
+    ],
+    "RubikSTM.Lemmas.Payloads.PairedPayload": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.PairedPayload"
+    ],
+    "RubikSTM.Lemmas.Payloads.PatchConjugators": [
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Payloads.PatchConjugators"
+    ],
+    "RubikSTM.Lemmas.Payloads.RectanglesBands": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.RectanglesBands"
+    ],
+    "RubikSTM.Lemmas.Payloads.RowFamily": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.RowFamily"
+    ],
+    "RubikSTM.Lemmas.Payloads.SameOnSupportConjugation": [
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Proofs.Payloads.SameOnSupportConjugation"
+    ],
+    "RubikSTM.Lemmas.Payloads.SignedStrict": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.SignedStrict"
+    ],
+    "RubikSTM.Lemmas.Payloads.SingleIndexWordAction": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.SingleIndexWordAction"
+    ],
+    "RubikSTM.Lemmas.Payloads.UniformDiagonalControls": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.UniformDiagonalControls"
+    ],
+    "RubikSTM.Lemmas.Payloads.WordFlipCommute": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Proofs.Payloads.WordFlipCommute"
+    ],
+    "RubikSTM.Lemmas.Rectangles.ActsPairAppend": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Proofs.Rectangles.ActsPairAppend"
+    ],
+    "RubikSTM.Lemmas.Rectangles.ActsPairFlatten": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Proofs.Rectangles.ActsPairFlatten"
+    ],
+    "RubikSTM.Lemmas.Rectangles.ColumnBaselineFour": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Proofs.Rectangles.ColumnBaselineFour"
+    ],
+    "RubikSTM.Lemmas.Rectangles.CompileBlock": [
+      "RubikSTM.Definitions.Rectangles.ColumnRealizes",
+      "RubikSTM.Proofs.Rectangles.CompileBlock"
+    ],
+    "RubikSTM.Lemmas.Rectangles.CompileRectangle": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Definitions.Rectangles.Layout",
+      "RubikSTM.Proofs.Rectangles.CompileRectangle"
+    ],
+    "RubikSTM.Lemmas.Rectangles.DataAct": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Proofs.Rectangles.DataAct"
+    ],
+    "RubikSTM.Lemmas.Rectangles.DataWord": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Proofs.Rectangles.DataWord"
+    ],
+    "RubikSTM.Lemmas.Rectangles.FramedWord": [
+      "RubikSTM.Definitions.Rectangles.Framed",
+      "RubikSTM.Proofs.Rectangles.FramedWord"
+    ],
+    "RubikSTM.Lemmas.Rectangles.LabelsOutsideBands": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Proofs.Rectangles.LabelsOutsideBands"
+    ],
+    "RubikSTM.Lemmas.Rectangles.LayoutExists": [
+      "RubikSTM.Definitions.Rectangles.Layout",
+      "RubikSTM.Proofs.Rectangles.LayoutExists"
+    ],
+    "RubikSTM.Lemmas.Rectangles.LayoutRowsCard": [
+      "RubikSTM.Definitions.Rectangles.Layout",
+      "RubikSTM.Proofs.Rectangles.LayoutRowsCard"
+    ],
+    "RubikSTM.Lemmas.Rectangles.OneActiveBlock": [
+      "RubikSTM.Proofs.Rectangles.OneActiveBlock"
+    ],
+    "RubikSTM.Lemmas.Rectangles.PairColouring": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Proofs.Rectangles.PairColouring"
+    ],
+    "RubikSTM.Lemmas.Rectangles.PartitionColumns": [
+      "RubikSTM.Proofs.Rectangles.PartitionColumns"
+    ],
+    "RubikSTM.Lemmas.Rectangles.ReachableView": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Proofs.Rectangles.ReachableView"
+    ],
+    "RubikSTM.Lemmas.Rectangles.RectanglesInvariant": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Proofs.Rectangles.RectanglesInvariant"
+    ],
+    "RubikSTM.Lemmas.Solved.OBTMSolvedLookingRadiusEntropy": [
+      "RubikSTM.Definitions.Solved.NormalizedMetrics",
+      "RubikSTM.Proofs.Solved.OBTMSolvedLookingRadiusEntropy"
+    ],
+    "RubikSTM.Lemmas.Solved.OBTMSolvedRadiusEntropy": [
+      "RubikSTM.Definitions.Solved.NormalizedMetrics",
+      "RubikSTM.Proofs.Solved.OBTMSolvedRadiusEntropy"
+    ],
+    "RubikSTM.Lemmas.Solved.STMSolvedLookingRadiusEntropy": [
+      "RubikSTM.Definitions.Solved.NormalizedMetrics",
+      "RubikSTM.Proofs.Solved.STMSolvedLookingRadiusEntropy"
+    ],
+    "RubikSTM.Lemmas.Solved.STMSolvedRadiusEntropy": [
+      "RubikSTM.Definitions.Solved.NormalizedMetrics",
+      "RubikSTM.Proofs.Solved.STMSolvedRadiusEntropy"
+    ],
+    "RubikSTM.Lemmas.Solved.counting_lower_with_offset": [
+      "RubikSTM.Proofs.Solved.counting_lower_with_offset"
+    ],
+    "RubikSTM.Lemmas.Solved.entropy_of_counting_upper": [
+      "RubikSTM.Proofs.Solved.entropy_of_counting_upper"
+    ],
+    "RubikSTM.Lemmas.Solved.multiSourceWordCount": [
+      "RubikSTM.Proofs.Solved.multiSourceWordCount"
+    ],
+    "RubikSTM.Lemmas.Solved.obtm_fixedRadius_count": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Proofs.Solved.obtm_fixedRadius_count"
+    ],
+    "RubikSTM.Lemmas.Solved.obtm_radius_card_le": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Proofs.Solved.obtm_radius_card_le"
+    ],
+    "RubikSTM.Lemmas.Solved.radius_comparison": [
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Proofs.Solved.radius_comparison"
+    ],
+    "RubikSTM.Lemmas.Solved.solvedLookingDistance_attained": [
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Proofs.Solved.solvedLookingDistance_attained"
+    ],
+    "RubikSTM.Lemmas.Solved.solvedLookingDistance_le": [
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Proofs.Solved.solvedLookingDistance_le"
+    ],
+    "RubikSTM.Lemmas.Solved.solvedLooking_card_le": [
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Proofs.Solved.solvedLooking_card_le"
+    ],
+    "RubikSTM.Lemmas.Solved.solved_looks_solved": [
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Proofs.Solved.solved_looks_solved"
+    ],
+    "RubikSTM.Lemmas.Solved.stm_fixedRadius_count": [
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Proofs.Solved.stm_fixedRadius_count"
+    ],
+    "RubikSTM.Lemmas.Solved.stm_radius_card_le": [
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Proofs.Solved.stm_radius_card_le"
+    ],
+    "RubikSTM.Lemmas.SolvedSupport.Rubik_move_card": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.SolvedSupport.Rubik_move_card"
+    ],
+    "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Lemmas.Surface.DepthRegular": [
+      "RubikSTM.Definitions.Surface.GenericRange",
+      "RubikSTM.Proofs.Surface.DepthRegular"
+    ],
+    "RubikSTM.Lemmas.Surface.GenericRangesDisjoint": [
+      "RubikSTM.Definitions.Surface.GenericRange",
+      "RubikSTM.Proofs.Surface.GenericRangesDisjoint"
+    ],
+    "RubikSTM.Lemmas.Surface.SurfaceCover": [
+      "RubikSTM.Definitions.Surface.GenericRange",
+      "RubikSTM.Proofs.Surface.SurfaceCover"
+    ],
+    "RubikSTM.Lemmas.Wings.ReachableCleanup": [
+      "RubikSTM.Definitions.Wings.IsMiddleSkeleton",
+      "RubikSTM.Proofs.Wings.ReachableCleanup"
+    ],
+    "RubikSTM.Lemmas.WordBounds.ActualCostEnvelope": [
+      "RubikSTM.Definitions.WordBounds.CostEnvelope",
+      "RubikSTM.Proofs.WordBounds.ActualCostEnvelope"
+    ],
+    "RubikSTM.Lemmas.WordBounds.ActualHd": [
+      "RubikSTM.Definitions.WordBounds.CostEnvelope",
+      "RubikSTM.Proofs.WordBounds.ActualHd"
+    ],
+    "RubikSTM.Lemmas.WordConstruction.BaselineRestriction": [
+      "RubikSTM.Proofs.WordConstruction.BaselineRestriction"
+    ],
+    "RubikSTM.Lemmas.WordConstruction.ConcatenateWords": [
+      "RubikSTM.Proofs.WordConstruction.ConcatenateWords"
+    ],
+    "RubikSTM.Lemmas.WordConstruction.ConjugatedEndpoint": [
+      "RubikSTM.Proofs.WordConstruction.ConjugatedEndpoint"
+    ],
+    "RubikSTM.Lemmas.WordConstruction.ExteriorCancellation": [
+      "RubikSTM.Proofs.WordConstruction.ExteriorCancellation"
+    ],
+    "RubikSTM.Lemmas.WordConstruction.PadCount": [
+      "RubikSTM.Proofs.WordConstruction.PadCount"
+    ],
+    "RubikSTM.Lemmas.WordConstruction.PaddedLayer": [
+      "RubikSTM.Proofs.WordConstruction.PaddedLayer"
+    ],
+    "RubikSTM.Lemmas.WordConstruction.PaddedProgram": [
+      "RubikSTM.Proofs.WordConstruction.PaddedProgram"
+    ],
+    "RubikSTM.Lemmas.WordConstruction.PhysicalWordColouring": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Proofs.WordConstruction.PhysicalWordColouring"
+    ],
+    "RubikSTM.Lemmas.WordConstruction.PowModFour": [
+      "RubikSTM.Proofs.WordConstruction.PowModFour"
+    ],
+    "RubikSTM.Lemmas.WordConstruction.SameFrameTelescopes": [
+      "RubikSTM.Proofs.WordConstruction.SameFrameTelescopes"
+    ],
+    "RubikSTM.Lemmas.WordConstruction.WordColouring": [
+      "RubikSTM.Proofs.WordConstruction.WordColouring"
+    ],
+    "RubikSTM.OBTMDiameter": [
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter"
+    ],
+    "RubikSTM.Proofs.Asymptotics.CostBridgeQIdentity": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Definitions.WordBounds.CostEnvelope",
+      "RubikSTM.Lemmas.Channel.Paired.LogCardDivEight",
+      "RubikSTM.Lemmas.Channel.Paired.StateCard",
+      "RubikSTM.Lemmas.OrbitGeometry.CardNormalTableOrbit"
+    ],
+    "RubikSTM.Proofs.Asymptotics.LowerTail": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Asymptotics.UpperTail": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Definitions.WordBounds.CostEnvelope",
+      "RubikSTM.Lemmas.Asymptotics.CostBridgeQIdentity",
+      "RubikSTM.Lemmas.GlobalRates.PairedRectangleEnvelope",
+      "RubikSTM.Lemmas.WordBounds.ActualHd"
+    ],
+    "RubikSTM.Proofs.Bands.SameAxisFourth": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Definitions.Wings.SolverWord",
+      "RubikSTM.Lemmas.Bands.SliceCommute"
+    ],
+    "RubikSTM.Proofs.Bands.SliceCommute": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Lemmas.Bands.SliceCoordinate"
+    ],
+    "RubikSTM.Proofs.Bands.SliceCoordinate": [
+      "RubikSTM.Definitions.Bands.Band"
+    ],
+    "RubikSTM.Proofs.Bands.WordBand": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Definitions.Wings.SolverWord"
+    ],
+    "RubikSTM.Proofs.Channel.Paired.LogCardDivEight": [
+      "RubikSTM.Definitions.Channel.Paired.P",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.Channel.Paired.StateCard": [
+      "RubikSTM.Definitions.Channel.Paired.P",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.Channel.Paired.UniversalCodebook": [
+      "RubikSTM.Definitions.Channel.EqualParitySubgroup",
+      "RubikSTM.Definitions.Channel.Paired.P",
+      "RubikSTM.Definitions.Codebook.Conditional.OverlapLaw",
+      "RubikSTM.Definitions.UniversalCodebooks.PathIndicator"
+    ],
+    "RubikSTM.Proofs.Construction.Control.AdjacentSwapEquation": [
+      "RubikSTM.Definitions.Construction.Control.K"
+    ],
+    "RubikSTM.Proofs.Construction.Control.AllNActionBridge": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.OrbitGeometry.MoveLab"
+    ],
+    "RubikSTM.Proofs.Construction.Control.BaseSwapEquation": [
+      "RubikSTM.Definitions.Construction.Control.K"
+    ],
+    "RubikSTM.Proofs.Construction.Control.CertControlEquation": [
+      "RubikSTM.Definitions.Construction.Control.K"
+    ],
+    "RubikSTM.Proofs.Construction.Control.Physical.ActualMovesAllowed": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.Construction.Control.Physical.ActualMovesDeletion": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ChronologicalAlgebra",
+      "RubikSTM.Lemmas.Construction.Control.Physical.SignedMoveEval"
+    ],
+    "RubikSTM.Proofs.Construction.Control.Physical.ActualMovesEval": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ChronologicalAlgebra",
+      "RubikSTM.Lemmas.Construction.Control.Physical.SignedMoveEval"
+    ],
+    "RubikSTM.Proofs.Construction.Control.Physical.ChronologicalAlgebra": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.Construction.Control.Physical.ChronologicalApplyWord": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.Construction.Control.Physical.LabelsEqT": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.Construction.Control.Physical.QuarterInverse": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Definitions.Wings.SolverWord"
+    ],
+    "RubikSTM.Proofs.Construction.Control.Physical.SignedMoveEval": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.Construction.Control.Physical.QuarterInverse"
+    ],
+    "RubikSTM.Proofs.Construction.Control.Physical.UniformSignedModel": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.Construction.Control.StrictDeletionRealization"
+    ],
+    "RubikSTM.Proofs.Construction.Control.Physical.WordAction": [
+      "RubikSTM.Definitions.Construction.Control.Physical.ActualMoves",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.Construction.Control.AllNActionBridge"
+    ],
+    "RubikSTM.Proofs.Construction.Control.StrictAOnlyTop": [
+      "RubikSTM.Definitions.Construction.Control.K",
+      "RubikSTM.Lemmas.Construction.Control.AdjacentSwapEquation",
+      "RubikSTM.Lemmas.Construction.Control.BaseSwapEquation",
+      "RubikSTM.Lemmas.Construction.Control.CertControlEquation"
+    ],
+    "RubikSTM.Proofs.Construction.Control.StrictDeletionRealization": [
+      "RubikSTM.Definitions.Construction.Control.K",
+      "RubikSTM.Lemmas.Construction.Control.StrictAOnlyTop"
+    ],
+    "RubikSTM.Proofs.Construction.EntropySharpDiameter": [
+      "RubikSTM.Lemmas.Asymptotics.LowerTail",
+      "RubikSTM.Lemmas.Asymptotics.UpperTail"
+    ],
+    "RubikSTM.Proofs.Conventions.FreeRotationSharpDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.bounded_additive_normalized_transfer",
+      "RubikSTM.Lemmas.Conventions.diameter_comparisons",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.RotationQuotientSharpDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.bounded_additive_normalized_transfer",
+      "RubikSTM.Lemmas.Conventions.diameter_comparisons",
+      "RubikSTM.Lemmas.Conventions.quotientDiameter_eq_freeDiameter",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.ShortOnlySharpDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.bounded_additive_normalized_transfer",
+      "RubikSTM.Lemmas.Conventions.diameter_comparisons",
+      "RubikSTM.Lemmas.Conventions.odd_shortDiameter_eq_freeDiameter",
+      "RubikSTM.Lemmas.Conventions.shortDiameter_comparisons_even",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.UnitRotationSharpDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.bounded_additive_normalized_transfer",
+      "RubikSTM.Lemmas.Conventions.diameter_comparisons",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.attainableCosts_nonempty": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.mixed_proper_word",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.axial_central_axis_fixed": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.odd_mid_arithmetic"
+    ],
+    "RubikSTM.Proofs.Conventions.axial_central_preserved": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.odd_mid_arithmetic"
+    ],
+    "RubikSTM.Proofs.Conventions.axial_conjugation_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.axial_quarter_transport_full",
+      "RubikSTM.Lemmas.Conventions.block_conjugation_of_quarter_transport"
+    ],
+    "RubikSTM.Proofs.Conventions.axial_pair_identity": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.normal_pair_identity_cases",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.axial_proper_word_le_two": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.complementary_slabs_full"
+    ],
+    "RubikSTM.Proofs.Conventions.axial_quarter_transport_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.axial_rotation_coord",
+      "RubikSTM.Lemmas.Conventions.blockQuarter_signed_apply",
+      "RubikSTM.Lemmas.Conventions.selected_transport",
+      "RubikSTM.Lemmas.Conventions.surface_conjugation"
+    ],
+    "RubikSTM.Proofs.Conventions.axial_rotation_coord": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Lemmas.Conventions.surfaceRotation_coord",
+      "RubikSTM.Lemmas.Conventions.surfaceRotation_inv_coord"
+    ],
+    "RubikSTM.Proofs.Conventions.axial_rotation_normal": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Lemmas.Conventions.surfaceRotation_inv_normal",
+      "RubikSTM.Lemmas.Conventions.surfaceRotation_normal"
+    ],
+    "RubikSTM.Proofs.Conventions.axial_short_word_le_two": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.even_half_cube_full"
+    ],
+    "RubikSTM.Proofs.Conventions.blockPermutation_inverse_rev": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.blockQuarter_inverse_exponent"
+    ],
+    "RubikSTM.Proofs.Conventions.blockQuarter_inv_power": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.blockQuarter_inverse_exponent"
+    ],
+    "RubikSTM.Proofs.Conventions.blockQuarter_inverse_exponent": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.OBTM.Compiler.BlockQuarterFour"
+    ],
+    "RubikSTM.Proofs.Conventions.blockQuarter_signed_apply": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.block_after_rotate": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rigid_conjugation_full",
+      "RubikSTM.Lemmas.Conventions.rotate_action"
+    ],
+    "RubikSTM.Proofs.Conventions.block_conjugation_colour": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.block_conjugation_of_quarter_transport": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.blockQuarter_inv_power",
+      "RubikSTM.Lemmas.Conventions.power_transport_conj"
+    ],
+    "RubikSTM.Proofs.Conventions.bounded_additive_normalized_transfer": [],
+    "RubikSTM.Proofs.Conventions.central_frame_rotation_cancel": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.central_sticker_exists",
+      "RubikSTM.Lemmas.Conventions.rotation_central_preserved",
+      "RubikSTM.Lemmas.Conventions.rotation_normal_witness"
+    ],
+    "RubikSTM.Proofs.Conventions.central_sticker_exists": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.chargedDistance_attained": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.attainableCosts_nonempty"
+    ],
+    "RubikSTM.Proofs.Conventions.chargedDistance_le_word": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.chargedDistance_proper_normal_form": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_attained",
+      "RubikSTM.Lemmas.Conventions.mixedWordCost_zero_le",
+      "RubikSTM.Lemmas.Conventions.mixed_word_proper_normal_form"
+    ],
+    "RubikSTM.Proofs.Conventions.chargedDistance_short_normal_form": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_attained",
+      "RubikSTM.Lemmas.Conventions.mixedWordCost_zero_le",
+      "RubikSTM.Lemmas.Conventions.mixed_word_short_normal_form"
+    ],
+    "RubikSTM.Proofs.Conventions.chargedDistance_triangle": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_attained",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_le_word",
+      "RubikSTM.Lemmas.Conventions.mixedWord_append_api"
+    ],
+    "RubikSTM.Proofs.Conventions.complementary_slabs_full": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.coordinate_conjugation": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.coordinate_conjugation_backward",
+      "RubikSTM.Lemmas.Conventions.coordinate_conjugation_forward"
+    ],
+    "RubikSTM.Proofs.Conventions.coordinate_conjugation_backward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.coordinate_conjugation_forward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.coordinate_transport_backward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.coordinate_transport_forward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.diameter_comparisons": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.freeDistance_le_unitDistance",
+      "RubikSTM.Lemmas.Conventions.obtmDistance_le_freeDistance_add_four",
+      "RubikSTM.Lemmas.Conventions.pairMaximum_api",
+      "RubikSTM.Lemmas.Conventions.unitDistance_le_obtmDistance",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.even_half_cube_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.complementary_slabs_full"
+    ],
+    "RubikSTM.Proofs.Conventions.even_short_word_bound": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_short_normal_form",
+      "RubikSTM.Lemmas.Conventions.rotation_short_word_le_four"
+    ],
+    "RubikSTM.Proofs.Conventions.freeDistance_le_quotientWalk": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_triangle",
+      "RubikSTM.Lemmas.Conventions.freeDistance_le_unitDistance",
+      "RubikSTM.Lemmas.Conventions.freeDistance_of_orbit",
+      "RubikSTM.Lemmas.Conventions.freeDistance_orbit_invariant",
+      "RubikSTM.Lemmas.Conventions.unitDistance_le_obtmDistance"
+    ],
+    "RubikSTM.Proofs.Conventions.freeDistance_le_unitDistance": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_attained",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_le_word",
+      "RubikSTM.Lemmas.Conventions.mixedWordCost_zero_le"
+    ],
+    "RubikSTM.Proofs.Conventions.freeDistance_of_orbit": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_le_word"
+    ],
+    "RubikSTM.Proofs.Conventions.freeDistance_orbit_invariant": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_triangle",
+      "RubikSTM.Lemmas.Conventions.freeDistance_of_orbit"
+    ],
+    "RubikSTM.Proofs.Conventions.mixedWordCost_zero_le": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.mixedWord_append_api": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.mixed_proper_word": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.mixed_word_proper_normal_form": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.block_after_rotate",
+      "RubikSTM.Lemmas.Conventions.rotate_action"
+    ],
+    "RubikSTM.Proofs.Conventions.mixed_word_short_normal_form": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotate_action",
+      "RubikSTM.Lemmas.Conventions.short_after_rotate",
+      "RubikSTM.Lemmas.Conventions.short_complement_full"
+    ],
+    "RubikSTM.Proofs.Conventions.normal_conjugation": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Lemmas.Conventions.normal_conjugation_backward",
+      "RubikSTM.Lemmas.Conventions.normal_conjugation_forward"
+    ],
+    "RubikSTM.Proofs.Conventions.normal_conjugation_backward": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Lemmas.Conventions.normal_conjugation_backward_axis0",
+      "RubikSTM.Lemmas.Conventions.normal_conjugation_backward_axis1",
+      "RubikSTM.Lemmas.Conventions.normal_conjugation_backward_axis2"
+    ],
+    "RubikSTM.Proofs.Conventions.normal_conjugation_backward_axis0": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.normal_conjugation_backward_axis1": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.normal_conjugation_backward_axis2": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.normal_conjugation_forward": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Lemmas.Conventions.normal_conjugation_forward_axis0",
+      "RubikSTM.Lemmas.Conventions.normal_conjugation_forward_axis1",
+      "RubikSTM.Lemmas.Conventions.normal_conjugation_forward_axis2"
+    ],
+    "RubikSTM.Proofs.Conventions.normal_conjugation_forward_axis0": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.normal_conjugation_forward_axis1": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.normal_conjugation_forward_axis2": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.normal_pair_identity_cases": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.obtmDistance_le_freeDistance_add_four": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_proper_normal_form",
+      "RubikSTM.Lemmas.Conventions.rotation_proper_word_le_four",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.odd_mid_arithmetic": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.odd_restrictedShortGraph_connected": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.odd_shortVertexSet"
+    ],
+    "RubikSTM.Proofs.Conventions.odd_shortDiameter_eq_freeDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.freeDistance_orbit_invariant",
+      "RubikSTM.Lemmas.Conventions.odd_shortDistance_eq_freeDistance",
+      "RubikSTM.Lemmas.Conventions.odd_short_orbit_representative",
+      "RubikSTM.Lemmas.Conventions.pairMaximum_api"
+    ],
+    "RubikSTM.Proofs.Conventions.odd_shortDistance_eq_freeDistance": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.central_frame_rotation_cancel",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_le_word",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_short_normal_form",
+      "RubikSTM.Lemmas.Conventions.odd_restrictedShortGraph_connected",
+      "RubikSTM.Lemmas.Conventions.odd_shortVertexSet",
+      "RubikSTM.Lemmas.Conventions.odd_shortWalk_lift",
+      "RubikSTM.Lemmas.Conventions.shortGraph_walk_word",
+      "RubikSTM.Lemmas.Conventions.shortWord_central_fixed",
+      "RubikSTM.Lemmas.Conventions.shortWord_mixed",
+      "RubikSTM.Lemmas.Conventions.shortWord_walk",
+      "RubikSTM.Lemmas.Conventions.solved_component_has_frame"
+    ],
+    "RubikSTM.Proofs.Conventions.odd_shortVertexSet": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.odd_shortWalk_lift": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.odd_shortVertexSet"
+    ],
+    "RubikSTM.Proofs.Conventions.odd_short_orbit_representative": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_short_normal_form",
+      "RubikSTM.Lemmas.Conventions.odd_shortVertexSet",
+      "RubikSTM.Lemmas.Conventions.shortWord_reachable",
+      "RubikSTM.Lemmas.Conventions.solved_component_word_iff"
+    ],
+    "RubikSTM.Proofs.Conventions.pairMaximum_api": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.power_transport_conj": [
+      "RubikSTM.Lemmas.Conventions.power_transport_mul"
+    ],
+    "RubikSTM.Proofs.Conventions.power_transport_mul": [],
+    "RubikSTM.Proofs.Conventions.proper_complement_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.blockQuarter_inverse_exponent",
+      "RubikSTM.Lemmas.Conventions.complementary_slabs_full"
+    ],
+    "RubikSTM.Proofs.Conventions.quotientDiameter_eq_freeDiameter": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.pairMaximum_api",
+      "RubikSTM.Lemmas.Conventions.quotientDistance_eq_freeDistance"
+    ],
+    "RubikSTM.Proofs.Conventions.quotientDistance_eq_freeDistance": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.freeDistance_le_quotientWalk",
+      "RubikSTM.Lemmas.Conventions.quotientDistance_le_freeDistance",
+      "RubikSTM.Lemmas.Conventions.quotientGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.quotientDistance_le_freeDistance": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_proper_normal_form",
+      "RubikSTM.Lemmas.Conventions.quotient_walk_projection",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.quotientGraph_connected": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.quotient_walk_projection",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.quotient_walk_projection": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.restrictedShortGraph_connected_even": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.shortGraph_connected_even",
+      "RubikSTM.Lemmas.Conventions.shortVertexSet_even"
+    ],
+    "RubikSTM.Proofs.Conventions.rigid_conjugation_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.block_conjugation_colour",
+      "RubikSTM.Lemmas.Conventions.rigid_conjugation_permutation"
+    ],
+    "RubikSTM.Proofs.Conventions.rigid_conjugation_permutation": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.axial_conjugation_full"
+    ],
+    "RubikSTM.Proofs.Conventions.rigid_conjugation_short": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rigid_conjugation_full"
+    ],
+    "RubikSTM.Proofs.Conventions.rotate_action": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.rotate_preserves_position": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rotation_proper_word_le_four",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.rotate_two_axial": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.rotation_central_preserved": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.axial_central_preserved",
+      "RubikSTM.Lemmas.Conventions.rotation_two_axial"
+    ],
+    "RubikSTM.Proofs.Conventions.rotation_normal_witness": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.axial_pair_identity",
+      "RubikSTM.Lemmas.Conventions.rotation_two_axial",
+      "RubikSTM.Lemmas.Conventions.surface_power_normal"
+    ],
+    "RubikSTM.Proofs.Conventions.rotation_proper_word_le_four": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.axial_proper_word_le_two",
+      "RubikSTM.Lemmas.Conventions.rotate_two_axial"
+    ],
+    "RubikSTM.Proofs.Conventions.rotation_short_word_le_four": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.axial_short_word_le_two",
+      "RubikSTM.Lemmas.Conventions.rotate_two_axial"
+    ],
+    "RubikSTM.Proofs.Conventions.rotation_two_axial": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.selected_rev": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.selected_transport": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.selected_transport_backward",
+      "RubikSTM.Lemmas.Conventions.selected_transport_forward"
+    ],
+    "RubikSTM.Proofs.Conventions.selected_transport_backward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.Conventions.coordinate_transport_backward",
+      "RubikSTM.Lemmas.Conventions.selected_rev"
+    ],
+    "RubikSTM.Proofs.Conventions.selected_transport_forward": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.Conventions.coordinate_transport_forward",
+      "RubikSTM.Lemmas.Conventions.selected_rev"
+    ],
+    "RubikSTM.Proofs.Conventions.shortDiameter_comparisons_even": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.pairMaximum_api",
+      "RubikSTM.Lemmas.Conventions.shortDistance_eq_full_even",
+      "RubikSTM.Lemmas.Conventions.shortGraph_dist_bounds_even",
+      "RubikSTM.Lemmas.Conventions.shortVertexSet_even"
+    ],
+    "RubikSTM.Proofs.Conventions.shortDistance_eq_full_even": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.restrictedShortGraph_connected_even",
+      "RubikSTM.Lemmas.Conventions.shortGraph_connected_even",
+      "RubikSTM.Lemmas.Conventions.shortVertexSet_even"
+    ],
+    "RubikSTM.Proofs.Conventions.shortGraph_connected_even": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.even_short_word_bound",
+      "RubikSTM.Lemmas.Conventions.shortWord_walk"
+    ],
+    "RubikSTM.Proofs.Conventions.shortGraph_dist_bounds_even": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.even_short_word_bound",
+      "RubikSTM.Lemmas.Conventions.freeDistance_le_unitDistance",
+      "RubikSTM.Lemmas.Conventions.shortGraph_connected_even",
+      "RubikSTM.Lemmas.Conventions.shortWord_walk",
+      "RubikSTM.Lemmas.Conventions.unitDistance_le_obtmDistance"
+    ],
+    "RubikSTM.Proofs.Conventions.shortGraph_walk_word": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.shortMove_inverse"
+    ],
+    "RubikSTM.Proofs.Conventions.shortMove_inverse": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.blockPermutation_inverse_rev"
+    ],
+    "RubikSTM.Proofs.Conventions.shortVertexSet_even": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.shortWord_central_fixed": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.short_central_fixed"
+    ],
+    "RubikSTM.Proofs.Conventions.shortWord_mixed": [
+      "RubikSTM.Definitions.Conventions.Metrics"
+    ],
+    "RubikSTM.Proofs.Conventions.shortWord_reachable": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.shortWord_walk": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Conventions.short_after_rotate": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.rigid_conjugation_short",
+      "RubikSTM.Lemmas.Conventions.rotate_action"
+    ],
+    "RubikSTM.Proofs.Conventions.short_central_fixed": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.axial_central_axis_fixed",
+      "RubikSTM.Lemmas.Conventions.odd_mid_arithmetic"
+    ],
+    "RubikSTM.Proofs.Conventions.short_complement_full": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.proper_complement_full",
+      "RubikSTM.Lemmas.Conventions.rotate_action"
+    ],
+    "RubikSTM.Proofs.Conventions.solved_component_has_frame": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.shortWord_central_fixed",
+      "RubikSTM.Lemmas.Conventions.solved_component_word_iff"
+    ],
+    "RubikSTM.Proofs.Conventions.solved_component_word_iff": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.shortGraph_walk_word",
+      "RubikSTM.Lemmas.Conventions.shortWord_walk"
+    ],
+    "RubikSTM.Proofs.Conventions.sticker_ext_components": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.sticker_perm_ext_components": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Lemmas.Conventions.sticker_ext_components"
+    ],
+    "RubikSTM.Proofs.Conventions.surfaceRotation_coord": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.surfaceRotation_inv_coord": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.surfaceRotation_inv_normal": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.surfaceRotation_normal": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Conventions.surface_conjugation": [
+      "RubikSTM.Lemmas.Conventions.axial_rotation_coord",
+      "RubikSTM.Lemmas.Conventions.axial_rotation_normal",
+      "RubikSTM.Lemmas.Conventions.coordinate_conjugation",
+      "RubikSTM.Lemmas.Conventions.normal_conjugation",
+      "RubikSTM.Lemmas.Conventions.sticker_perm_ext_components",
+      "RubikSTM.Lemmas.Conventions.surfaceRotation_coord",
+      "RubikSTM.Lemmas.Conventions.surfaceRotation_normal"
+    ],
+    "RubikSTM.Proofs.Conventions.surface_power_normal": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.surfaceRotation_normal"
+    ],
+    "RubikSTM.Proofs.Conventions.unitDistance_le_obtmDistance": [
+      "RubikSTM.Definitions.Conventions.Metrics",
+      "RubikSTM.Lemmas.Conventions.chargedDistance_le_word",
+      "RubikSTM.Lemmas.Conventions.mixed_proper_word",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.ReachableIff",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Core.CleanupToSolved": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Lemmas.Core.MatchCorePointwise"
+    ],
+    "RubikSTM.Proofs.Core.CoreCardLe": [
+      "RubikSTM.Definitions.Core.Project",
+      "RubikSTM.Lemmas.Core.LevelCodeInj"
+    ],
+    "RubikSTM.Proofs.Core.CoreColouringCardLe": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Lemmas.Core.CoreCardLe"
+    ],
+    "RubikSTM.Proofs.Core.FinitePermutationWordRollback": [],
+    "RubikSTM.Proofs.Core.FiniteWordCompression": [],
+    "RubikSTM.Proofs.Core.LevelCodeInj": [
+      "RubikSTM.Definitions.Core.Project"
+    ],
+    "RubikSTM.Proofs.Core.MatchCorePointwise": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Lemmas.Core.MatchReachableCore"
+    ],
+    "RubikSTM.Proofs.Core.MatchReachableCore": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Lemmas.Core.CoreColouringCardLe",
+      "RubikSTM.Lemmas.Core.FinitePermutationWordRollback",
+      "RubikSTM.Lemmas.Core.FiniteWordCompression",
+      "RubikSTM.Lemmas.Core.ProjectWord"
+    ],
+    "RubikSTM.Proofs.Core.ProjectMove": [
+      "RubikSTM.Definitions.Core.CoreAction"
+    ],
+    "RubikSTM.Proofs.Core.ProjectWord": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Lemmas.Core.ProjectMove"
+    ],
+    "RubikSTM.Proofs.ExceptionalCentres.CrossUniformColoured": [
+      "RubikSTM.Definitions.Channel.Colour.OrbitAction",
+      "RubikSTM.Definitions.ExceptionalCentres.CrossThreeCycle",
+      "RubikSTM.Definitions.Orbits.RigidLabelPermutation"
+    ],
+    "RubikSTM.Proofs.ExceptionalCentres.DiagonalUniformColoured": [
+      "RubikSTM.Definitions.Channel.Colour.OrbitAction",
+      "RubikSTM.Definitions.ExceptionalCentres.WordPerm",
+      "RubikSTM.Definitions.Orbits.RigidLabelPermutation"
+    ],
+    "RubikSTM.Proofs.Geometry.ApplyWordAppend": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.GlobalRates.PairedRectangleEnvelope": [],
+    "RubikSTM.Proofs.GlobalWords.Exceptional.CentreStep": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.ExceptionalCentres.CrossUniformColoured",
+      "RubikSTM.Lemmas.ExceptionalCentres.DiagonalUniformColoured",
+      "RubikSTM.Lemmas.GlobalWords.Exceptional.FixedWordColour",
+      "RubikSTM.Lemmas.GlobalWords.Exceptional.MidpointUnique",
+      "RubikSTM.Lemmas.Surface.DepthRegular"
+    ],
+    "RubikSTM.Proofs.GlobalWords.Exceptional.CentresCleanup": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.GlobalWords.Exceptional.CentreStep",
+      "RubikSTM.Lemmas.GlobalWords.Exceptional.FiniteCleanup"
+    ],
+    "RubikSTM.Proofs.GlobalWords.Exceptional.CoreOutsideBand": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region"
+    ],
+    "RubikSTM.Proofs.GlobalWords.Exceptional.FiniteCleanup": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region"
+    ],
+    "RubikSTM.Proofs.GlobalWords.Exceptional.FixedWordColour": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region"
+    ],
+    "RubikSTM.Proofs.GlobalWords.Exceptional.MidpointUnique": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region"
+    ],
+    "RubikSTM.Proofs.GlobalWords.Exceptional.WingOutsideBand": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region"
+    ],
+    "RubikSTM.Proofs.GlobalWords.Exceptional.WingsCleanup": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.GlobalWords.Exceptional.CoreOutsideBand",
+      "RubikSTM.Lemmas.GlobalWords.Exceptional.FiniteCleanup",
+      "RubikSTM.Lemmas.GlobalWords.Exceptional.FixedWordColour",
+      "RubikSTM.Lemmas.GlobalWords.Exceptional.WingOutsideBand",
+      "RubikSTM.Lemmas.Surface.DepthRegular",
+      "RubikSTM.Lemmas.Wings.ReachableCleanup"
+    ],
+    "RubikSTM.Proofs.GlobalWords.ExceptionalPreprocessing": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.Core.CleanupToSolved",
+      "RubikSTM.Lemmas.GlobalWords.Exceptional.CentresCleanup",
+      "RubikSTM.Lemmas.GlobalWords.Exceptional.WingsCleanup"
+    ],
+    "RubikSTM.Proofs.GlobalWords.FiniteGlobalWordBound": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.Geometry.ApplyWordAppend",
+      "RubikSTM.Lemmas.GlobalWords.ExceptionalPreprocessing",
+      "RubikSTM.Lemmas.GlobalWords.GenericLocalRecolour",
+      "RubikSTM.Lemmas.GlobalWords.GlobalCover",
+      "RubikSTM.Lemmas.GlobalWords.GroupsAdmissible",
+      "RubikSTM.Lemmas.GlobalWords.RectangleRecolour",
+      "RubikSTM.Lemmas.GlobalWords.RegionRectangle",
+      "RubikSTM.Lemmas.GlobalWords.RegionSame",
+      "RubikSTM.Lemmas.GlobalWords.RegionsDisjoint",
+      "RubikSTM.Lemmas.GlobalWords.SequentialRecolour",
+      "RubikSTM.Lemmas.GlobalWords.UndoWord",
+      "RubikSTM.Lemmas.Payloads.InverseWordPermutation"
+    ],
+    "RubikSTM.Proofs.GlobalWords.GenericLocalRecolour": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.LocalActions.Generic.UniformReachableRecolour"
+    ],
+    "RubikSTM.Proofs.GlobalWords.GlobalCover": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.Surface.SurfaceCover"
+    ],
+    "RubikSTM.Proofs.GlobalWords.GroupsAdmissible": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region"
+    ],
+    "RubikSTM.Proofs.GlobalWords.RectangleRecolour": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.Payloads.PairedPayload",
+      "RubikSTM.Lemmas.Rectangles.CompileRectangle"
+    ],
+    "RubikSTM.Proofs.GlobalWords.RegionRectangle": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.GlobalWords.TaskPairIff"
+    ],
+    "RubikSTM.Proofs.GlobalWords.RegionSame": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.GlobalWords.TaskSameIff"
+    ],
+    "RubikSTM.Proofs.GlobalWords.RegionsDisjoint": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.Surface.GenericRangesDisjoint"
+    ],
+    "RubikSTM.Proofs.GlobalWords.SequentialRecolour": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.Geometry.ApplyWordAppend"
+    ],
+    "RubikSTM.Proofs.GlobalWords.TaskPairIff": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region"
+    ],
+    "RubikSTM.Proofs.GlobalWords.TaskSameIff": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region"
+    ],
+    "RubikSTM.Proofs.GlobalWords.UndoWord": [
+      "RubikSTM.Definitions.Core.CoreAction",
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.Payloads.InverseWordPermutation",
+      "RubikSTM.Lemmas.WordConstruction.PhysicalWordColouring"
+    ],
+    "RubikSTM.Proofs.Intertwiners.SliceCommute": [
+      "RubikSTM.Definitions.Intertwiners.SurfaceFlip"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.AlternatingRange": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.OrbitGeometry.F.ThreeT0"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.ChronologicalAppend": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.ConjugateBounded": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ActualMovesEval",
+      "RubikSTM.Lemmas.Construction.Control.Physical.WordAction",
+      "RubikSTM.Lemmas.LocalActions.Generic.ChronologicalAppend",
+      "RubikSTM.Lemmas.LocalActions.Generic.LocalActionConjugate",
+      "RubikSTM.Lemmas.LocalActions.Generic.PrimitiveMoves"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.LocalActionConjugate": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.OrbitGeometry.T.InverseOnLabels"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.LocalActionInv": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.OrbitGeometry.T.InverseOnLabels"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.LocalActionMul": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.ModelEvalMk": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.PrimitiveMoves": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ChronologicalAlgebra",
+      "RubikSTM.Lemmas.Construction.Control.Physical.QuarterInverse",
+      "RubikSTM.Lemmas.LocalActions.Generic.LocalActionInv",
+      "RubikSTM.Lemmas.OrbitGeometry.CommEltLab",
+      "RubikSTM.Lemmas.OrbitGeometry.CommEltOff"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.RealizeTokensCorrect": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.LocalActions.Generic.ChronologicalAppend",
+      "RubikSTM.Lemmas.LocalActions.Generic.ConjugateBounded",
+      "RubikSTM.Lemmas.LocalActions.Generic.LocalActionMul"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.UniformEvenRealization": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.Construction.Control.Physical.UniformSignedModel",
+      "RubikSTM.Lemmas.LocalActions.Generic.RealizeTokensCorrect",
+      "RubikSTM.Lemmas.LocalActions.Generic.UniformModel"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.UniformModel": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.LocalActions.Generic.AlternatingRange",
+      "RubikSTM.Lemmas.LocalActions.Generic.ModelEvalMk"
+    ],
+    "RubikSTM.Proofs.LocalActions.Generic.UniformReachableRecolour": [
+      "RubikSTM.Definitions.LocalActions.Generic.ModelEval",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ChronologicalApplyWord",
+      "RubikSTM.Lemmas.LocalActions.Generic.UniformEvenRealization",
+      "RubikSTM.Lemmas.OrbitGeometry.ExistsEvenRep",
+      "RubikSTM.Lemmas.OrbitGeometry.T.InverseOnLabels",
+      "RubikSTM.Lemmas.Orbits.ReachableColours"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.CleanActionInv": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.CleanActionMul": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.CleanActionOne": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.Finite.FiniteSignedWordBound": [
+      "RubikSTM.Definitions.OBTM.Band.Finite.ModelEval"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.NativeWordInverse": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativeInverseWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.PairedRangeIff": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Lemmas.OBTM.Band.SingleIntersectionRange"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.PhysicalControlStrict": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ChronologicalAlgebra"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.RowActionBoth": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Lemmas.Construction.Control.Physical.WordAction",
+      "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus",
+      "RubikSTM.Lemmas.OBTM.Band.RowSliceMinus"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.RowFaceMinus": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus0",
+      "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus1",
+      "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus2",
+      "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus3",
+      "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus4",
+      "RubikSTM.Lemmas.OBTM.Band.RowFaceMinus5"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.RowFaceMinus0": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.RowFaceMinus1": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.RowFaceMinus2": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.RowFaceMinus3": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.RowFaceMinus4": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.RowFaceMinus5": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.RowQuotientClean": [
+      "RubikSTM.Definitions.OBTM.Band.Finite.ModelEval",
+      "RubikSTM.Lemmas.OBTM.Band.SlabActionBoth",
+      "RubikSTM.Lemmas.OBTM.Band.StrictQuotientOutside"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.RowSliceMinus": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.SingleIntersectionRange": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.SlabActionBoth": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Lemmas.OBTM.Band.SlabPermApply"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.SlabActionIf": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Lemmas.OBTM.Band.SlabActionBoth",
+      "RubikSTM.Lemmas.OBTM.Band.SlabPermApply"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.SlabBandsIff": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.SlabPermApply": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Lemmas.OBTM.ParallelSlicesApply"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.SlabPrefixDifference": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Lemmas.OBTM.Band.SlabPermApply"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.SlabWordCorrect": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Lemmas.OBTM.Band.SlabPrefixDifference",
+      "RubikSTM.Lemmas.OBTM.Compiler.BlockQuarterCommute",
+      "RubikSTM.Lemmas.OBTM.Compiler.BlockQuarterFour"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.StmWordBlocks": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Lemmas.OBTM.Band.WordPermAppend",
+      "RubikSTM.Lemmas.OBTM.SliceTwoBlocks"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.StrictQuotientOutside": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Lemmas.OBTM.Band.PairedRangeIff",
+      "RubikSTM.Lemmas.OBTM.Band.SlabBandsIff",
+      "RubikSTM.Lemmas.OBTM.Bands.BaselineBand",
+      "RubikSTM.Lemmas.OBTM.Bands.ConjugationOutside"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.UniformCleanEvenControl": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Lemmas.OBTM.Band.Finite.FiniteSignedWordBound",
+      "RubikSTM.Lemmas.OBTM.Band.UniformTokenWords"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.UniformKernelWords": [
+      "RubikSTM.Definitions.OBTM.Band.Finite.ModelEval",
+      "RubikSTM.Lemmas.OBTM.Band.NativeWordInverse",
+      "RubikSTM.Lemmas.OBTM.Band.RowQuotientClean",
+      "RubikSTM.Lemmas.OBTM.Band.SlabWordCorrect",
+      "RubikSTM.Lemmas.OBTM.Band.StmWordBlocks",
+      "RubikSTM.Lemmas.OBTM.Band.UniformRowWords",
+      "RubikSTM.Lemmas.OBTM.Band.WordPermAppend"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.UniformRowWords": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ActualMovesAllowed",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ActualMovesDeletion",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ActualMovesEval",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ChronologicalAlgebra",
+      "RubikSTM.Lemmas.Construction.Control.Physical.UniformSignedModel",
+      "RubikSTM.Lemmas.OBTM.Band.PhysicalControlStrict",
+      "RubikSTM.Lemmas.OBTM.Band.RowActionBoth"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.UniformTokenWords": [
+      "RubikSTM.Definitions.OBTM.Band.Finite.ModelEval",
+      "RubikSTM.Lemmas.OBTM.Band.CleanActionInv",
+      "RubikSTM.Lemmas.OBTM.Band.CleanActionMul",
+      "RubikSTM.Lemmas.OBTM.Band.CleanActionOne",
+      "RubikSTM.Lemmas.OBTM.Band.NativeWordInverse",
+      "RubikSTM.Lemmas.OBTM.Band.UniformKernelWords",
+      "RubikSTM.Lemmas.OBTM.Band.WordPermAppend"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.WordPermAppend": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction"
+    ],
+    "RubikSTM.Proofs.OBTM.Band.WordPermApply": [
+      "RubikSTM.Definitions.OBTM.Band.CleanAction"
+    ],
+    "RubikSTM.Proofs.OBTM.Bands.BaselineBand": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Definitions.Wings.SolverWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Bands.BaselineOutside": [
+      "RubikSTM.Definitions.Bands.Band"
+    ],
+    "RubikSTM.Proofs.OBTM.Bands.ConjugationOutside": [
+      "RubikSTM.Definitions.Bands.Band",
+      "RubikSTM.Definitions.Wings.SolverWord",
+      "RubikSTM.Lemmas.Bands.WordBand",
+      "RubikSTM.Lemmas.OBTM.Bands.BaselineBand",
+      "RubikSTM.Lemmas.OBTM.Bands.BaselineOutside"
+    ],
+    "RubikSTM.Proofs.OBTM.BlockInverse": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockPowerApply",
+      "RubikSTM.Lemmas.OBTM.SurfaceRotationFour"
+    ],
+    "RubikSTM.Proofs.OBTM.BlockMoveCard": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph"
+    ],
+    "RubikSTM.Proofs.OBTM.BlockPowerApply": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph"
+    ],
+    "RubikSTM.Proofs.OBTM.BlockReachable": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.Geometry.ApplyWordAppend",
+      "RubikSTM.Lemmas.OBTM.BlockSliceWordAction"
+    ],
+    "RubikSTM.Proofs.OBTM.BlockSliceWordAction": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockSliceWordPermutation",
+      "RubikSTM.Lemmas.WordConstruction.WordColouring"
+    ],
+    "RubikSTM.Proofs.OBTM.BlockSliceWordPermutation": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockPowerApply",
+      "RubikSTM.Lemmas.OBTM.ParallelSlicesApply"
+    ],
+    "RubikSTM.Proofs.OBTM.BlockWordAction": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.WordConstruction.WordColouring"
+    ],
+    "RubikSTM.Proofs.OBTM.BlockWordDistance": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk"
+    ],
+    "RubikSTM.Proofs.OBTM.BlockWordReachable": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockReachable"
+    ],
+    "RubikSTM.Proofs.OBTM.BlockWordWalk": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockReachable"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.BackwardSelection": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Lemmas.OBTM.Compiler.SuffixConsSucc",
+      "RubikSTM.Lemmas.OBTM.Compiler.SuffixConsZero"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.BlockQuarterCommute": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.BlockQuarterFour": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Lemmas.OBTM.BlockPowerApply",
+      "RubikSTM.Lemmas.OBTM.SurfaceRotationFour"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.CellBaselineTwo": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.CoalesceFinset": [],
+    "RubikSTM.Proofs.OBTM.Compiler.CoalescedSlab": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.CommonFrameProgram": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Lemmas.OBTM.Compiler.OddRowFrame",
+      "RubikSTM.Lemmas.WordConstruction.ConjugatedEndpoint",
+      "RubikSTM.Lemmas.WordConstruction.SameFrameTelescopes"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.CommonLabels": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.Construction.Control.Physical.LabelsEqT",
+      "RubikSTM.Lemmas.Orbits.FlipLabel"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.CommonReachableView": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Compiler.CommonLabels",
+      "RubikSTM.Lemmas.Rectangles.ReachableView"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.CutBaselineBand": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Definitions.Wings.SolverWord",
+      "RubikSTM.Lemmas.OBTM.Band.SlabPermApply"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.CutBaselineGrouped": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Compiler.GroupedCommutingProd",
+      "RubikSTM.Lemmas.OBTM.Compiler.SlabCommute"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.CutBaselineNative": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Band.SlabPrefixDifference",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativeCoalescedAction",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativeCoalescedLength",
+      "RubikSTM.Lemmas.OBTM.Compiler.SlabBaselineTwo"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.CutBaselinePair": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Band.SlabActionIf"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.FullBaselineRectangles": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Compiler.CutBaselineBand",
+      "RubikSTM.Lemmas.Payloads.RectanglesBands"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.GroupedCommutingProd": [],
+    "RubikSTM.Proofs.OBTM.Compiler.HalfPrefixWordTwo": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Lemmas.OBTM.Compiler.BlockQuarterCommute",
+      "RubikSTM.Lemmas.OBTM.Compiler.BlockQuarterFour"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.LiftedBookCard": [
+      "RubikSTM.Definitions.OBTM.Compiler.VectorAction"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.LiftedBookCover": [
+      "RubikSTM.Definitions.OBTM.Compiler.VectorAction"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.LowerHalfCoalesces": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativeCoalescedAction": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Lemmas.OBTM.Compiler.BlockQuarterCommute",
+      "RubikSTM.Lemmas.OBTM.Compiler.BlockQuarterFour",
+      "RubikSTM.Lemmas.OBTM.Compiler.CoalescedSlab",
+      "RubikSTM.Lemmas.OBTM.Compiler.LowerHalfCoalesces"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativeCoalescedLength": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativeEvenConjugators": [
+      "RubikSTM.Definitions.OBTM.Band.SlabWord",
+      "RubikSTM.Definitions.OBTM.Finite.PhaseAct"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativeFramedWord": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Compiler.CommonFrameProgram",
+      "RubikSTM.Lemmas.OBTM.Compiler.OutsideRestoration",
+      "RubikSTM.Lemmas.OBTM.Compiler.ReadConcat",
+      "RubikSTM.Lemmas.OBTM.Compiler.WordConcat",
+      "RubikSTM.Lemmas.Rectangles.OneActiveBlock"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativeInverseWord": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Lemmas.OBTM.BlockInverse"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativeLayoutRowsCard": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativeOddLayout": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Compiler.OddPadding"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativePairColouring": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Band.WordPermApply"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativePairOutsideRows": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Compiler.CommonLabels",
+      "RubikSTM.Lemmas.Payloads.AdmissibleGeneric",
+      "RubikSTM.Lemmas.Payloads.RectanglesBands",
+      "RubikSTM.Lemmas.Rectangles.LabelsOutsideBands"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativePhaseOfPulse": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Band.WordPermAppend",
+      "RubikSTM.Lemmas.OBTM.Compiler.CoalesceFinset",
+      "RubikSTM.Lemmas.OBTM.Compiler.CutBaselineBand",
+      "RubikSTM.Lemmas.OBTM.Compiler.CutBaselineGrouped",
+      "RubikSTM.Lemmas.OBTM.Compiler.WordConcat",
+      "RubikSTM.Lemmas.Payloads.RectanglesBands"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativePulse": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Band.WordPermAppend",
+      "RubikSTM.Lemmas.OBTM.Compiler.CutBaselineBand",
+      "RubikSTM.Lemmas.OBTM.Compiler.CutBaselineNative",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativeEvenConjugators",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativeInverseWord",
+      "RubikSTM.Lemmas.OBTM.Compiler.PulseCleanSetup",
+      "RubikSTM.Lemmas.OBTM.Compiler.PulseCutAction",
+      "RubikSTM.Lemmas.Payloads.RectanglesBands"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.NativeVectorData": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Definitions.OBTM.Compiler.VectorAction",
+      "RubikSTM.Lemmas.Rectangles.DataAct"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.OddPadding": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.OddRowFrame": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Lemmas.OBTM.Compiler.PowModTwo"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.OrderedBackwardSelection": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Lemmas.OBTM.Compiler.BackwardSelection",
+      "RubikSTM.Lemmas.OBTM.Compiler.SuffixProduct"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.OutsideRestoration": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile",
+      "RubikSTM.Lemmas.OBTM.Compiler.PowModTwo",
+      "RubikSTM.Lemmas.WordConstruction.BaselineRestriction"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.PowModTwo": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.PulseCleanSetup": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Band.PairedRangeIff",
+      "RubikSTM.Lemmas.OBTM.Band.UniformCleanEvenControl",
+      "RubikSTM.Lemmas.OBTM.Band.WordPermAppend",
+      "RubikSTM.Lemmas.OBTM.Compiler.PulseIntervalData",
+      "RubikSTM.Lemmas.OBTM.Compiler.PulseLabelsAvoidRow",
+      "RubikSTM.Lemmas.Payloads.AdmissibleGeneric",
+      "RubikSTM.Lemmas.Payloads.RectanglesBands"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.PulseCutAction": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Band.SlabActionIf",
+      "RubikSTM.Lemmas.OBTM.Compiler.PulseIntervalData"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.PulseIntervalData": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Band.PairedRangeIff",
+      "RubikSTM.Lemmas.Payloads.RectanglesBands"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.PulseLabelsAvoidRow": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.Construction.Control.Physical.LabelsEqT",
+      "RubikSTM.Lemmas.Payloads.LabelOutsideThirdBand"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.ReadConcat": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativePhaseModel"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.RectangleOfNativePulse": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Definitions.OBTM.Compiler.VectorAction",
+      "RubikSTM.Lemmas.OBTM.Band.WordPermApply",
+      "RubikSTM.Lemmas.OBTM.Compiler.CellBaselineTwo",
+      "RubikSTM.Lemmas.OBTM.Compiler.CommonLabels",
+      "RubikSTM.Lemmas.OBTM.Compiler.CommonReachableView",
+      "RubikSTM.Lemmas.OBTM.Compiler.CutBaselineNative",
+      "RubikSTM.Lemmas.OBTM.Compiler.CutBaselinePair",
+      "RubikSTM.Lemmas.OBTM.Compiler.FullBaselineRectangles",
+      "RubikSTM.Lemmas.OBTM.Compiler.LiftedBookCard",
+      "RubikSTM.Lemmas.OBTM.Compiler.LiftedBookCover",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativeFramedWord",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativeLayoutRowsCard",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativeOddLayout",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativePairColouring",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativePairOutsideRows",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativePhaseOfPulse",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativeVectorData",
+      "RubikSTM.Lemmas.OBTM.Compiler.OddPadding",
+      "RubikSTM.Lemmas.OBTM.Compiler.OrderedBackwardSelection",
+      "RubikSTM.Lemmas.Orbits.FlipLabel",
+      "RubikSTM.Lemmas.Payloads.AdmissibleGeneric",
+      "RubikSTM.Lemmas.Rectangles.DataAct"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.SlabBaselineTwo": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeCoalescedWord",
+      "RubikSTM.Lemmas.OBTM.Compiler.HalfPrefixWordTwo",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativeCoalescedAction"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.SlabCommute": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Band.SlabPermApply"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.SuffixConsSucc": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.SuffixConsZero": [
+      "RubikSTM.Definitions.OBTM.Compiler.UniversalOwnProfile"
+    ],
+    "RubikSTM.Proofs.OBTM.Compiler.SuffixProduct": [],
+    "RubikSTM.Proofs.OBTM.Compiler.WordConcat": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativePhaseModel",
+      "RubikSTM.Lemmas.OBTM.Band.WordPermAppend"
+    ],
+    "RubikSTM.Proofs.OBTM.CountingWordCover": [],
+    "RubikSTM.Proofs.OBTM.DiameterLeUniformWordBound": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockWordDistance"
+    ],
+    "RubikSTM.Proofs.OBTM.DiameterWordCover": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.ObtmDistLeDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.ActualBookSupply": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Lemmas.OBTM.Periodic.NativeBookSupplyOfCoordinates",
+      "RubikSTM.Lemmas.OBTM.Spectral.ActualPeriodGaps",
+      "RubikSTM.Lemmas.OBTM.Spectral.CoordinateBoundsOfPeriodGaps"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.ActualRectangleCompiler": [
+      "RubikSTM.Definitions.OBTM.Compiler.NativeProgram",
+      "RubikSTM.Lemmas.OBTM.Compiler.NativePulse",
+      "RubikSTM.Lemmas.OBTM.Compiler.RectangleOfNativePulse"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.ActualWordCostEnvelope": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Lemmas.OBTM.Global.ActualBookSupply",
+      "RubikSTM.Lemmas.OBTM.Global.ActualRectangleCompiler",
+      "RubikSTM.Lemmas.OBTM.Global.WordEnvelopeOfCompilers"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.ApplyBlockWordAppend": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.CardPositionLePow": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.Global.CardPositionLeSum",
+      "RubikSTM.Lemmas.OBTM.OrbitGeometry.G.SumPowersLe"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.CardPositionLeSum": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockMoveCard",
+      "RubikSTM.Lemmas.OBTM.BlockReachable",
+      "RubikSTM.Lemmas.OBTM.CountingWordCover",
+      "RubikSTM.Lemmas.OBTM.DiameterWordCover"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.CleanupScalarBound": [],
+    "RubikSTM.Proofs.OBTM.Global.CountingLowerLinear": [],
+    "RubikSTM.Proofs.OBTM.Global.DependentSumGroupPairs": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Lemmas.OBTM.GlobalWords.SumGroupPairs"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.FiniteGlobalBlockWordBound": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Lemmas.GlobalWords.ExceptionalPreprocessing",
+      "RubikSTM.Lemmas.GlobalWords.GenericLocalRecolour",
+      "RubikSTM.Lemmas.GlobalWords.GlobalCover",
+      "RubikSTM.Lemmas.GlobalWords.RegionSame",
+      "RubikSTM.Lemmas.GlobalWords.RegionsDisjoint",
+      "RubikSTM.Lemmas.GlobalWords.UndoWord",
+      "RubikSTM.Lemmas.OBTM.Global.ApplyBlockWordAppend",
+      "RubikSTM.Lemmas.OBTM.Global.RecolourFromStm",
+      "RubikSTM.Lemmas.OBTM.Global.SequentialRecolour",
+      "RubikSTM.Lemmas.OBTM.SliceWordToBlocks",
+      "RubikSTM.Lemmas.Payloads.InverseWordPermutation"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.LowerTail": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.OBTM.Global.CardPositionLePow",
+      "RubikSTM.Lemmas.OBTM.Global.CountingLowerLinear",
+      "RubikSTM.Lemmas.OBTM.ReachableEntropy"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.RecolourFromStm": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Lemmas.OBTM.SliceWordToBlocks"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.SequentialRecolour": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.Global.ApplyBlockWordAppend"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.UpperTail": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.Global.ActualWordCostEnvelope",
+      "RubikSTM.Lemmas.OBTM.Global.UpperTailOfWordEnvelope"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.UpperTailOfWordEnvelope": [
+      "RubikSTM.Definitions.OBTM.Global.WordCostEnvelope",
+      "RubikSTM.Definitions.WordBounds.CostEnvelope",
+      "RubikSTM.Lemmas.Asymptotics.CostBridgeQIdentity",
+      "RubikSTM.Lemmas.GlobalRates.PairedRectangleEnvelope",
+      "RubikSTM.Lemmas.OBTM.Global.WordEnvelopeHd"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.WordEnvelopeHd": [
+      "RubikSTM.Definitions.OBTM.Global.WordCostEnvelope",
+      "RubikSTM.Lemmas.OBTM.DiameterLeUniformWordBound",
+      "RubikSTM.Lemmas.OBTM.GlobalRates.RectangleAggregationHd"
+    ],
+    "RubikSTM.Proofs.OBTM.Global.WordEnvelopeOfCompilers": [
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Lemmas.GlobalWords.GroupsAdmissible",
+      "RubikSTM.Lemmas.GlobalWords.RegionRectangle",
+      "RubikSTM.Lemmas.OBTM.Global.CleanupScalarBound",
+      "RubikSTM.Lemmas.OBTM.Global.DependentSumGroupPairs",
+      "RubikSTM.Lemmas.OBTM.Global.FiniteGlobalBlockWordBound",
+      "RubikSTM.Lemmas.OBTM.Grouping.ActualScalarFacts",
+      "RubikSTM.Lemmas.OBTM.Grouping.DepthGroupInterval",
+      "RubikSTM.Lemmas.OBTM.Grouping.DepthGroupLink",
+      "RubikSTM.Lemmas.OBTM.WordBounds.EventuallyBlockLarge",
+      "RubikSTM.Lemmas.OBTM.WordBounds.RowCeilEqNatCeil"
+    ],
+    "RubikSTM.Proofs.OBTM.GlobalRates.RectCostUniform": [],
+    "RubikSTM.Proofs.OBTM.GlobalRates.RectangleAggregationHd": [
+      "RubikSTM.Lemmas.OBTM.GlobalRates.RectCostUniform"
+    ],
+    "RubikSTM.Proofs.OBTM.GlobalWords.SumGroupPairs": [
+      "RubikSTM.Definitions.GlobalWords.Region"
+    ],
+    "RubikSTM.Proofs.OBTM.Grouping.ActualScalarFacts": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Lemmas.OBTM.Grouping.CrossGroupProductsBound",
+      "RubikSTM.Lemmas.OBTM.Grouping.DepthGroupLink",
+      "RubikSTM.Lemmas.OBTM.Grouping.GroupCardExact",
+      "RubikSTM.Lemmas.OBTM.Grouping.SameGroupPairsBound",
+      "RubikSTM.Lemmas.OBTM.Grouping.SamePairsCardEq"
+    ],
+    "RubikSTM.Proofs.OBTM.Grouping.CrossGroupProductsBound": [
+      "RubikSTM.Definitions.Grouping.GroupOf"
+    ],
+    "RubikSTM.Proofs.OBTM.Grouping.DepthGroupInterval": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Lemmas.OBTM.Grouping.FibreInterval"
+    ],
+    "RubikSTM.Proofs.OBTM.Grouping.DepthGroupLink": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Lemmas.OBTM.Grouping.GroupCardEq"
+    ],
+    "RubikSTM.Proofs.OBTM.Grouping.FibreInterval": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf",
+      "RubikSTM.Lemmas.OBTM.Grouping.GroupOfMonotone"
+    ],
+    "RubikSTM.Proofs.OBTM.Grouping.GroupCardEq": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf"
+    ],
+    "RubikSTM.Proofs.OBTM.Grouping.GroupCardExact": [
+      "RubikSTM.Definitions.Grouping.GroupOf"
+    ],
+    "RubikSTM.Proofs.OBTM.Grouping.GroupOfMonotone": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf"
+    ],
+    "RubikSTM.Proofs.OBTM.Grouping.SameGroupPairsBound": [
+      "RubikSTM.Definitions.Grouping.GroupOf"
+    ],
+    "RubikSTM.Proofs.OBTM.Grouping.SamePairsCardEq": [
+      "RubikSTM.Definitions.OBTM.Grouping.GroupOf"
+    ],
+    "RubikSTM.Proofs.OBTM.OBTMSharpDiameter": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.Global.LowerTail",
+      "RubikSTM.Lemmas.OBTM.Global.UpperTail"
+    ],
+    "RubikSTM.Proofs.OBTM.ObtmDistLeDiameter": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphEdiamNeTop"
+    ],
+    "RubikSTM.Proofs.OBTM.ObtmGraphConnected": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockWordWalk",
+      "RubikSTM.Lemmas.OBTM.ReachableIff"
+    ],
+    "RubikSTM.Proofs.OBTM.ObtmGraphEdiamNeTop": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected"
+    ],
+    "RubikSTM.Proofs.OBTM.ObtmGraphWalkWord": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockInverse"
+    ],
+    "RubikSTM.Proofs.OBTM.OrbitGeometry.G.SumPowersLe": [],
+    "RubikSTM.Proofs.OBTM.ParallelSlicesApply": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph"
+    ],
+    "RubikSTM.Proofs.OBTM.Periodic.NativeBookSupplyOfCoordinates": [
+      "RubikSTM.Definitions.Channel.Paired.P",
+      "RubikSTM.Definitions.Codebook.Conditional.OverlapLaw",
+      "RubikSTM.Definitions.OBTM.Global.RectangleCompiler",
+      "RubikSTM.Definitions.OBTM.Periodic.CoordinateBounds",
+      "RubikSTM.Definitions.OBTM.Periodic.LayerwiseUnion",
+      "RubikSTM.Definitions.OBTM.Periodic.SampleLaw",
+      "RubikSTM.Definitions.OBTM.Periodic.UniformMomentBounds",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Definitions.UniversalCodebooks.PathIndicator"
+    ],
+    "RubikSTM.Proofs.OBTM.ReachableEntropy": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.OBTM.ReachableIff": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.SliceWordToBlocks"
+    ],
+    "RubikSTM.Proofs.OBTM.SliceTwoBlocks": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockPowerApply",
+      "RubikSTM.Lemmas.OBTM.ParallelSlicesApply",
+      "RubikSTM.Lemmas.OBTM.SurfaceRotationFour"
+    ],
+    "RubikSTM.Proofs.OBTM.SliceWordToBlocks": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Lemmas.OBTM.BlockWordAction",
+      "RubikSTM.Lemmas.OBTM.SliceTwoBlocks"
+    ],
+    "RubikSTM.Proofs.OBTM.Spectral.ActualPeriodGaps": [
+      "RubikSTM.Definitions.OBTM.Finite.DoubledSubgroup",
+      "RubikSTM.Definitions.OBTM.Spectral.ActualPeriodPositive",
+      "RubikSTM.Definitions.OBTM.Spectral.PhaseKernel"
+    ],
+    "RubikSTM.Proofs.OBTM.Spectral.CoordinateBoundsOfPeriodGaps": [
+      "RubikSTM.Definitions.OBTM.Spectral.SingleWordMatrix"
+    ],
+    "RubikSTM.Proofs.OBTM.SurfaceRotationFour": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Definitions.Wings.SolverWord",
+      "RubikSTM.Lemmas.OBTM.ParallelSlicesApply"
+    ],
+    "RubikSTM.Proofs.OBTM.WordBounds.EventuallyBlockLarge": [
+      "RubikSTM.Definitions.WordBounds.CostEnvelope"
+    ],
+    "RubikSTM.Proofs.OBTM.WordBounds.RowCeilEqNatCeil": [
+      "RubikSTM.Definitions.WordBounds.CostEnvelope"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.CardNormalTableOrbit": [
+      "RubikSTM.Definitions.Channel.Paired.P",
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.CommEltLab": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.OrbitGeometry.MoveLab",
+      "RubikSTM.Lemmas.OrbitGeometry.T.InverseOnLabels"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.CommEltOff": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.OrbitGeometry.MoveLab",
+      "RubikSTM.Lemmas.OrbitGeometry.T.CommutatorFixed",
+      "RubikSTM.Lemmas.OrbitGeometry.T.InverseOnLabels",
+      "RubikSTM.Lemmas.OrbitGeometry.T.RangeIff",
+      "RubikSTM.Lemmas.OrbitGeometry.T.SupportIntersection"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.ExistsEvenRep": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.F.ThreeT0": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.MoveLab": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.T.CommutatorFixed": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.T.IntersectionSticker": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.T.InverseOnLabels": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.T.QuarterSupport": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.T.RangeIff": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm"
+    ],
+    "RubikSTM.Proofs.OrbitGeometry.T.SupportIntersection": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Lemmas.OrbitGeometry.T.IntersectionSticker",
+      "RubikSTM.Lemmas.OrbitGeometry.T.QuarterSupport"
+    ],
+    "RubikSTM.Proofs.Orbits.BandIntersection": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Lemmas.Orbits.LabelBands"
+    ],
+    "RubikSTM.Proofs.Orbits.FlipLabel": [
+      "RubikSTM.Definitions.Orbits.SwapPhi"
+    ],
+    "RubikSTM.Proofs.Orbits.LabelBands": [
+      "RubikSTM.Definitions.Orbits.SwapPhi"
+    ],
+    "RubikSTM.Proofs.Orbits.MinusQuarter": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Lemmas.Orbits.FlipLabel"
+    ],
+    "RubikSTM.Proofs.Orbits.MinusRange": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Lemmas.Orbits.FlipLabel"
+    ],
+    "RubikSTM.Proofs.Orbits.MoveInvariant": [
+      "RubikSTM.Definitions.Channel.Colour.Orbit",
+      "RubikSTM.Definitions.Orbits.RigidLabelPermutation"
+    ],
+    "RubikSTM.Proofs.Orbits.PairedQuarter": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Lemmas.Orbits.MinusQuarter",
+      "RubikSTM.Lemmas.Orbits.PlusQuarter"
+    ],
+    "RubikSTM.Proofs.Orbits.PlusQuarter": [
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Lemmas.OrbitGeometry.MoveLab"
+    ],
+    "RubikSTM.Proofs.Orbits.ReachableColours": [
+      "RubikSTM.Definitions.Channel.Colour.Orbit",
+      "RubikSTM.Definitions.Orbits.RigidLabelPermutation"
+    ],
+    "RubikSTM.Proofs.Payloads.AdmissibleGeneric": [
+      "RubikSTM.Definitions.Payloads.Realizes"
+    ],
+    "RubikSTM.Proofs.Payloads.AllowedAvoidsColumn": [
+      "RubikSTM.Definitions.Payloads.Realizes"
+    ],
+    "RubikSTM.Proofs.Payloads.BaselineAction": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Lemmas.Orbits.FlipLabel",
+      "RubikSTM.Lemmas.Orbits.PairedQuarter",
+      "RubikSTM.Lemmas.Payloads.AdmissibleGeneric",
+      "RubikSTM.Lemmas.Payloads.LabelOutsideThirdBand",
+      "RubikSTM.Lemmas.Payloads.SingleIndexWordAction"
+    ],
+    "RubikSTM.Proofs.Payloads.BaselineAlphabet": [
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Orbits.SwapPhi"
+    ],
+    "RubikSTM.Proofs.Payloads.BaselinePhysical": [
+      "RubikSTM.Definitions.Payloads.Realizes"
+    ],
+    "RubikSTM.Proofs.Payloads.ChronologicalWord": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ChronologicalAlgebra"
+    ],
+    "RubikSTM.Proofs.Payloads.CommonMinusAction": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Lemmas.Payloads.AllowedAvoidsColumn",
+      "RubikSTM.Lemmas.Payloads.WordFlipCommute"
+    ],
+    "RubikSTM.Proofs.Payloads.ConjugatePayload": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Lemmas.Bands.WordBand",
+      "RubikSTM.Lemmas.Payloads.BaselineAction",
+      "RubikSTM.Lemmas.Payloads.BaselinePhysical",
+      "RubikSTM.Lemmas.Payloads.InverseWordPermutation",
+      "RubikSTM.Lemmas.Payloads.RectanglesBands"
+    ],
+    "RubikSTM.Proofs.Payloads.DiagonalConjugator": [
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Lemmas.Payloads.BaselineAlphabet",
+      "RubikSTM.Lemmas.Payloads.PairAlphabetConjugate"
+    ],
+    "RubikSTM.Proofs.Payloads.InverseMovePermutation": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Definitions.Wings.SolverWord"
+    ],
+    "RubikSTM.Proofs.Payloads.InverseWordPermutation": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Lemmas.Payloads.InverseMovePermutation"
+    ],
+    "RubikSTM.Proofs.Payloads.LabelOutsideThirdBand": [
+      "RubikSTM.Definitions.Payloads.Realizes"
+    ],
+    "RubikSTM.Proofs.Payloads.PairAlphabetConjugate": [
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Lemmas.Payloads.PatchConjugators"
+    ],
+    "RubikSTM.Proofs.Payloads.PairedPayload": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Lemmas.Payloads.AdmissibleGeneric",
+      "RubikSTM.Lemmas.Payloads.BaselinePhysical",
+      "RubikSTM.Lemmas.Payloads.ConjugatePayload",
+      "RubikSTM.Lemmas.Payloads.DiagonalConjugator",
+      "RubikSTM.Lemmas.Payloads.InverseWordPermutation",
+      "RubikSTM.Lemmas.Payloads.RowFamily",
+      "RubikSTM.Lemmas.Payloads.UniformDiagonalControls"
+    ],
+    "RubikSTM.Proofs.Payloads.PatchConjugators": [
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Orbits.SwapPhi",
+      "RubikSTM.Lemmas.Payloads.SameOnSupportConjugation"
+    ],
+    "RubikSTM.Proofs.Payloads.RectanglesBands": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Lemmas.Orbits.BandIntersection",
+      "RubikSTM.Lemmas.Payloads.AdmissibleGeneric"
+    ],
+    "RubikSTM.Proofs.Payloads.RowFamily": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Definitions.Wings.SolverWord",
+      "RubikSTM.Lemmas.Orbits.FlipLabel",
+      "RubikSTM.Lemmas.Payloads.AdmissibleGeneric",
+      "RubikSTM.Lemmas.Payloads.LabelOutsideThirdBand",
+      "RubikSTM.Lemmas.Payloads.SingleIndexWordAction"
+    ],
+    "RubikSTM.Proofs.Payloads.SameOnSupportConjugation": [
+      "RubikSTM.Definitions.Channel.DisjointFourCycleAlphabet",
+      "RubikSTM.Definitions.Orbits.SwapPhi"
+    ],
+    "RubikSTM.Proofs.Payloads.SignedStrict": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ActualMovesAllowed",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ActualMovesDeletion",
+      "RubikSTM.Lemmas.Payloads.ChronologicalWord"
+    ],
+    "RubikSTM.Proofs.Payloads.SingleIndexWordAction": [
+      "RubikSTM.Definitions.Payloads.Realizes"
+    ],
+    "RubikSTM.Proofs.Payloads.UniformDiagonalControls": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Lemmas.Construction.Control.Physical.ActualMovesEval",
+      "RubikSTM.Lemmas.Construction.Control.Physical.LabelsEqT",
+      "RubikSTM.Lemmas.Construction.Control.Physical.UniformSignedModel",
+      "RubikSTM.Lemmas.Construction.Control.Physical.WordAction",
+      "RubikSTM.Lemmas.Payloads.ChronologicalWord",
+      "RubikSTM.Lemmas.Payloads.CommonMinusAction",
+      "RubikSTM.Lemmas.Payloads.SignedStrict"
+    ],
+    "RubikSTM.Proofs.Payloads.WordFlipCommute": [
+      "RubikSTM.Definitions.Payloads.Realizes",
+      "RubikSTM.Lemmas.Intertwiners.SliceCommute"
+    ],
+    "RubikSTM.Proofs.Rectangles.ActsPairAppend": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface"
+    ],
+    "RubikSTM.Proofs.Rectangles.ActsPairFlatten": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Lemmas.Rectangles.ActsPairAppend"
+    ],
+    "RubikSTM.Proofs.Rectangles.ColumnBaselineFour": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Lemmas.Bands.SameAxisFourth"
+    ],
+    "RubikSTM.Proofs.Rectangles.CompileBlock": [
+      "RubikSTM.Definitions.Rectangles.ColumnRealizes",
+      "RubikSTM.Lemmas.Bands.SliceCommute",
+      "RubikSTM.Lemmas.Payloads.AdmissibleGeneric",
+      "RubikSTM.Lemmas.Payloads.BaselinePhysical",
+      "RubikSTM.Lemmas.Payloads.RectanglesBands",
+      "RubikSTM.Lemmas.Payloads.SingleIndexWordAction",
+      "RubikSTM.Lemmas.Rectangles.LabelsOutsideBands",
+      "RubikSTM.Lemmas.Rectangles.PartitionColumns",
+      "RubikSTM.Lemmas.Rectangles.RectanglesInvariant"
+    ],
+    "RubikSTM.Proofs.Rectangles.CompileRectangle": [
+      "RubikSTM.Definitions.GlobalWords.Region",
+      "RubikSTM.Definitions.Rectangles.Layout",
+      "RubikSTM.Lemmas.Payloads.AdmissibleGeneric",
+      "RubikSTM.Lemmas.Payloads.BaselineAction",
+      "RubikSTM.Lemmas.Payloads.BaselinePhysical",
+      "RubikSTM.Lemmas.Payloads.RectanglesBands",
+      "RubikSTM.Lemmas.Rectangles.CompileBlock",
+      "RubikSTM.Lemmas.Rectangles.DataAct",
+      "RubikSTM.Lemmas.Rectangles.DataWord",
+      "RubikSTM.Lemmas.Rectangles.FramedWord",
+      "RubikSTM.Lemmas.Rectangles.LabelsOutsideBands",
+      "RubikSTM.Lemmas.Rectangles.LayoutExists",
+      "RubikSTM.Lemmas.Rectangles.LayoutRowsCard",
+      "RubikSTM.Lemmas.Rectangles.ReachableView",
+      "RubikSTM.Lemmas.WordConstruction.PhysicalWordColouring"
+    ],
+    "RubikSTM.Proofs.Rectangles.DataAct": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface"
+    ],
+    "RubikSTM.Proofs.Rectangles.DataWord": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Lemmas.Rectangles.DataAct"
+    ],
+    "RubikSTM.Proofs.Rectangles.FramedWord": [
+      "RubikSTM.Definitions.Rectangles.Framed",
+      "RubikSTM.Lemmas.Orbits.MinusRange",
+      "RubikSTM.Lemmas.Payloads.AdmissibleGeneric",
+      "RubikSTM.Lemmas.Rectangles.ActsPairFlatten",
+      "RubikSTM.Lemmas.Rectangles.ColumnBaselineFour",
+      "RubikSTM.Lemmas.Rectangles.OneActiveBlock",
+      "RubikSTM.Lemmas.Rectangles.PairColouring",
+      "RubikSTM.Lemmas.Rectangles.RectanglesInvariant",
+      "RubikSTM.Lemmas.WordConstruction.ConcatenateWords",
+      "RubikSTM.Lemmas.WordConstruction.ExteriorCancellation",
+      "RubikSTM.Lemmas.WordConstruction.PaddedProgram"
+    ],
+    "RubikSTM.Proofs.Rectangles.LabelsOutsideBands": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Lemmas.Orbits.FlipLabel",
+      "RubikSTM.Lemmas.Payloads.LabelOutsideThirdBand"
+    ],
+    "RubikSTM.Proofs.Rectangles.LayoutExists": [
+      "RubikSTM.Definitions.Rectangles.Layout",
+      "RubikSTM.Lemmas.WordConstruction.PadCount"
+    ],
+    "RubikSTM.Proofs.Rectangles.LayoutRowsCard": [
+      "RubikSTM.Definitions.Rectangles.Layout"
+    ],
+    "RubikSTM.Proofs.Rectangles.OneActiveBlock": [],
+    "RubikSTM.Proofs.Rectangles.PairColouring": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Lemmas.WordConstruction.PhysicalWordColouring"
+    ],
+    "RubikSTM.Proofs.Rectangles.PartitionColumns": [],
+    "RubikSTM.Proofs.Rectangles.ReachableView": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Lemmas.Orbits.FlipLabel",
+      "RubikSTM.Lemmas.Orbits.ReachableColours"
+    ],
+    "RubikSTM.Proofs.Rectangles.RectanglesInvariant": [
+      "RubikSTM.Definitions.Rectangles.PayloadInterface",
+      "RubikSTM.Lemmas.Orbits.MoveInvariant"
+    ],
+    "RubikSTM.Proofs.Solved.OBTMSolvedLookingRadiusEntropy": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Definitions.Solved.NormalizedMetrics",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ReachableEntropy",
+      "RubikSTM.Lemmas.Solved.entropy_of_counting_upper",
+      "RubikSTM.Lemmas.Solved.obtm_radius_card_le",
+      "RubikSTM.Lemmas.Solved.radius_comparison"
+    ],
+    "RubikSTM.Proofs.Solved.OBTMSolvedRadiusEntropy": [
+      "RubikSTM.Definitions.Solved.NormalizedMetrics",
+      "RubikSTM.Lemmas.OBTM.OBTMSharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.Solved.OBTMSolvedLookingRadiusEntropy",
+      "RubikSTM.Lemmas.Solved.radius_comparison"
+    ],
+    "RubikSTM.Proofs.Solved.STMSolvedLookingRadiusEntropy": [
+      "RubikSTM.Definitions.OrbitGeometry.GenPerm",
+      "RubikSTM.Definitions.Solved.NormalizedMetrics",
+      "RubikSTM.Lemmas.Construction.EntropySharpDiameter",
+      "RubikSTM.Lemmas.OBTM.ReachableEntropy",
+      "RubikSTM.Lemmas.Solved.entropy_of_counting_upper",
+      "RubikSTM.Lemmas.Solved.radius_comparison",
+      "RubikSTM.Lemmas.Solved.stm_radius_card_le",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Solved.STMSolvedRadiusEntropy": [
+      "RubikSTM.Definitions.Solved.NormalizedMetrics",
+      "RubikSTM.Lemmas.Construction.EntropySharpDiameter",
+      "RubikSTM.Lemmas.Solved.STMSolvedLookingRadiusEntropy",
+      "RubikSTM.Lemmas.Solved.radius_comparison",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Solved.counting_lower_with_offset": [
+      "RubikSTM.Lemmas.OBTM.Global.CountingLowerLinear"
+    ],
+    "RubikSTM.Proofs.Solved.entropy_of_counting_upper": [
+      "RubikSTM.Lemmas.Solved.counting_lower_with_offset"
+    ],
+    "RubikSTM.Proofs.Solved.multiSourceWordCount": [],
+    "RubikSTM.Proofs.Solved.obtm_fixedRadius_count": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Lemmas.OBTM.BlockMoveCard",
+      "RubikSTM.Lemmas.OBTM.BlockWordReachable",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphConnected",
+      "RubikSTM.Lemmas.OBTM.ObtmGraphWalkWord",
+      "RubikSTM.Lemmas.OBTM.OrbitGeometry.G.SumPowersLe",
+      "RubikSTM.Lemmas.Solved.multiSourceWordCount",
+      "RubikSTM.Lemmas.Solved.solvedLookingDistance_attained",
+      "RubikSTM.Lemmas.Solved.solvedLooking_card_le"
+    ],
+    "RubikSTM.Proofs.Solved.obtm_radius_card_le": [
+      "RubikSTM.Definitions.OBTM.ObtmGraph",
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Lemmas.Solved.obtm_fixedRadius_count"
+    ],
+    "RubikSTM.Proofs.Solved.radius_comparison": [
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Lemmas.Solved.solvedLookingDistance_le",
+      "RubikSTM.Lemmas.Solved.solved_looks_solved"
+    ],
+    "RubikSTM.Proofs.Solved.solvedLookingDistance_attained": [
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Lemmas.Solved.solved_looks_solved"
+    ],
+    "RubikSTM.Proofs.Solved.solvedLookingDistance_le": [
+      "RubikSTM.Definitions.Solved.Metrics"
+    ],
+    "RubikSTM.Proofs.Solved.solvedLooking_card_le": [
+      "RubikSTM.Definitions.Solved.Metrics"
+    ],
+    "RubikSTM.Proofs.Solved.solved_looks_solved": [
+      "RubikSTM.Definitions.Solved.Metrics"
+    ],
+    "RubikSTM.Proofs.Solved.stm_fixedRadius_count": [
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Definitions.Wings.SolverWord",
+      "RubikSTM.Lemmas.Geometry.ApplyWordAppend",
+      "RubikSTM.Lemmas.OBTM.OrbitGeometry.G.SumPowersLe",
+      "RubikSTM.Lemmas.Solved.multiSourceWordCount",
+      "RubikSTM.Lemmas.Solved.solvedLookingDistance_attained",
+      "RubikSTM.Lemmas.Solved.solvedLooking_card_le",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_move_card",
+      "RubikSTM.Lemmas.SolvedSupport.Rubik_stmGraph_connected"
+    ],
+    "RubikSTM.Proofs.Solved.stm_radius_card_le": [
+      "RubikSTM.Definitions.Solved.Metrics",
+      "RubikSTM.Lemmas.Solved.stm_fixedRadius_count"
+    ],
+    "RubikSTM.Proofs.SolvedSupport.Rubik_move_card": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.SolvedSupport.Rubik_stmGraph_connected": [
+      "RubikSTM.Definitions.Geometry.StmGraph"
+    ],
+    "RubikSTM.Proofs.Surface.DepthRegular": [
+      "RubikSTM.Definitions.Surface.GenericRange"
+    ],
+    "RubikSTM.Proofs.Surface.GenericRangesDisjoint": [
+      "RubikSTM.Definitions.Surface.GenericRange"
+    ],
+    "RubikSTM.Proofs.Surface.SurfaceCover": [
+      "RubikSTM.Definitions.Surface.GenericRange"
+    ],
+    "RubikSTM.Proofs.Wings.ReachableCleanup": [
+      "RubikSTM.Definitions.Wings.IsMiddleSkeleton"
+    ],
+    "RubikSTM.Proofs.WordBounds.ActualCostEnvelope": [
+      "RubikSTM.Definitions.WordBounds.CostEnvelope",
+      "RubikSTM.Lemmas.Channel.Paired.UniversalCodebook",
+      "RubikSTM.Lemmas.GlobalWords.FiniteGlobalWordBound"
+    ],
+    "RubikSTM.Proofs.WordBounds.ActualHd": [
+      "RubikSTM.Definitions.WordBounds.CostEnvelope",
+      "RubikSTM.Lemmas.WordBounds.ActualCostEnvelope"
+    ],
+    "RubikSTM.Proofs.WordConstruction.BaselineRestriction": [],
+    "RubikSTM.Proofs.WordConstruction.ConcatenateWords": [],
+    "RubikSTM.Proofs.WordConstruction.ConjugatedEndpoint": [
+      "RubikSTM.Lemmas.WordConstruction.SameFrameTelescopes"
+    ],
+    "RubikSTM.Proofs.WordConstruction.ExteriorCancellation": [
+      "RubikSTM.Lemmas.WordConstruction.BaselineRestriction",
+      "RubikSTM.Lemmas.WordConstruction.PowModFour"
+    ],
+    "RubikSTM.Proofs.WordConstruction.PadCount": [],
+    "RubikSTM.Proofs.WordConstruction.PaddedLayer": [
+      "RubikSTM.Lemmas.WordConstruction.PowModFour"
+    ],
+    "RubikSTM.Proofs.WordConstruction.PaddedProgram": [
+      "RubikSTM.Lemmas.WordConstruction.ConjugatedEndpoint",
+      "RubikSTM.Lemmas.WordConstruction.PaddedLayer",
+      "RubikSTM.Lemmas.WordConstruction.SameFrameTelescopes"
+    ],
+    "RubikSTM.Proofs.WordConstruction.PhysicalWordColouring": [
+      "RubikSTM.Definitions.Geometry.StmGraph",
+      "RubikSTM.Lemmas.WordConstruction.WordColouring"
+    ],
+    "RubikSTM.Proofs.WordConstruction.PowModFour": [],
+    "RubikSTM.Proofs.WordConstruction.SameFrameTelescopes": [],
+    "RubikSTM.Proofs.WordConstruction.WordColouring": [],
+    "RubikSTM.SolvedRadii": [
+      "RubikSTM.Lemmas.Solved.OBTMSolvedLookingRadiusEntropy",
+      "RubikSTM.Lemmas.Solved.OBTMSolvedRadiusEntropy",
+      "RubikSTM.Lemmas.Solved.STMSolvedLookingRadiusEntropy",
+      "RubikSTM.Lemmas.Solved.STMSolvedRadiusEntropy"
+    ]
+  },
+  "schema": "lean-audit/graph/v1"
+}

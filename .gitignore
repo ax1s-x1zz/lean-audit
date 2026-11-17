@@ -1,0 +1,11 @@
+/target
+**/*.rs.bk
+Cargo.lock.bak
+
+# 작업 큐는 로컬 전용 (NEW_PROJECT.md 규칙)
+NEXT.md
+NEXT-archive.md
+
+# 로컬 감사 산출물
+/audit-out/
+*.report.json

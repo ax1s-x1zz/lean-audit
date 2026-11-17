@@ -1,0 +1,273 @@
+//! Report data model (JSON schema `lean-audit/v1`).
+//!
+//! Honesty rules are encoded in the `status` string fields. See `AGENTS.md`:
+//! `not_run` must never be reported as `ok`.
+
+use serde::{Deserialize, Serialize};
+
+pub const SCHEMA: &str = "lean-audit/v1";
+
+pub const DISCLAIMER: &str = "This report verifies reproducibility of published claims. It does not establish mathematical correctness.";
+
+/// Status values used across the report. Kept as string constants so the JSON
+/// stays readable and forward-compatible.
+///
+/// `MISMATCH` and `NOT_RUN` are part of the documented schema and are consumed by
+/// the later milestones (manifest verification, axiom re-computation).
+#[allow(dead_code)]
+pub mod status {
+    /// Recomputed value matches the published claim.
+    pub const OK: &str = "ok";
+    /// Recomputed value differs from the published claim.
+    pub const MISMATCH: &str = "mismatch";
+    /// The check was not executed. Never report this as `ok`.
+    pub const NOT_RUN: &str = "not_run";
+    /// The file was read but nothing was recomputed.
+    pub const PARSED_ONLY: &str = "parsed_only";
+    /// The repository structure is not what this tool expects. Do not guess.
+    pub const UNSUPPORTED: &str = "unsupported";
+    /// The tool itself failed.
+    pub const ERROR: &str = "error";
+    /// Nothing to check (e.g. no audit file present).
+    pub const ABSENT: &str = "absent";
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Report {
+    pub schema: String,
+    pub generated_at: String,
+    pub tool_version: String,
+    pub project: String,
+    pub source: Source,
+    pub toolchain: Toolchain,
+    pub mathlib: MathlibPin,
+    pub lakefile: Lakefile,
+    pub manifest: ManifestPins,
+    pub modules: Modules,
+    pub audit_impl: AuditImpl,
+    pub manifests: Vec<ManifestInfo>,
+    pub receipts: Receipts,
+    pub scan: ScanSummary,
+    pub warnings: Vec<String>,
+    pub disclaimer: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Source {
+    pub path: String,
+    pub git_commit: Option<String>,
+    pub git_dirty: Option<bool>,
+    /// Why git information is missing, when it is.
+    pub git_note: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Toolchain {
+    /// Raw contents of `lean-toolchain`, trimmed.
+    pub lean_toolchain: Option<String>,
+    /// Parsed release version, e.g. `4.33.1` for `leanprover/lean4:v4.33.1`.
+    pub lean_version: Option<String>,
+    pub status: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MathlibPin {
+    /// Commit pin from `lake-manifest.json`.
+    pub rev: Option<String>,
+    /// Tag/rev requested in the lakefile `require`, e.g. `v4.33.1`.
+    pub tag: Option<String>,
+    pub source: String,
+    pub status: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Lakefile {
+    pub path: Option<String>,
+    /// `toml`, `lean`, or `none`.
+    pub kind: String,
+    pub name: Option<String>,
+    pub version: Option<String>,
+    pub default_targets: Vec<String>,
+    pub requires: Vec<Require>,
+    pub lean_libs: Vec<String>,
+    pub status: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Require {
+    pub name: String,
+    pub git: Option<String>,
+    pub rev: Option<String>,
+    pub path: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ManifestPins {
+    pub path: Option<String>,
+    pub packages: Vec<PackagePin>,
+    pub status: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PackagePin {
+    pub name: String,
+    pub rev: Option<String>,
+    pub url: Option<String>,
+    /// `git`, `path`, or `unknown`.
+    pub kind: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Modules {
+    pub count: usize,
+    pub roots: Vec<String>,
+    pub import_edges_internal: usize,
+    pub external_imports: Vec<String>,
+    pub max_import_depth: Option<usize>,
+    pub cycles: Vec<Vec<String>>,
+    /// Count of `.lean` files per top-level directory, descending.
+    pub by_directory: Vec<DirCount>,
+    pub status: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct DirCount {
+    pub dir: String,
+    pub files: usize,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AuditImpl {
+    /// `lean_audit`, `lean_axiomcheck`, `python_script`, `none`, or `multiple`.
+    pub kind: String,
+    pub files: Vec<String>,
+    /// Elaborator command names found in the audit file, e.g. `#ang_audit`.
+    pub command_names: Vec<String>,
+    /// Head theorem names, when they could be extracted. Never guessed.
+    pub heads: Option<Vec<String>>,
+    /// `parsed`, `cli`, `unparsed`, or `n/a`.
+    pub heads_source: String,
+    /// Direct `sorry` users the audit expects. `None` when the file does not
+    /// state an explicit list.
+    pub expected_direct_sorry: Option<Vec<String>>,
+    pub allowed_axioms: Vec<String>,
+    pub in_default_targets: Option<bool>,
+    pub status: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ManifestInfo {
+    pub file: String,
+    /// Number of entries, when countable without hashing.
+    pub entries: Option<usize>,
+    pub status: String,
+    pub note: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Receipts {
+    pub dir: Option<String>,
+    /// All files under `receipts/`, recursively, relative to the repository root.
+    pub files: Vec<String>,
+    /// Every `build_summary.txt` found, with the numbers it claims.
+    pub summaries: Vec<ReceiptSummary>,
+    pub status: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ReceiptSummary {
+    pub file: String,
+    pub claimed_modules_built: Option<usize>,
+    pub claimed_errors: Option<usize>,
+    pub claimed_sorry_warnings: Option<usize>,
+    /// `AUDIT axioms <name>: [...]` lines: the axiom list the run published for
+    /// each head theorem. This is the claim M3 re-computes.
+    pub claimed_axioms: Vec<ClaimedAxioms>,
+    pub claimed_placeholders: Option<usize>,
+    /// `AUDIT declarations using sorry directly: [...]`.
+    pub claimed_direct_sorry: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ClaimedAxioms {
+    pub name: String,
+    pub axioms: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ScanSummary {
+    pub files_scanned: usize,
+    pub flags: Vec<Flag>,
+    pub status: String,
+    pub note: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Flag {
+    pub path: String,
+    pub line: usize,
+    pub token: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BatchReport {
+    pub schema: String,
+    pub generated_at: String,
+    pub tool_version: String,
+    pub root: String,
+    pub repos: Vec<Report>,
+    pub disclaimer: String,
+}
+
+/// A minimal UTC ISO-8601 timestamp, avoiding a `chrono` dependency.
+pub fn now_iso8601() -> String {
+    let secs = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|d| d.as_secs())
+        .unwrap_or(0);
+    iso8601_utc(secs)
+}
+
+pub fn iso8601_utc(secs: u64) -> String {
+    let days = (secs / 86_400) as i64;
+    let rem = secs % 86_400;
+    let (y, m, d) = civil_from_days(days);
+    let (hh, mm, ss) = (rem / 3600, (rem % 3600) / 60, rem % 60);
+    format!("{y:04}-{m:02}-{d:02}T{hh:02}:{mm:02}:{ss:02}Z")
+}
+
+/// Howard Hinnant's `civil_from_days`.
+fn civil_from_days(z: i64) -> (i64, u32, u32) {
+    let z = z + 719_468;
+    let era = if z >= 0 { z } else { z - 146_096 } / 146_097;
+    let doe = (z - era * 146_097) as u64;
+    let yoe = (doe - doe / 1460 + doe / 36_524 - doe / 146_096) / 365;
+    let y = yoe as i64 + era * 400;
+    let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
+    let mp = (5 * doy + 2) / 153;
+    let d = (doy - (153 * mp + 2) / 5 + 1) as u32;
+    let m = if mp < 10 { mp + 3 } else { mp - 9 } as u32;
+    (if m <= 2 { y + 1 } else { y }, m, d)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn iso8601_known_values() {
+        assert_eq!(iso8601_utc(0), "1970-01-01T00:00:00Z");
+        // 2026-11-17T12:34:56Z
+        assert_eq!(iso8601_utc(1_763_382_896), "2025-11-17T12:34:56Z");
+        assert_eq!(
+            iso8601_utc(1_763_382_896 + 365 * 86_400),
+            "2026-11-17T12:34:56Z"
+        );
+    }
+
+    #[test]
+    fn civil_handles_epoch_and_leap() {
+        assert_eq!(civil_from_days(0), (1970, 1, 1));
+        assert_eq!(civil_from_days(19_723), (2024, 1, 1));
+    }
+}
