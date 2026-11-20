@@ -14,6 +14,10 @@ All notable changes to `lean-audit`. Milestone names (M0–M6) refer to
   and `AXIOM_AUDIT.json`).
 - `--heads`, `--lake`, `--timeout`, `--build`, `--build-timeout`,
   `--keep-generated`.
+- `--mode collect` (default) uses a generated `elab` command calling
+  `Lean.collectAxioms`; `--mode print` reproduces the `#print axioms` path of the
+  reference `scripts/audit_axioms.py`. `tests/lean.rs` asserts that the two code
+  paths agree on every head of the fixture project.
 - Exit code 3 on mismatch, 4 when the check could not be run.
 
 ### Added — M2: manifest verification (`manifest`)
@@ -40,7 +44,7 @@ All notable changes to `lean-audit`. Milestone names (M0–M6) refer to
 
 ### Verified
 
-- 81 tests: 62 unit, 9 stub-based `axioms` integration tests, 3 real-Lean
+- 88 tests: 66 unit, 11 stub-based `axioms` integration tests, 4 real-Lean
   integration tests, 7 TEAM42 repository integration tests.
 - `tests/fixtures/leanfix` is a project shaped like a TEAM42 repository, used by
   the real-Lean tests.

@@ -103,6 +103,38 @@ fn reports_a_missing_head_instead_of_guessing() {
 }
 
 #[test]
+fn print_mode_agrees_with_collect_mode_on_real_lean() {
+    let Some(lake) = lake_path() else {
+        eprintln!("skipping: no lake on PATH or in ~/.elan/bin");
+        return;
+    };
+
+    // Two independent Lean code paths: `Lean.collectAxioms` in a generated elab
+    // command, and the `#print axioms` messages the reference implementation
+    // parses. They must produce the same axiom lists.
+    let (collect, _) = run_fixture(&lake, &["--build"]);
+    let (print, _) = run_fixture(&lake, &["--mode", "print"]);
+
+    let collect_heads = collect["result"]["heads"].as_array().unwrap();
+    let print_heads = print["result"]["heads"].as_array().unwrap();
+    assert_eq!(collect_heads.len(), print_heads.len());
+    assert_eq!(print["result"]["mode"], "print");
+
+    for (c, p) in collect_heads.iter().zip(print_heads.iter()) {
+        assert_eq!(c["name"], p["name"]);
+        assert_eq!(
+            c["axioms"], p["axioms"],
+            "the two code paths disagree on {}",
+            c["name"]
+        );
+    }
+
+    // `#print axioms` cannot report an unknown head as missing; the collect path
+    // can. That asymmetry is deliberate and documented.
+    assert!(print["result"]["missing"].as_array().unwrap().is_empty());
+}
+
+#[test]
 fn an_unbuilt_repository_is_reported_as_error_not_ok() {
     let Some(lake) = lake_path() else {
         eprintln!("skipping: no lake on PATH or in ~/.elan/bin");

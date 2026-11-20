@@ -27,6 +27,9 @@ pub struct AxiomsOptions {
     /// Explicit heads. When `None`, they are taken from the repository's audit
     /// file, then from its published claims.
     pub heads: Option<Vec<String>>,
+    /// `collect` (Lean `collectAxioms`, structured) or `print` (the
+    /// `#print axioms` path used by `scripts/audit_axioms.py`).
+    pub mode: AxiomsMode,
     pub lake: String,
     pub timeout: Duration,
     pub build: bool,
@@ -35,10 +38,35 @@ pub struct AxiomsOptions {
     pub check_sorry: bool,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum AxiomsMode {
+    /// Generate an `elab` command that calls `Lean.collectAxioms` and prints one
+    /// structured line per head, plus the `sorryAx` traversal.
+    Collect,
+    /// Generate `#print axioms <name>` lines, exactly as the reference Python
+    /// implementation does, and parse Lean's message output.
+    ///
+    /// This cannot report an unknown head as `missing`: `#print axioms` fails
+    /// elaboration for a name that does not resolve, so the run is reported as
+    /// `error` instead. It exists to cross-check against the reference
+    /// implementation's code path.
+    Print,
+}
+
+impl AxiomsMode {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            AxiomsMode::Collect => "collect",
+            AxiomsMode::Print => "print",
+        }
+    }
+}
+
 impl Default for AxiomsOptions {
     fn default() -> Self {
         Self {
             heads: None,
+            mode: AxiomsMode::Collect,
             lake: "lake".to_string(),
             timeout: Duration::from_secs(600),
             build: false,
@@ -64,7 +92,7 @@ pub fn run_axioms(
     let mut result = AxiomsResult {
         run: false,
         status: status::NOT_RUN.to_string(),
-        mode: "collect".to_string(),
+        mode: opts.mode.as_str().to_string(),
         lake: opts.lake.clone(),
         heads_source: "none".to_string(),
         imports: Vec::new(),
@@ -149,7 +177,16 @@ pub fn run_axioms(
     };
     result.sorry_scope = scope.clone();
     result.sorry_scope_source = scope_source;
-    let program = generate(&imports, &heads, &scope, opts.check_sorry);
+    if opts.mode == AxiomsMode::Print {
+        result.note = Some(
+            "print mode: `#print axioms` output only; no env.constants sorry traversal".to_string(),
+        );
+    }
+    let check_sorry = opts.check_sorry && opts.mode == AxiomsMode::Collect;
+    let program = match opts.mode {
+        AxiomsMode::Collect => generate(&imports, &heads, &scope, check_sorry),
+        AxiomsMode::Print => generate_print(&imports, &heads),
+    };
 
     let generated_path = match &opts.keep_generated {
         Some(p) => {
@@ -203,7 +240,10 @@ pub fn run_axioms(
     result.wall_ms = Some(out.wall_ms);
 
     let combined = out.combined();
-    let parsed = parse_output(&combined);
+    let parsed = match opts.mode {
+        AxiomsMode::Collect => parse_output(&combined),
+        AxiomsMode::Print => parse_print_output(&combined, &heads),
+    };
 
     result.missing = parsed.missing.clone();
     result.direct_sorry = parsed.sorry.clone();
@@ -495,6 +535,55 @@ struct Parsed {
     sorry: Option<Vec<String>>,
 }
 
+/// The `#print axioms` path, matching `scripts/audit_axioms.py`: import the
+/// modules, then one `#print axioms <name>` line per head.
+fn generate_print(imports: &[String], heads: &[String]) -> String {
+    let mut s = String::new();
+    for imp in imports {
+        s.push_str(&format!("import {imp}\n"));
+    }
+    s.push('\n');
+    for h in heads {
+        s.push_str(&format!("#print axioms {h}\n"));
+    }
+    s
+}
+
+/// Parse Lean's `#print axioms` messages.
+///
+/// `#print axioms X` fails elaboration when `X` does not resolve, so a head with
+/// no output line is reported as missing by absence — the same rule the reference
+/// implementation uses.
+fn parse_print_output(text: &str, heads: &[String]) -> Parsed {
+    let mut parsed = Parsed::default();
+    for line in text.lines() {
+        let line = line.trim();
+        if let Some(idx) = line.find("' does not depend on any axioms") {
+            if let Some(name) = trailing_quoted(&line[..idx]) {
+                parsed.axioms.insert(name, Vec::new());
+            }
+        } else if let Some(idx) = line.find("' depends on axioms:")
+            && let Some(name) = trailing_quoted(&line[..idx])
+        {
+            parsed.axioms.insert(name, bracket_list(&line[idx..]));
+        }
+    }
+    for h in heads {
+        if !parsed.axioms.contains_key(h) {
+            parsed.missing.push(h.clone());
+        }
+    }
+    parsed
+}
+
+/// The name before a closing quote, e.g. `'Ang.disproof` -> `Ang.disproof`.
+/// A name may itself end in `'`, which is why the closing quote is located by
+/// the text that follows it rather than by searching for the first quote.
+fn trailing_quoted(s: &str) -> Option<String> {
+    let name = s.trim_start().strip_prefix('\'')?.trim();
+    (!name.is_empty()).then(|| name.to_string())
+}
+
 fn parse_output(text: &str) -> Parsed {
     let mut parsed = Parsed::default();
     for line in text.lines() {
@@ -605,6 +694,57 @@ info: some unrelated line
         let parsed =
             parse_output("AUDIT axioms X: [propext]\nsome LEANAUDIT_AXIOMS_NOT_A_MARK X\n");
         assert!(parsed.axioms.is_empty());
+    }
+
+    #[test]
+    fn generates_a_print_axioms_program_like_the_reference() {
+        let program = generate_print(
+            &["Solution".to_string(), "Lean".to_string()],
+            &["Ang.disproof".to_string(), "Ang.counterexample".to_string()],
+        );
+        assert_eq!(
+            program,
+            "import Solution\nimport Lean\n\n#print axioms Ang.disproof\n#print axioms Ang.counterexample\n"
+        );
+    }
+
+    #[test]
+    fn parses_print_axioms_output() {
+        let text = "\
+'Ang.disproof' depends on axioms: [propext, Classical.choice, Quot.sound]
+'head_true' does not depend on any axioms
+'foo'' depends on axioms: [propext]
+";
+        let heads = vec![
+            "Ang.disproof".to_string(),
+            "head_true".to_string(),
+            "foo'".to_string(),
+            "absent".to_string(),
+        ];
+        let parsed = parse_print_output(text, &heads);
+        assert_eq!(parsed.axioms["Ang.disproof"].len(), 3);
+        assert!(parsed.axioms["head_true"].is_empty());
+        assert_eq!(parsed.axioms["foo'"], vec!["propext".to_string()]);
+        assert_eq!(parsed.missing, vec!["absent".to_string()]);
+        assert_eq!(parsed.sorry, None, "print mode has no sorry traversal");
+    }
+
+    #[test]
+    fn print_mode_parser_ignores_unrelated_output() {
+        let parsed = parse_print_output(
+            "info: building\nsome other 'x' depends on axioms: [a]\n",
+            &["x".to_string()],
+        );
+        // The line does not start with a quote, so it is not mistaken for output.
+        assert!(parsed.axioms.is_empty());
+        assert_eq!(parsed.missing, vec!["x".to_string()]);
+    }
+
+    #[test]
+    fn trailing_quoted_handles_names_ending_in_a_quote() {
+        assert_eq!(trailing_quoted("'Ang.x").as_deref(), Some("Ang.x"));
+        assert_eq!(trailing_quoted("'foo'").as_deref(), Some("foo'"));
+        assert_eq!(trailing_quoted("no quote"), None);
     }
 
     #[test]

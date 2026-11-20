@@ -76,6 +76,9 @@ lean-audit manifest ../team42-repos/site-percolation-square-lattice-lean
 # re-compute the head theorems' axioms with Lean (needs elan; --build first time)
 lean-audit axioms ../team42-repos/ang-subset-products-lean --build
 
+# cross-check against the reference implementation's `#print axioms` code path
+lean-audit axioms ../team42-repos/ang-subset-products-lean --mode print
+
 # forbidden-token scan (comment/string aware); exit 2 when tokens are found
 lean-audit scan ../team42-repos/ang-subset-products-lean
 

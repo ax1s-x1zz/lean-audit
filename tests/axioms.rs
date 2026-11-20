@@ -61,6 +61,20 @@ impl Fixture {
             std::fs::set_permissions(&stub, std::fs::Permissions::from_mode(0o755)).unwrap();
         }
 
+        // The same, but answering in Lean's `#print axioms` message format, to
+        // exercise `--mode print` against the reference implementation's shape.
+        let print_stub = root.join("fake-lake-print");
+        std::fs::write(
+            &print_stub,
+            "#!/bin/sh\nif [ \"$1\" = build ]; then exit 0; fi\ncat <<'OUT'\n'head_a' does not depend on any axioms\n'head_b' depends on axioms: [propext, Classical.choice, Quot.sound]\nOUT\nexit 0\n",
+        )
+        .unwrap();
+        #[cfg(unix)]
+        {
+            use std::os::unix::fs::PermissionsExt;
+            std::fs::set_permissions(&print_stub, std::fs::Permissions::from_mode(0o755)).unwrap();
+        }
+
         Self { dir }
     }
 
@@ -69,10 +83,14 @@ impl Fixture {
     }
 
     fn run(&self, extra: &[&str]) -> (serde_json::Value, i32) {
+        self.run_with(&self.path().join("fake-lake"), extra)
+    }
+
+    fn run_with(&self, lake: &Path, extra: &[&str]) -> (serde_json::Value, i32) {
         let out = Command::new(bin())
             .arg("axioms")
             .arg(self.path())
-            .args(["--lake", self.path().join("fake-lake").to_str().unwrap()])
+            .args(["--lake", lake.to_str().unwrap()])
             .args(["--format", "json"])
             .args(extra)
             .output()
@@ -158,6 +176,62 @@ fn without_keep_generated_the_temp_file_is_removed() {
     assert!(
         !PathBuf::from(file).exists(),
         "a temp generated file must be cleaned up"
+    );
+}
+
+#[test]
+fn print_mode_parses_the_reference_output_format() {
+    let fx = Fixture::new();
+    let (v, code) = fx.run_with(&fx.path().join("fake-lake-print"), &["--mode", "print"]);
+    let r = &v["result"];
+
+    assert_eq!(r["mode"], "print");
+    assert_eq!(r["run"], true);
+    assert_eq!(r["heads_source"], "audit_file");
+
+    let heads = r["heads"].as_array().unwrap();
+    assert_eq!(heads.len(), 2);
+    assert_eq!(heads[0]["name"], "head_a");
+    assert_eq!(heads[0]["axioms"], serde_json::json!([]));
+    assert_eq!(
+        heads[1]["axioms"],
+        serde_json::json!(["propext", "Classical.choice", "Quot.sound"])
+    );
+
+    // Print mode has no env.constants traversal, and says so rather than
+    // pretending the sorry check passed.
+    assert!(r["direct_sorry"].is_null());
+    assert!(
+        r["note"].as_str().unwrap().contains("print mode"),
+        "the absence of the sorry check must be stated: {}",
+        r["note"]
+    );
+
+    assert!(r["unexpected_axioms"].as_array().unwrap().is_empty());
+    assert!(r["missing"].as_array().unwrap().is_empty());
+    assert_eq!(r["status"], "ok");
+    assert_eq!(code, 0);
+}
+
+#[test]
+fn print_mode_generates_print_axioms_lines() {
+    let fx = Fixture::new();
+    let generated = fx.path().join("generated-print.lean");
+    fx.run_with(
+        &fx.path().join("fake-lake-print"),
+        &[
+            "--mode",
+            "print",
+            "--keep-generated",
+            generated.to_str().unwrap(),
+        ],
+    );
+    let program = std::fs::read_to_string(&generated).unwrap();
+    assert!(program.contains("#print axioms head_a"));
+    assert!(program.contains("#print axioms head_b"));
+    assert!(
+        !program.contains("collectAxioms"),
+        "print mode must use the reference implementation's code path"
     );
 }
 

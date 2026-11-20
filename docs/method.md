@@ -70,8 +70,18 @@ elab "#lean_audit" : command => do
 `Audit.lean` and `AxiomCheck.lean` use. It reports the axioms a declaration
 actually depends on, after elaboration.
 
-A `#print axioms` output parser is also provided as a compatibility mode, because
-that is what `scripts/audit_axioms.py` relies on.
+A `#print axioms` output parser is also provided as a compatibility mode
+(`--mode print`), because that is what `scripts/audit_axioms.py` relies on. In
+that mode the generated file is exactly `import <modules>` followed by one
+`#print axioms <name>` line per head, and the tool parses Lean's messages. The two
+modes are independent Lean code paths, and `tests/lean.rs` asserts that they agree
+on every head of the fixture project.
+
+Print mode cannot report an unknown head as `missing`: `#print axioms X` fails
+elaboration when `X` does not resolve, so the run is reported as `error` instead.
+It also has no `env.constants` traversal, and says so in the report rather than
+leaving the `sorry` check looking passed. `collect` is the default for both
+reasons.
 
 ### 3.1 Three decisions that keep the run honest
 

@@ -67,6 +67,10 @@ enum Command {
         /// audit file, then to its published claims.
         #[arg(long, value_delimiter = ',')]
         heads: Option<Vec<String>>,
+        /// `collect` (Lean `collectAxioms`, structured) or `print` (the
+        /// `#print axioms` path used by the reference `audit_axioms.py`).
+        #[arg(long, value_enum, default_value_t = AxiomsModeArg::Collect)]
+        mode: AxiomsModeArg,
         /// The lake executable to invoke.
         #[arg(long, default_value = "lake")]
         lake: String,
@@ -113,6 +117,14 @@ enum Command {
 enum Format {
     Md,
     Json,
+}
+
+#[derive(Clone, Copy, ValueEnum)]
+enum AxiomsModeArg {
+    /// Structured `Lean.collectAxioms` output.
+    Collect,
+    /// The `#print axioms` path used by the reference `audit_axioms.py`.
+    Print,
 }
 
 fn main() -> Result<()> {
@@ -200,6 +212,7 @@ fn main() -> Result<()> {
         Command::Axioms {
             path,
             heads,
+            mode,
             lake,
             timeout,
             build,
@@ -218,6 +231,10 @@ fn main() -> Result<()> {
             let claims = claims::collect(&path, &report);
             let opts = axioms::AxiomsOptions {
                 heads,
+                mode: match mode {
+                    AxiomsModeArg::Collect => axioms::AxiomsMode::Collect,
+                    AxiomsModeArg::Print => axioms::AxiomsMode::Print,
+                },
                 lake,
                 timeout: std::time::Duration::from_secs(timeout),
                 build,
