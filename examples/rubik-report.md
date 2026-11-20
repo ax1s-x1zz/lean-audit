@@ -2,7 +2,7 @@
 
 > **This report verifies reproducibility of published claims. It does not establish mathematical correctness.**
 
-schema `lean-audit/v1` · tool `0.1.0` · generated `2026-11-17T04:09:16Z`
+schema `lean-audit/v1` · tool `0.1.0` · generated `2026-11-20T02:11:15Z`
 
 ## Source
 
@@ -77,13 +77,11 @@ schema `lean-audit/v1` · tool `0.1.0` · generated `2026-11-17T04:09:16Z`
 - expected direct `sorry` users: 0
 - allowed axioms: `propext`, `Classical.choice`, `Quot.sound`
 
-## Manifests (presence only)
+## Manifests
 
-| file | entries | status |
-|---|---|---|
-| `SOURCE_MANIFEST.json` | 14 | parsed_only |
-
-_Hash verification is not run yet (see `NEXT.md`, M2)._
+| file | kind | entries | checked | matched | missing | mismatched | claims | status |
+|---|---|---|---|---|---|---|---|---|
+| `SOURCE_MANIFEST.json` | `source_manifest` | 939 | 939 | 939 | 0 | 0 | ? | ok |
 
 ## Receipts
 

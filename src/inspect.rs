@@ -11,23 +11,18 @@ use walkdir::WalkDir;
 use crate::graph;
 use crate::lean_src::{self, FORBIDDEN_TOKENS};
 use crate::model::*;
+use crate::util;
 
 const STANDARD_AXIOMS: [&str; 3] = ["propext", "Classical.choice", "Quot.sound"];
-const SKIP_DIRS: [&str; 6] = [
-    "lake-packages",
-    ".lake",
-    "target",
-    "build",
-    ".git",
-    "node_modules",
-];
 
 pub struct InspectOptions {
     pub emit_graph: Option<PathBuf>,
+    /// Recompute manifest SHA-256 hashes. Cheap enough to leave on by default.
+    pub verify_hashes: bool,
 }
 
 /// Inspect every immediate subdirectory of `root` that looks like a Lean project.
-pub fn batch(root: &Path) -> Result<Vec<Report>> {
+pub fn batch(root: &Path, verify_hashes: bool) -> Result<Vec<Report>> {
     if !root.is_dir() {
         anyhow::bail!("not a directory: {}", root.display());
     }
@@ -42,7 +37,13 @@ pub fn batch(root: &Path) -> Result<Vec<Report>> {
 
     let mut reports = Vec::new();
     for dir in dirs {
-        reports.push(inspect(&dir, &InspectOptions { emit_graph: None })?);
+        reports.push(inspect(
+            &dir,
+            &InspectOptions {
+                emit_graph: None,
+                verify_hashes,
+            },
+        )?);
     }
     Ok(reports)
 }
@@ -124,7 +125,7 @@ pub fn inspect(root: &Path, opts: &InspectOptions) -> Result<Report> {
             },
         },
         audit_impl: detect_audit_impl(root),
-        manifests: discover_manifests(root),
+        manifests: crate::manifest::discover_and_verify(root, opts.verify_hashes),
         receipts: parse_receipts(root),
         scan,
         warnings,
@@ -152,12 +153,7 @@ fn discover_modules(root: &Path) -> (Vec<Module>, Vec<String>) {
     let walker = WalkDir::new(root)
         .sort_by_file_name()
         .into_iter()
-        .filter_entry(|e| {
-            !(e.file_type().is_dir()
-                && e.file_name()
-                    .to_str()
-                    .is_some_and(|n| SKIP_DIRS.contains(&n)))
-        });
+        .filter_entry(util::keep_entry);
 
     for entry in walker.filter_map(Result::ok) {
         let path = entry.path();
@@ -720,58 +716,6 @@ fn is_name_char(c: char) -> bool {
 }
 
 // ── manifests ──────────────────────────────────────────────────────────────
-
-fn discover_manifests(root: &Path) -> Vec<ManifestInfo> {
-    let candidates = [
-        "SOURCE_MANIFEST.json",
-        "data/AXIOM_AUDIT.json",
-        "MANUSCRIPT_BINDING.json",
-        "MANIFEST.sha256",
-        "data/MANIFEST.sha256",
-        "data/FLOW_MANIFEST.sha256",
-        "SHA256SUMS",
-    ];
-
-    let mut out = Vec::new();
-    for rel in candidates {
-        let path = root.join(rel);
-        if !path.is_file() {
-            continue;
-        }
-        let entries = if rel.ends_with(".json") {
-            count_json_entries(&path)
-        } else {
-            count_sha256_lines(&path)
-        };
-        out.push(ManifestInfo {
-            file: rel.to_string(),
-            entries,
-            status: status::PARSED_ONLY.to_string(),
-            note: None,
-        });
-    }
-    out
-}
-
-fn count_json_entries(path: &Path) -> Option<usize> {
-    let text = std::fs::read_to_string(path).ok()?;
-    let value: serde_json::Value = serde_json::from_str(&text).ok()?;
-    match &value {
-        serde_json::Value::Array(a) => Some(a.len()),
-        serde_json::Value::Object(o) => Some(o.len()),
-        _ => None,
-    }
-}
-
-fn count_sha256_lines(path: &Path) -> Option<usize> {
-    let text = std::fs::read_to_string(path).ok()?;
-    Some(
-        text.lines()
-            .map(str::trim)
-            .filter(|l| !l.is_empty() && !l.starts_with('#'))
-            .count(),
-    )
-}
 
 // ── receipts ───────────────────────────────────────────────────────────────
 

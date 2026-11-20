@@ -158,10 +158,29 @@ pub struct AuditImpl {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ManifestInfo {
     pub file: String,
-    /// Number of entries, when countable without hashing.
+    /// `source_manifest`, `sha256sum`, `axiom_audit`, `manuscript_binding`, `unknown`.
+    pub kind: String,
+    /// Number of hash entries the manifest declares.
     pub entries: Option<usize>,
+    /// Number of entries actually hashed. `None` when verification did not run.
+    pub checked: Option<usize>,
+    pub matched: Option<usize>,
+    pub mismatched: Vec<HashMismatch>,
+    /// Entries declared by the manifest that are not present in the checkout.
+    pub missing: Vec<String>,
+    /// `AUDIT axioms` claims bound by an axiom-audit file. Re-computation is M3.
+    pub axiom_claims: Option<usize>,
     pub status: String,
     pub note: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct HashMismatch {
+    pub path: String,
+    pub expected: String,
+    pub actual: String,
+    pub bytes_expected: Option<u64>,
+    pub bytes_actual: Option<u64>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

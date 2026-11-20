@@ -18,13 +18,38 @@ checked cheaply, and records agreement or disagreement.
 | 4 | the head theorems depend only on `propext`, `Classical.choice`, `Quot.sound` | generate a Lean file, call `Lean.collectAxioms` for each head, run `lake env lean` | M3 |
 | 5 | no declaration of the library uses `sorry` directly | `env.constants.map₁` traversal + `getUsedConstantsAsSet.contains ``sorryAx` | M3 |
 | 6 | `receipts/` numbers (modules built, errors, `sorry` warnings) | re-run and compare with the parsed claims | M6 |
-| 7 | `SOURCE_MANIFEST.json` / `MANIFEST.sha256` hashes | recompute SHA-256 over the checkout | M2 |
-| 8 | `data/AXIOM_AUDIT.json` source-hash and toolchain binding | recompute and compare | M2 |
+| 7 | `SOURCE_MANIFEST.json` / `MANIFEST.sha256` / `SHA256SUMS` hashes | recompute SHA-256 over the checkout | **M2, implemented** |
+| 8 | `data/AXIOM_AUDIT.json` source-hash and toolchain binding | recompute and compare | **M2, implemented** |
 
-M1 and M3 are implemented. M2 and M6 are not (see `NEXT.md`); until they are, the
-corresponding status is `parsed_only` or `not_run`, never `ok`.
+M1 and M2 are implemented; M3 is next; M6 is not. Until a check runs, its status
+is `parsed_only` or `not_run` — never `ok`. `--no-verify` demonstrates this: the
+entry counts are still reported, but `checked` stays `null` and the status stays
+`parsed_only`.
 
-## 2. How axiom checking is done — and why it is not string search
+## 2. How manifest verification resolves paths
+
+Manifests are discovered by name anywhere in the tree (`SOURCE_MANIFEST.json`,
+`AXIOM_AUDIT.json`, `MANUSCRIPT_BINDING.json`, `SHA256SUMS`, `*.sha256`), and four
+shapes are understood:
+
+| shape | example |
+|---|---|
+| `{"files": [{path, bytes, sha256}]}` | `site-percolation-square-lattice-lean/SOURCE_MANIFEST.json` |
+| `{"source_files_sha256": {path: sha256}}` | `rubik-stm-entropy-lean/SOURCE_MANIFEST.json` |
+| `sha256sum` lines | `data/small-native/MANIFEST.sha256` |
+| `{"Lean_source_hashes": {...}, "general_declarations_exact_axioms": {...}}` | `data/AXIOM_AUDIT.json` |
+
+Entry paths follow two conventions, and both appear in the same repository:
+`sha256sum` files are normally relative to their own directory
+(`data/small-native/MANIFEST.sha256`), but `checker/sharded/PATCH.sha256` and the
+JSON manifests use repository-root-relative paths. A file exists in only one
+place, so each entry is resolved against the manifest's directory and then the
+repository root; which base was used is recorded in the report's `note`. An entry
+that resolves nowhere is reported as **missing**, never silently skipped.
+
+`bytes` is compared as well as the hash when the manifest declares it.
+
+## 3. How axiom checking is done — and why it is not string search
 
 `lean-audit` generates a small Lean file and runs it with `lake env lean`:
 
@@ -48,7 +73,7 @@ actually depends on, after elaboration.
 A `#print axioms` output parser is also provided as a compatibility mode, because
 that is what `scripts/audit_axioms.py` relies on.
 
-### 2.1 The forbidden-token scan
+### 3.1 The forbidden-token scan
 
 For `sorry`, `admit`, `axiom`, `unsafe`, `implemented_by` and `extern` the scan is
 **lexical but comment- and string-aware**. The repository's own
@@ -71,7 +96,7 @@ doc-comment copy of a theorem whose body is `:= by sorry`, plus three real `sorr
 tokens in the actual challenge statements. The scan reports exactly the three real
 ones.
 
-## 3. What it does NOT verify
+## 4. What it does NOT verify
 
 - **It does not establish mathematical correctness.** A successful run means the
   published verification facts still hold; it says nothing about whether the
@@ -86,7 +111,7 @@ ones.
 - **It does not trust compiled artefacts differently.** It inherits exactly the
   same trusted base as the repository's own checks.
 
-## 4. Status values
+## 5. Status values
 
 | value | meaning |
 |---|---|
@@ -98,7 +123,7 @@ ones.
 | `absent` | the artefact (audit file, manifest, receipts) does not exist |
 | `error` | the tool itself failed |
 
-## 5. Known limitations
+## 6. Known limitations
 
 | limitation | effect | policy |
 |---|---|---|
@@ -108,8 +133,9 @@ ones.
 | `receipts/**/build_summary.txt` labels differ per repository | e.g. `modules built (lines '[k/n] Built'): 3683` vs `lines '[k/n] Built <module>' in build.log (…): 25` | the matcher keys on the stable parts and always requires a trailing integer |
 | Lean versions differ across the family | 4.33.0, 4.33.1 and 4.35.0 all appear | reported, not normalised; drift is a finding, not an error |
 | `lakefile.lean` (Lean, not TOML) | targets and requires are not parsed | reported as `unsupported` |
+| manifest entry path base | `sha256sum` files may be self-relative or root-relative | resolved against both; the chosen base is recorded in `note` |
 
-## 6. Honesty rules
+## 7. Honesty rules
 
 These are enforced by review, and encoded in `AGENTS.md`:
 

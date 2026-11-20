@@ -137,17 +137,85 @@ fn site_percolation_reports_python_audit_and_pins_lean_435() {
     assert_eq!(v["audit_impl"]["kind"], "python_script");
     assert_eq!(v["audit_impl"]["heads_source"], "cli");
     assert_eq!(v["toolchain"]["lean_version"], "4.35.0");
-    // Manifests are discovered but not verified yet.
+
     let manifests = v["manifests"].as_array().unwrap();
-    assert!(
+    let find = |name: &str| {
         manifests
             .iter()
-            .any(|m| m["file"] == "SOURCE_MANIFEST.json")
+            .find(|m| m["file"] == name)
+            .unwrap_or_else(|| panic!("manifest {name} not discovered"))
+    };
+
+    // A fully verified source manifest: every published hash matches.
+    let source = find("SOURCE_MANIFEST.json");
+    assert_eq!(source["kind"], "source_manifest");
+    assert_eq!(source["entries"], 105);
+    assert_eq!(source["checked"], 105);
+    assert_eq!(source["matched"], 105);
+    assert_eq!(source["status"], "ok");
+
+    // The axiom audit binds both Lean source hashes and recorded axiom lists.
+    let audit = find("data/AXIOM_AUDIT.json");
+    assert_eq!(audit["kind"], "axiom_audit");
+    assert_eq!(audit["matched"], 54);
+    assert_eq!(audit["status"], "ok");
+    assert_eq!(
+        audit["axiom_claims"], 42,
+        "24 general + 18 small-native axiom claims"
     );
-    assert!(
-        manifests.iter().all(|m| m["status"] == "parsed_only"),
-        "hash verification is M2 and must not be reported as ok"
-    );
+
+    // The original 6x6 law/flow data is distributed with the paper, not the repo,
+    // so those entries are reported missing rather than skipped.
+    let laws = find("data/MANIFEST.sha256");
+    assert_eq!(laws["missing"].as_array().map(Vec::len), Some(11));
+    assert_eq!(laws["status"], "mismatch");
+
+    // One recorded hash does not match the shipped file. This is a genuine
+    // discrepancy: the file is unmodified relative to git HEAD.
+    let patch = find("checker/sharded/PATCH.sha256");
+    assert_eq!(patch["mismatched"].as_array().map(Vec::len), Some(1));
+    assert_eq!(patch["matched"], 2);
+    assert_eq!(patch["status"], "mismatch");
+}
+
+#[test]
+fn rubik_source_manifest_verifies_completely() {
+    let Some(root) = repos_root() else {
+        eprintln!("skipping: ../team42-repos not present");
+        return;
+    };
+    let Some(v) = inspect_json(&root.join("rubik-stm-entropy-lean")) else {
+        eprintln!("skipping: could not inspect");
+        return;
+    };
+    let m = &v["manifests"][0];
+    assert_eq!(m["file"], "SOURCE_MANIFEST.json");
+    assert_eq!(m["entries"], 939);
+    assert_eq!(m["matched"], 939);
+    assert_eq!(m["status"], "ok");
+}
+
+#[test]
+fn skipping_verification_is_reported_as_parsed_only_never_ok() {
+    let Some(root) = repos_root() else {
+        eprintln!("skipping: ../team42-repos not present");
+        return;
+    };
+    let out = Command::new(env!("CARGO_BIN_EXE_lean-audit"))
+        .arg("inspect")
+        .arg(root.join("rubik-stm-entropy-lean"))
+        .args(["--format", "json", "--no-verify"])
+        .output()
+        .unwrap();
+    let v: serde_json::Value = serde_json::from_slice(&out.stdout).unwrap();
+    for m in v["manifests"].as_array().unwrap() {
+        assert_eq!(
+            m["status"], "parsed_only",
+            "an unverified manifest must never be reported as ok"
+        );
+        assert!(m["checked"].is_null());
+        assert_eq!(m["entries"], 939, "entry count is still reported");
+    }
 }
 
 #[test]

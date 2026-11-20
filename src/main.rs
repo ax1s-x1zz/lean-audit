@@ -1,10 +1,13 @@
 //! `lean-audit` — read-only auditor for Lean 4 research repositories.
 
 mod graph;
+mod hash;
 mod inspect;
 mod lean_src;
+mod manifest;
 mod model;
 mod report;
+mod util;
 
 use std::path::PathBuf;
 
@@ -42,6 +45,17 @@ enum Command {
         /// Also write the module import graph as JSON to this path.
         #[arg(long)]
         emit_graph: Option<PathBuf>,
+        /// Skip SHA-256 re-computation of the repository's manifests.
+        #[arg(long)]
+        no_verify: bool,
+    },
+    /// Verify the repository's manifests by re-computing their SHA-256 hashes.
+    Manifest {
+        path: PathBuf,
+        #[arg(long, value_enum, default_value_t = Format::Md)]
+        format: Format,
+        #[arg(long)]
+        out: Option<PathBuf>,
     },
     /// Comment- and string-aware scan for forbidden tokens (sorry, axiom, unsafe, ...).
     Scan {
@@ -59,6 +73,9 @@ enum Command {
         format: Format,
         #[arg(long)]
         out: Option<PathBuf>,
+        /// Skip SHA-256 re-computation of the repositories' manifests.
+        #[arg(long)]
+        no_verify: bool,
     },
 }
 
@@ -76,8 +93,12 @@ fn main() -> Result<()> {
             format,
             out,
             emit_graph,
+            no_verify,
         } => {
-            let opts = inspect::InspectOptions { emit_graph };
+            let opts = inspect::InspectOptions {
+                emit_graph,
+                verify_hashes: !no_verify,
+            };
             let report = inspect::inspect(&path, &opts)?;
             let rendered = match format {
                 Format::Json => report::to_json(&report)?,
@@ -91,8 +112,44 @@ fn main() -> Result<()> {
                 std::process::exit(2);
             }
         }
+        Command::Manifest { path, format, out } => {
+            let report = inspect::inspect(
+                &path,
+                &inspect::InspectOptions {
+                    emit_graph: None,
+                    verify_hashes: true,
+                },
+            )?;
+            let manifest_report = report::ManifestReport {
+                schema: format!("{SCHEMA}/manifest"),
+                generated_at: model::now_iso8601(),
+                tool_version: env!("CARGO_PKG_VERSION").to_string(),
+                project: report.project.clone(),
+                manifests: report.manifests.clone(),
+                disclaimer: DISCLAIMER.to_string(),
+            };
+            let rendered = match format {
+                Format::Json => report::to_json(&manifest_report)?,
+                Format::Md => report::manifest_markdown(&manifest_report),
+            };
+            emit(&rendered, out.as_deref())?;
+
+            if manifest_report
+                .manifests
+                .iter()
+                .any(|m| m.status == "mismatch")
+            {
+                std::process::exit(3);
+            }
+        }
         Command::Scan { path, format, out } => {
-            let report = inspect::inspect(&path, &inspect::InspectOptions { emit_graph: None })?;
+            let report = inspect::inspect(
+                &path,
+                &inspect::InspectOptions {
+                    emit_graph: None,
+                    verify_hashes: false,
+                },
+            )?;
             let scan_report = report::ScanReport {
                 schema: format!("{SCHEMA}/scan"),
                 generated_at: model::now_iso8601(),
@@ -110,8 +167,13 @@ fn main() -> Result<()> {
                 std::process::exit(2);
             }
         }
-        Command::Batch { dir, format, out } => {
-            let reports = inspect::batch(&dir)?;
+        Command::Batch {
+            dir,
+            format,
+            out,
+            no_verify,
+        } => {
+            let reports = inspect::batch(&dir, !no_verify)?;
             if reports.is_empty() {
                 anyhow::bail!("no Lean projects found under {}", dir.display());
             }

@@ -175,22 +175,12 @@ pub fn inspect_markdown(r: &Report) -> String {
     }
 
     // Manifests
-    s.push_str("\n## Manifests (presence only)\n\n");
+    s.push_str("\n## Manifests\n\n");
     if r.manifests.is_empty() {
         s.push_str("_none found_\n");
     } else {
-        s.push_str("| file | entries | status |\n|---|---|---|\n");
-        for m in &r.manifests {
-            s.push_str(&format!(
-                "| `{}` | {} | {} |\n",
-                m.file,
-                m.entries
-                    .map(|e| e.to_string())
-                    .unwrap_or_else(|| "?".to_string()),
-                m.status
-            ));
-        }
-        s.push_str("\n_Hash verification is not run yet (see `NEXT.md`, M2)._\n");
+        s.push_str(&manifest_table(&r.manifests));
+        s.push_str(&manifest_details(&r.manifests));
     }
 
     // Receipts
@@ -299,8 +289,8 @@ pub fn batch_markdown(b: &BatchReport) -> String {
         b.generated_at
     ));
 
-    s.push_str("| project | lean | modules | edges | depth | audit | commands | heads | flags | manifests | claims |\n");
-    s.push_str("|---|---|---|---|---|---|---|---|---|---|---|\n");
+    s.push_str("| project | lean | modules | depth | audit | commands | heads | flags | hashes | claims |\n");
+    s.push_str("|---|---|---|---|---|---|---|---|---|---|\n");
     for r in &b.repos {
         let claims: usize = r
             .receipts
@@ -309,11 +299,10 @@ pub fn batch_markdown(b: &BatchReport) -> String {
             .map(|x| x.claimed_axioms.len())
             .sum();
         s.push_str(&format!(
-            "| `{}` | {} | {} | {} | {} | `{}` | {} | {} | {} | {} | {} |\n",
+            "| `{}` | {} | {} | {} | `{}` | {} | {} | {} | {} | {} |\n",
             r.project,
             r.toolchain.lean_version.as_deref().unwrap_or("—"),
             r.modules.count,
-            r.modules.import_edges_internal,
             r.modules
                 .max_import_depth
                 .map(|d| d.to_string())
@@ -330,7 +319,7 @@ pub fn batch_markdown(b: &BatchReport) -> String {
                 .map(|h| h.len().to_string())
                 .unwrap_or_else(|| "—".to_string()),
             r.scan.flags.len(),
-            r.manifests.len(),
+            hash_summary(r),
             claims,
         ));
     }
@@ -340,9 +329,7 @@ pub fn batch_markdown(b: &BatchReport) -> String {
         "- `heads` is the number of head theorems found in the repository's own audit file.\n",
     );
     s.push_str("- `claims` is the number of published `AUDIT axioms <name>: [...]` lines parsed from `receipts/`. Re-computing them is M3.\n");
-    s.push_str(
-        "- `manifests` counts manifest files discovered; their hashes are not verified yet (M2).\n",
-    );
+    s.push_str("- `hashes` is `matched/checked` across every manifest in the repository; `⚠n` counts entries that are missing from the checkout or whose recomputed hash differs.\n");
     s.push_str("- `flags` counts forbidden tokens (`sorry`, `admit`, `axiom`, `unsafe`, `implemented_by`, `extern`) in comment- and string-stripped source.\n");
     s.push_str(&format!("\n---\n\n_{}_\n", b.disclaimer));
     s
@@ -356,6 +343,125 @@ pub struct ScanReport {
     pub project: String,
     pub scan: ScanSummary,
     pub disclaimer: String,
+}
+
+#[derive(Serialize)]
+pub struct ManifestReport {
+    pub schema: String,
+    pub generated_at: String,
+    pub tool_version: String,
+    pub project: String,
+    pub manifests: Vec<ManifestInfo>,
+    pub disclaimer: String,
+}
+
+pub fn manifest_markdown(r: &ManifestReport) -> String {
+    let mut s = String::new();
+    s.push_str(&format!("# lean-audit manifest report — {}\n\n", r.project));
+    s.push_str(&format!("> **{}**\n\n", r.disclaimer));
+    s.push_str(&format!(
+        "tool `{}` · generated `{}`\n\n",
+        r.tool_version, r.generated_at
+    ));
+    if r.manifests.is_empty() {
+        s.push_str("_no manifests found_\n");
+    } else {
+        s.push_str(&manifest_table(&r.manifests));
+        s.push_str(&manifest_details(&r.manifests));
+    }
+    s.push_str(&format!("\n---\n\n_{}_\n", r.disclaimer));
+    s
+}
+
+fn manifest_table(manifests: &[ManifestInfo]) -> String {
+    let mut s = String::from(
+        "| file | kind | entries | checked | matched | missing | mismatched | claims | status |\n|---|---|---|---|---|---|---|---|---|\n",
+    );
+    for m in manifests {
+        s.push_str(&format!(
+            "| `{}` | `{}` | {} | {} | {} | {} | {} | {} | {} |\n",
+            m.file,
+            m.kind,
+            opt_num(m.entries),
+            opt_num(m.checked),
+            opt_num(m.matched),
+            m.missing.len(),
+            m.mismatched.len(),
+            opt_num(m.axiom_claims),
+            m.status,
+        ));
+    }
+    s
+}
+
+fn manifest_details(manifests: &[ManifestInfo]) -> String {
+    let mut s = String::new();
+    for m in manifests {
+        if !m.missing.is_empty() {
+            s.push_str(&format!(
+                "\n**Not present in this checkout** (`{}`, {} entries):\n\n",
+                m.file,
+                m.missing.len()
+            ));
+            for path in m.missing.iter().take(20) {
+                s.push_str(&format!("- `{path}`\n"));
+            }
+            if m.missing.len() > 20 {
+                s.push_str(&format!("- … and {} more\n", m.missing.len() - 20));
+            }
+        }
+        if !m.mismatched.is_empty() {
+            s.push_str(&format!(
+                "\n**Recomputed hash differs** (`{}`, {} entries):\n\n",
+                m.file,
+                m.mismatched.len()
+            ));
+            for mm in m.mismatched.iter().take(20) {
+                s.push_str(&format!(
+                    "- `{}`: expected `{}`, got `{}`\n",
+                    mm.path,
+                    short(&mm.expected),
+                    short(&mm.actual)
+                ));
+            }
+            if m.mismatched.len() > 20 {
+                s.push_str(&format!("- … and {} more\n", m.mismatched.len() - 20));
+            }
+        }
+        if let Some(note) = &m.note {
+            s.push_str(&format!("\n_{} — {}_\n", m.file, note));
+        }
+    }
+    s
+}
+
+fn short(hash: &str) -> String {
+    if hash.len() > 12 {
+        format!("{}…", &hash[..12])
+    } else {
+        hash.to_string()
+    }
+}
+
+/// `matched/checked` across every manifest, with a warning marker when any entry
+/// is missing or differs.
+fn hash_summary(r: &Report) -> String {
+    let mut checked = 0usize;
+    let mut matched = 0usize;
+    let mut problems = 0usize;
+    for m in &r.manifests {
+        checked += m.checked.unwrap_or(0);
+        matched += m.matched.unwrap_or(0);
+        problems += m.mismatched.len() + m.missing.len();
+    }
+    if checked == 0 && problems == 0 {
+        return "—".to_string();
+    }
+    if problems > 0 {
+        format!("{matched}/{checked} ⚠{problems}")
+    } else {
+        format!("{matched}/{checked}")
+    }
 }
 
 pub fn scan_markdown(r: &ScanReport) -> String {

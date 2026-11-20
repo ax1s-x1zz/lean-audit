@@ -53,8 +53,8 @@ Every report carries this disclaimer:
 
 ## Status
 
-Early, but working against real repositories. `inspect`, `scan` and `batch` are
-implemented; axiom re-computation (`axioms`) is next. See
+Early, but working against real repositories. `inspect`, `manifest`, `scan` and
+`batch` are implemented; axiom re-computation (`axioms`) is next. See
 `docs/requirements.md` for the reference-implementation analysis,
 `docs/method.md` for the exact verification contract, and `NEXT.md` for the
 working queue.
@@ -69,6 +69,9 @@ lean-audit inspect ../team42-repos/rubik-stm-entropy-lean
 lean-audit inspect ../team42-repos/rubik-stm-entropy-lean --format json --out audit.json
 lean-audit inspect ../team42-repos/rubik-stm-entropy-lean --emit-graph graph.json
 
+# re-compute every manifest hash in the repository
+lean-audit manifest ../team42-repos/site-percolation-square-lattice-lean
+
 # forbidden-token scan (comment/string aware); exit 2 when tokens are found
 lean-audit scan ../team42-repos/ang-subset-products-lean
 
@@ -76,16 +79,26 @@ lean-audit scan ../team42-repos/ang-subset-products-lean
 lean-audit batch ../team42-repos
 ```
 
-Exit code is `0` on success and `2` when forbidden tokens are found, so the tool
-can gate CI. Finding no tokens is not a correctness claim.
+Exit codes: `0` success, `2` forbidden tokens found, `3` manifest mismatch. The
+tool is therefore usable as a CI gate. Finding nothing is not a correctness claim.
 
 ### Example output
 
 `examples/team42-report.md` is a real batch run over five TEAM42 research
-repositories. It reports, among other things, that the family currently spans
-**three Lean toolchains** (4.33.0, 4.33.1, 4.35.0) and that one repository
-documents its axiom check manually in the README rather than enforcing it at
-build time.
+repositories. `examples/site-percolation-manifest.md` is the manifest report for
+one of them. Together they report, among other things:
+
+- the family spans **three Lean toolchains** (4.33.0, 4.33.1, 4.35.0);
+- one repository documents its axiom check manually in the README rather than
+  enforcing it at build time;
+- `rubik-stm-entropy-lean` verifies **939/939** published source hashes, and
+  `site-percolation-square-lattice-lean` verifies **105/105**;
+- in `site-percolation-square-lattice-lean`, the hash recorded in
+  `checker/sharded/PATCH.sha256` for `checker/sharded/shards.py` **does not match
+  the shipped file**, which is unmodified relative to git HEAD;
+- 15 entries in `data/MANIFEST.sha256` and `data/FLOW_MANIFEST.sha256` are **not
+  present in the checkout** — the README states that data is distributed with the
+  paper.
 
 ## License
 

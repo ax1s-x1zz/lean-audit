@@ -1,12 +1,12 @@
 {
   "schema": "lean-audit/v1/batch",
-  "generated_at": "2026-11-17T04:09:16Z",
+  "generated_at": "2026-11-20T02:11:14Z",
   "tool_version": "0.1.0",
   "root": "/home/x1zz/team42-repos",
   "repos": [
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-17T04:09:15Z",
+      "generated_at": "2026-11-20T02:11:13Z",
       "tool_version": "0.1.0",
       "project": "AngCounterexample",
       "source": {
@@ -381,7 +381,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-17T04:09:15Z",
+      "generated_at": "2026-11-20T02:11:13Z",
       "tool_version": "0.1.0",
       "project": "coth_sums_barnes",
       "source": {
@@ -535,7 +535,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-17T04:09:15Z",
+      "generated_at": "2026-11-20T02:11:13Z",
       "tool_version": "0.1.0",
       "project": "feigenbaum_scalar_duality",
       "source": {
@@ -703,7 +703,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-17T04:09:15Z",
+      "generated_at": "2026-11-20T02:11:13Z",
       "tool_version": "0.1.0",
       "project": "RubikSTM",
       "source": {
@@ -896,8 +896,14 @@
       "manifests": [
         {
           "file": "SOURCE_MANIFEST.json",
-          "entries": 14,
-          "status": "parsed_only",
+          "kind": "source_manifest",
+          "entries": 939,
+          "checked": 939,
+          "matched": 939,
+          "mismatched": [],
+          "missing": [],
+          "axiom_claims": null,
+          "status": "ok",
           "note": null
         }
       ],
@@ -918,7 +924,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-17T04:09:16Z",
+      "generated_at": "2026-11-20T02:11:14Z",
       "tool_version": "0.1.0",
       "project": "site_perc_upper",
       "source": {
@@ -1117,26 +1123,99 @@
       "manifests": [
         {
           "file": "SOURCE_MANIFEST.json",
-          "entries": 2,
-          "status": "parsed_only",
+          "kind": "source_manifest",
+          "entries": 105,
+          "checked": 105,
+          "matched": 105,
+          "mismatched": [],
+          "missing": [],
+          "axiom_claims": null,
+          "status": "ok",
           "note": null
         },
         {
+          "file": "checker/sharded/PATCH.sha256",
+          "kind": "sha256sum",
+          "entries": 3,
+          "checked": 3,
+          "matched": 2,
+          "mismatched": [
+            {
+              "path": "checker/sharded/shards.py",
+              "expected": "ebffeff982904971148461c0bcc9f74169907c0e3701c383c893ad0ddea48d6d",
+              "actual": "29a58b724bc44fe4cef3038ea2edfd27d5334214a82f70ef6b42c7701101ce99",
+              "bytes_expected": null,
+              "bytes_actual": 21633
+            }
+          ],
+          "missing": [],
+          "axiom_claims": null,
+          "status": "mismatch",
+          "note": "3 entries resolved relative to the repository root"
+        },
+        {
           "file": "data/AXIOM_AUDIT.json",
-          "entries": 16,
-          "status": "parsed_only",
+          "kind": "axiom_audit",
+          "entries": 54,
+          "checked": 54,
+          "matched": 54,
+          "mismatched": [],
+          "missing": [],
+          "axiom_claims": 42,
+          "status": "ok",
+          "note": "also binds recorded axiom lists; re-computation is M3; 54 entries resolved relative to the repository root"
+        },
+        {
+          "file": "data/FLOW_MANIFEST.sha256",
+          "kind": "sha256sum",
+          "entries": 4,
+          "checked": 0,
+          "matched": 0,
+          "mismatched": [],
+          "missing": [
+            "s1_nodes.bin",
+            "s1_edges.bin",
+            "s2_nodes.bin",
+            "s2_edges.bin"
+          ],
+          "axiom_claims": null,
+          "status": "mismatch",
           "note": null
         },
         {
           "file": "data/MANIFEST.sha256",
+          "kind": "sha256sum",
           "entries": 11,
-          "status": "parsed_only",
+          "checked": 0,
+          "matched": 0,
+          "mismatched": [],
+          "missing": [
+            "enum.in",
+            "group.perm",
+            "laws.bin",
+            "masses_s1.bin",
+            "masses_s2.bin",
+            "params.json",
+            "region.json",
+            "s1_edges.bin",
+            "s1_nodes.bin",
+            "s2_edges.bin",
+            "s2_nodes.bin"
+          ],
+          "axiom_claims": null,
+          "status": "mismatch",
           "note": null
         },
         {
-          "file": "data/FLOW_MANIFEST.sha256",
-          "entries": 4,
-          "status": "parsed_only",
+          "file": "data/small-native/MANIFEST.sha256",
+          "kind": "sha256sum",
+          "entries": 12,
+          "checked": 12,
+          "matched": 12,
+          "mismatched": [],
+          "missing": [],
+          "axiom_claims": null,
+          "status": "ok",
           "note": null
         }
       ],
