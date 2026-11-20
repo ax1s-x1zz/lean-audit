@@ -159,6 +159,7 @@ ones.
 | manifest entry path base | `sha256sum` files may be self-relative or root-relative | resolved against both; the chosen base is recorded in `note` |
 | `axioms` needs the modules built | `lake env lean` cannot import unbuilt modules | reported as `error` with the Lean output tail, never as `ok`; `--build` runs `lake build` first |
 | Lean versions differ across the family | 4.33.0, 4.33.1 and 4.35.0 all appear | the toolchain in `lean-toolchain` is what elan selects; drift is a finding, not an error |
+| `--build` runs `lake build` in the target repository | two concurrent builds in the same repository race on `.lake` and produce spurious `failed to open file ...olean` errors | observed during development: run one build at a time per repository; the errors are the environment's, not the repository's |
 
 ## 8. Honesty rules
 
