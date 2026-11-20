@@ -238,6 +238,69 @@ pub struct BatchReport {
     pub disclaimer: String,
 }
 
+// ── M3: axiom re-computation ────────────────────────────────────────────────
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AxiomsResult {
+    /// Whether Lean was actually executed.
+    pub run: bool,
+    pub status: String,
+    /// `collect` (Lean `collectAxioms`) — see `docs/method.md` §3.
+    pub mode: String,
+    pub lake: String,
+    /// `cli`, `audit_file`, `published_claims`, or `none`.
+    pub heads_source: String,
+    pub imports: Vec<String>,
+    pub allowed_axioms: Vec<String>,
+    pub returncode: Option<i32>,
+    pub timed_out: bool,
+    pub wall_ms: Option<u64>,
+    pub build: Option<BuildOutcome>,
+    pub generated_file: Option<String>,
+    pub heads: Vec<HeadResult>,
+    /// Heads that the Lean environment does not contain.
+    pub missing: Vec<String>,
+    /// Axioms that are neither standard nor disclosed by a published claim.
+    pub unexpected_axioms: Vec<UnexpectedAxiom>,
+    /// Declarations of this repository using `sorryAx`, from `env.constants`.
+    pub direct_sorry: Option<Vec<String>>,
+    pub expected_direct_sorry: Option<Vec<String>>,
+    /// Module roots the `sorry` traversal was scoped to.
+    pub sorry_scope: Vec<String>,
+    /// `audit_file`, `library_directories`, or `all_local_modules`.
+    pub sorry_scope_source: String,
+    pub claim_conflicts: Vec<String>,
+    pub stderr_tail: Option<String>,
+    pub note: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BuildOutcome {
+    pub ran: bool,
+    pub returncode: Option<i32>,
+    pub timed_out: bool,
+    pub wall_ms: u64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct HeadResult {
+    pub name: String,
+    /// Recomputed axiom list. `None` when the head was not resolved.
+    pub axioms: Option<Vec<String>>,
+    pub claimed: Option<Vec<String>>,
+    pub claimed_source: Option<String>,
+    /// `None` when there is nothing to compare against.
+    pub matches_claim: Option<bool>,
+    /// Every axiom is either standard or disclosed in the published claim.
+    pub disclosed: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct UnexpectedAxiom {
+    pub head: String,
+    pub axiom: String,
+}
+
 /// A minimal UTC ISO-8601 timestamp, avoiding a `chrono` dependency.
 pub fn now_iso8601() -> String {
     let secs = std::time::SystemTime::now()

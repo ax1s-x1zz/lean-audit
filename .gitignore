@@ -9,3 +9,6 @@ NEXT-archive.md
 # 로컬 감사 산출물
 /audit-out/
 *.report.json
+
+# Lean build output
+.lake/

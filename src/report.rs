@@ -336,6 +336,165 @@ pub fn batch_markdown(b: &BatchReport) -> String {
 }
 
 #[derive(Serialize)]
+pub struct AxiomsReport {
+    pub schema: String,
+    pub generated_at: String,
+    pub tool_version: String,
+    pub project: String,
+    pub result: AxiomsResult,
+    pub disclaimer: String,
+}
+
+pub fn axioms_markdown(r: &AxiomsReport) -> String {
+    let a = &r.result;
+    let mut s = String::new();
+    s.push_str(&format!("# lean-audit axioms report — {}\n\n", r.project));
+    s.push_str(&format!("> **{}**\n\n", r.disclaimer));
+    s.push_str(&format!(
+        "tool `{}` · generated `{}` · status **{}**\n\n",
+        r.tool_version, r.generated_at, a.status
+    ));
+
+    s.push_str("| field | value |\n|---|---|\n");
+    s.push_str(&format!("| lean executed | {} |\n", a.run));
+    s.push_str(&format!("| mode | `{}` |\n", a.mode));
+    s.push_str(&format!("| lake | `{}` |\n", a.lake));
+    s.push_str(&format!("| heads from | `{}` |\n", a.heads_source));
+    s.push_str(&format!(
+        "| return code | {} |\n",
+        a.returncode
+            .map(|c| c.to_string())
+            .unwrap_or_else(|| "—".to_string())
+    ));
+    s.push_str(&format!(
+        "| wall time | {} |\n",
+        a.wall_ms
+            .map(|ms| format!("{:.1}s", ms as f64 / 1000.0))
+            .unwrap_or_else(|| "—".to_string())
+    ));
+    if let Some(b) = &a.build {
+        s.push_str(&format!(
+            "| lake build | ran={} rc={} {:.1}s |\n",
+            b.ran,
+            b.returncode
+                .map(|c| c.to_string())
+                .unwrap_or_else(|| "—".to_string()),
+            b.wall_ms as f64 / 1000.0
+        ));
+    }
+    s.push_str(&format!(
+        "| allowed axioms | {} |\n",
+        a.allowed_axioms
+            .iter()
+            .map(|x| format!("`{x}`"))
+            .collect::<Vec<_>>()
+            .join(", ")
+    ));
+    s.push_str(&format!("| imports | {} |\n", preview(&a.imports, 12)));
+
+    s.push_str("\n## Heads\n\n");
+    if a.heads.is_empty() {
+        s.push_str("_none_\n");
+    } else {
+        s.push_str("| head | recomputed axioms | published claim | matches | disclosed |\n|---|---|---|---|---|\n");
+        for h in &a.heads {
+            let axs = match &h.axioms {
+                Some(v) if v.is_empty() => "_(none)_".to_string(),
+                Some(v) => v
+                    .iter()
+                    .map(|x| format!("`{x}`"))
+                    .collect::<Vec<_>>()
+                    .join(", "),
+                None => "**not resolved**".to_string(),
+            };
+            let claimed = match &h.claimed {
+                Some(v) if v.is_empty() => "_(none)_".to_string(),
+                Some(v) => v
+                    .iter()
+                    .map(|x| format!("`{x}`"))
+                    .collect::<Vec<_>>()
+                    .join(", "),
+                None => "—".to_string(),
+            };
+            s.push_str(&format!(
+                "| `{}` | {} | {} | {} | {} |\n",
+                h.name,
+                axs,
+                claimed,
+                match h.matches_claim {
+                    Some(true) => "yes",
+                    Some(false) => "**no**",
+                    None => "—",
+                },
+                if h.disclosed { "yes" } else { "**no**" }
+            ));
+        }
+    }
+
+    if !a.unexpected_axioms.is_empty() {
+        s.push_str("\n## Unexpected axioms\n\n");
+        s.push_str(
+            "Axioms that are neither in the allowed set nor disclosed by a published claim:\n\n",
+        );
+        for u in &a.unexpected_axioms {
+            s.push_str(&format!("- `{}` depends on `{}`\n", u.head, u.axiom));
+        }
+    }
+
+    if !a.missing.is_empty() {
+        s.push_str("\n## Not found in the environment\n\n");
+        for m in &a.missing {
+            s.push_str(&format!("- `{m}`\n"));
+        }
+    }
+
+    if let Some(sorry) = &a.direct_sorry {
+        s.push_str("\n## Direct `sorry` users\n\n");
+        s.push_str(&format!(
+            "- recomputed from `env.constants`: **{}**\n",
+            sorry.len()
+        ));
+        if let Some(expected) = &a.expected_direct_sorry {
+            s.push_str(&format!(
+                "- published expectation: **{}**\n",
+                expected.len()
+            ));
+            if sorry != expected {
+                s.push_str("- ⚠ recomputed list differs from the published expectation\n");
+            }
+        }
+        for name in sorry.iter().take(20) {
+            s.push_str(&format!("  - `{name}`\n"));
+        }
+        if sorry.len() > 20 {
+            s.push_str(&format!("  - … and {} more\n", sorry.len() - 20));
+        }
+    }
+
+    if !a.claim_conflicts.is_empty() {
+        s.push_str("\n## Conflicting published claims\n\n");
+        for c in &a.claim_conflicts {
+            s.push_str(&format!("- {c}\n"));
+        }
+    }
+
+    if let Some(note) = &a.note {
+        s.push_str(&format!("\n## Note\n\n{note}\n"));
+    }
+    if let Some(tail) = &a.stderr_tail {
+        s.push_str("\n## Lean output (tail)\n\n```\n");
+        s.push_str(tail);
+        s.push_str("\n```\n");
+    }
+    if let Some(file) = &a.generated_file {
+        s.push_str(&format!("\n_generated file: `{file}`_\n"));
+    }
+
+    s.push_str(&format!("\n---\n\n_{}_\n", r.disclaimer));
+    s
+}
+
+#[derive(Serialize)]
 pub struct ScanReport {
     pub schema: String,
     pub generated_at: String,

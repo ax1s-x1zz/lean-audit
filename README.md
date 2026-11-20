@@ -53,11 +53,12 @@ Every report carries this disclaimer:
 
 ## Status
 
-Early, but working against real repositories. `inspect`, `manifest`, `scan` and
-`batch` are implemented; axiom re-computation (`axioms`) is next. See
-`docs/requirements.md` for the reference-implementation analysis,
-`docs/method.md` for the exact verification contract, and `NEXT.md` for the
-working queue.
+Working against real repositories, and against real Lean. `inspect`, `manifest`,
+`scan`, `batch` and `axioms` are implemented. `axioms` calls Lean's own
+`collectAxioms` and `env.constants` traversal through a generated file run with
+`lake env lean`. See `docs/requirements.md` for the reference-implementation
+analysis, `docs/method.md` for the exact verification contract, and `NEXT.md` for
+the working queue.
 
 ## Usage
 
@@ -72,6 +73,9 @@ lean-audit inspect ../team42-repos/rubik-stm-entropy-lean --emit-graph graph.jso
 # re-compute every manifest hash in the repository
 lean-audit manifest ../team42-repos/site-percolation-square-lattice-lean
 
+# re-compute the head theorems' axioms with Lean (needs elan; --build first time)
+lean-audit axioms ../team42-repos/ang-subset-products-lean --build
+
 # forbidden-token scan (comment/string aware); exit 2 when tokens are found
 lean-audit scan ../team42-repos/ang-subset-products-lean
 
@@ -79,8 +83,9 @@ lean-audit scan ../team42-repos/ang-subset-products-lean
 lean-audit batch ../team42-repos
 ```
 
-Exit codes: `0` success, `2` forbidden tokens found, `3` manifest mismatch. The
-tool is therefore usable as a CI gate. Finding nothing is not a correctness claim.
+Exit codes: `0` success, `2` forbidden tokens found, `3` mismatch (manifest or
+axiom), `4` the check could not be run. The tool is therefore usable as a CI gate.
+Finding nothing is not a correctness claim.
 
 ### Example output
 
@@ -99,6 +104,12 @@ one of them. Together they report, among other things:
 - 15 entries in `data/MANIFEST.sha256` and `data/FLOW_MANIFEST.sha256` are **not
   present in the checkout** — the README states that data is distributed with the
   paper.
+
+`axioms` is exercised end to end against real Lean by
+`tests/lean.rs`, which builds `tests/fixtures/leanfix` — a project shaped like a
+TEAM42 repository, with a library directory, a `Challenge.lean` whose `sorry` is
+intentional, and an audit file that scopes its `sorry` scan with
+`getRoot == \`LeanFix`.
 
 ## License
 

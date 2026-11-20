@@ -1,0 +1,15 @@
+name = "leanfix"
+version = "0.1.0"
+# `Audit` is intentionally not a default target: this fixture's audit fails by
+# design (it expects no `sorry` users, and `LeanFix/Stub.lean` has one), and the
+# test needs `lake build` to succeed. The Rust tool parses `Audit.lean` itself.
+defaultTargets = ["LeanFix", "Challenge"]
+
+[[lean_lib]]
+name = "LeanFix"
+
+[[lean_lib]]
+name = "Challenge"
+
+[[lean_lib]]
+name = "Audit"

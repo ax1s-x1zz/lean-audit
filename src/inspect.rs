@@ -54,6 +54,24 @@ fn is_lean_project(dir: &Path) -> bool {
         .any(|f| dir.join(f).is_file())
 }
 
+/// Module names of the repository's own Lean files, without reading their
+/// contents. Used to scope the environment-based `sorry` check.
+pub fn local_module_names(root: &Path) -> Vec<String> {
+    let mut names: Vec<String> = WalkDir::new(root)
+        .sort_by_file_name()
+        .into_iter()
+        .filter_entry(util::keep_entry)
+        .filter_map(Result::ok)
+        .filter(|e| e.file_type().is_file() && e.path().extension().is_some_and(|x| x == "lean"))
+        .filter_map(|e| util::relative(root, e.path()))
+        .map(|rel| rel.trim_end_matches(".lean").replace('/', "."))
+        .filter(|n| !n.is_empty())
+        .collect();
+    names.sort();
+    names.dedup();
+    names
+}
+
 pub fn inspect(root: &Path, opts: &InspectOptions) -> Result<Report> {
     if !root.is_dir() {
         anyhow::bail!("not a directory: {}", root.display());

@@ -1,12 +1,12 @@
 {
   "schema": "lean-audit/v1/batch",
-  "generated_at": "2026-11-20T02:11:14Z",
+  "generated_at": "2026-11-20T02:27:47Z",
   "tool_version": "0.1.0",
   "root": "/home/x1zz/team42-repos",
   "repos": [
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T02:11:13Z",
+      "generated_at": "2026-11-20T02:27:43Z",
       "tool_version": "0.1.0",
       "project": "AngCounterexample",
       "source": {
@@ -381,7 +381,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T02:11:13Z",
+      "generated_at": "2026-11-20T02:27:43Z",
       "tool_version": "0.1.0",
       "project": "coth_sums_barnes",
       "source": {
@@ -535,7 +535,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T02:11:13Z",
+      "generated_at": "2026-11-20T02:27:44Z",
       "tool_version": "0.1.0",
       "project": "feigenbaum_scalar_duality",
       "source": {
@@ -703,7 +703,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T02:11:13Z",
+      "generated_at": "2026-11-20T02:27:46Z",
       "tool_version": "0.1.0",
       "project": "RubikSTM",
       "source": {
@@ -924,7 +924,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T02:11:14Z",
+      "generated_at": "2026-11-20T02:27:47Z",
       "tool_version": "0.1.0",
       "project": "site_perc_upper",
       "source": {

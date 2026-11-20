@@ -12,19 +12,19 @@ checked cheaply, and records agreement or disagreement.
 
 | # | Claim | How it is checked | Milestone |
 |---|---|---|---|
-| 1 | the Lean toolchain pin | read `lean-toolchain`; compare with the version reported by Lean | M1 / M3 |
-| 2 | the Mathlib pin | `lakefile.toml` `require` + `lake-manifest.json` rev | M1 |
-| 3 | the set of modules | enumerate `**/*.lean`, build the import graph | M1 |
-| 4 | the head theorems depend only on `propext`, `Classical.choice`, `Quot.sound` | generate a Lean file, call `Lean.collectAxioms` for each head, run `lake env lean` | M3 |
-| 5 | no declaration of the library uses `sorry` directly | `env.constants.map₁` traversal + `getUsedConstantsAsSet.contains ``sorryAx` | M3 |
+| 1 | the Lean toolchain pin | read `lean-toolchain`; compare with the version reported by Lean | **M1 / M3, implemented** |
+| 2 | the Mathlib pin | `lakefile.toml` `require` + `lake-manifest.json` rev | **M1, implemented** |
+| 3 | the set of modules | enumerate `**/*.lean`, build the import graph | **M1, implemented** |
+| 4 | the head theorems depend only on `propext`, `Classical.choice`, `Quot.sound` | generate a Lean file, call `Lean.collectAxioms` for each head, run `lake env lean` | **M3, implemented** |
+| 5 | no declaration of the library uses `sorry` directly | `env.constants.map₁` traversal + `getUsedConstantsAsSet.contains ``sorryAx` | **M3, implemented** |
 | 6 | `receipts/` numbers (modules built, errors, `sorry` warnings) | re-run and compare with the parsed claims | M6 |
 | 7 | `SOURCE_MANIFEST.json` / `MANIFEST.sha256` / `SHA256SUMS` hashes | recompute SHA-256 over the checkout | **M2, implemented** |
 | 8 | `data/AXIOM_AUDIT.json` source-hash and toolchain binding | recompute and compare | **M2, implemented** |
 
-M1 and M2 are implemented; M3 is next; M6 is not. Until a check runs, its status
-is `parsed_only` or `not_run` — never `ok`. `--no-verify` demonstrates this: the
-entry counts are still reported, but `checked` stays `null` and the status stays
-`parsed_only`.
+M1, M2 and M3 are implemented; M6 is not. Until a check runs, its status is
+`parsed_only` or `not_run` — never `ok`. `--no-verify` demonstrates this for M2:
+the entry counts are still reported, but `checked` stays `null` and the status
+stays `parsed_only`.
 
 ## 2. How manifest verification resolves paths
 
@@ -73,7 +73,30 @@ actually depends on, after elaboration.
 A `#print axioms` output parser is also provided as a compatibility mode, because
 that is what `scripts/audit_axioms.py` relies on.
 
-### 3.1 The forbidden-token scan
+### 3.1 Three decisions that keep the run honest
+
+**Raw `Name` literals for heads.** The generated file writes heads as `` `Name ``
+(single backtick), not as ``` ``Name ``` (double backtick). A double-backtick
+quotation *resolves* the name in the environment, so one stale head name makes the
+whole file fail to elaborate and hides the case worth reporting. With a raw
+literal, `env.contains` decides, and an unknown head is reported as
+`LEANAUDIT_MISSING` rather than aborting the audit.
+
+**The `sorry` scope is the repository's own.** The traversal is limited to the
+module roots the repository's audit file compares against, read from patterns like
+`m.getRoot == \`SierksmaLean` or `m == \`Solution`. This matters: `Challenge.lean`
+deliberately contains `sorry`, and the repositories exclude it on purpose.
+Scanning everything would manufacture a discrepancy that is not one. When no such
+comparison exists, the scope falls back to the repository's library directories
+(the roots that have subdirectories), and the chosen scope and its source are both
+recorded in the report as `sorry_scope` / `sorry_scope_source`.
+
+**`unexpected` means undisclosed, not merely non-standard.** An axiom is reported
+as unexpected only when it is neither in the allowed set nor disclosed by a
+published claim. `site-percolation`'s small native regressions legitimately depend
+on disclosed `native_decide` axioms; those are not surprises.
+
+## 4. The forbidden-token scan
 
 For `sorry`, `admit`, `axiom`, `unsafe`, `implemented_by` and `extern` the scan is
 **lexical but comment- and string-aware**. The repository's own
@@ -96,7 +119,7 @@ doc-comment copy of a theorem whose body is `:= by sorry`, plus three real `sorr
 tokens in the actual challenge statements. The scan reports exactly the three real
 ones.
 
-## 4. What it does NOT verify
+## 5. What it does NOT verify
 
 - **It does not establish mathematical correctness.** A successful run means the
   published verification facts still hold; it says nothing about whether the
@@ -111,7 +134,7 @@ ones.
 - **It does not trust compiled artefacts differently.** It inherits exactly the
   same trusted base as the repository's own checks.
 
-## 5. Status values
+## 6. Status values
 
 | value | meaning |
 |---|---|
@@ -123,7 +146,7 @@ ones.
 | `absent` | the artefact (audit file, manifest, receipts) does not exist |
 | `error` | the tool itself failed |
 
-## 6. Known limitations
+## 7. Known limitations
 
 | limitation | effect | policy |
 |---|---|---|
@@ -134,8 +157,10 @@ ones.
 | Lean versions differ across the family | 4.33.0, 4.33.1 and 4.35.0 all appear | reported, not normalised; drift is a finding, not an error |
 | `lakefile.lean` (Lean, not TOML) | targets and requires are not parsed | reported as `unsupported` |
 | manifest entry path base | `sha256sum` files may be self-relative or root-relative | resolved against both; the chosen base is recorded in `note` |
+| `axioms` needs the modules built | `lake env lean` cannot import unbuilt modules | reported as `error` with the Lean output tail, never as `ok`; `--build` runs `lake build` first |
+| Lean versions differ across the family | 4.33.0, 4.33.1 and 4.35.0 all appear | the toolchain in `lean-toolchain` is what elan selects; drift is a finding, not an error |
 
-## 7. Honesty rules
+## 8. Honesty rules
 
 These are enforced by review, and encoded in `AGENTS.md`:
 
