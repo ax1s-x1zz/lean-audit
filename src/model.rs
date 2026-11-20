@@ -216,7 +216,14 @@ pub struct ClaimedAxioms {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ScanSummary {
     pub files_scanned: usize,
+    /// Module roots the scan was scoped to.
+    pub scope: Vec<String>,
+    /// `audit_file` or `all_local_modules`.
+    pub scope_source: String,
+    /// Every forbidden token found, in or out of scope.
     pub flags: Vec<Flag>,
+    /// How many of `flags` fall inside the scope.
+    pub flags_in_scope: usize,
     pub status: String,
     pub note: Option<String>,
 }
@@ -226,6 +233,8 @@ pub struct Flag {
     pub path: String,
     pub line: usize,
     pub token: String,
+    /// Whether the module is inside the repository's declared library scope.
+    pub in_scope: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

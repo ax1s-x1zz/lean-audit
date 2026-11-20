@@ -324,6 +324,72 @@ fn ang_axioms_plumbing_matches_its_own_audit_file() {
 }
 
 #[test]
+fn the_token_gate_is_scoped_to_each_repositorys_declared_library() {
+    let Some(root) = repos_root() else {
+        eprintln!("skipping: ../team42-repos not present");
+        return;
+    };
+
+    // Each of these has `sorry` tokens, all inside the `Challenge.lean` file that
+    // the repository documents as its deliberate comparison statement, and each
+    // declares its library root in its own audit file. The gate must pass.
+    for (repo, expected_flags, expected_scope) in [
+        (
+            "ang-subset-products-lean",
+            3usize,
+            vec!["AngCounterexample", "Solution"],
+        ),
+        ("hard-sphere-b5-lean", 96, vec!["HardSphereB5Lean"]),
+        ("hard-disk-b5-lean", 1, vec!["HardDiskB5Lean"]),
+        ("sierksma33", 1, vec!["SierksmaLean"]),
+    ] {
+        let dir = root.join(repo);
+        if !dir.is_dir() {
+            eprintln!("skipping {repo}: not cloned");
+            continue;
+        }
+        let Some(v) = inspect_json(&dir) else {
+            eprintln!("skipping {repo}: could not inspect");
+            continue;
+        };
+        let scan = &v["scan"];
+        assert_eq!(
+            scan["flags"].as_array().map(Vec::len),
+            Some(expected_flags),
+            "{repo}: every token is still reported"
+        );
+        assert_eq!(
+            scan["flags_in_scope"], 0,
+            "{repo}: all of them are out of the declared scope"
+        );
+        assert_eq!(scan["scope"], serde_json::json!(expected_scope));
+        assert_eq!(scan["scope_source"], "audit_file");
+        assert!(
+            scan["flags"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .all(|f| f["in_scope"] == false),
+            "{repo}: each flag is marked out of scope"
+        );
+
+        // The gate itself must pass, otherwise CI would fail on a documented
+        // deliberate `sorry`.
+        let out = Command::new(env!("CARGO_BIN_EXE_lean-audit"))
+            .arg("scan")
+            .arg(&dir)
+            .args(["--format", "json"])
+            .output()
+            .expect("run lean-audit scan");
+        assert_eq!(
+            out.status.code(),
+            Some(0),
+            "{repo}: the scoped gate must not fail on a Challenge.lean sorry"
+        );
+    }
+}
+
+#[test]
 fn every_lean_repository_avoids_forbidden_tokens_outside_comments() {
     let Some(root) = repos_root() else {
         eprintln!("skipping: ../team42-repos not present");

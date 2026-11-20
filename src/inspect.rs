@@ -116,7 +116,11 @@ pub fn inspect(root: &Path, opts: &InspectOptions) -> Result<Report> {
         .collect();
     by_directory.sort_by(|a, b| b.files.cmp(&a.files).then(a.dir.cmp(&b.dir)));
 
-    let scan = scan_sources(&modules);
+    let audit_impl = detect_audit_impl(root);
+    // The token gate uses the same scope as the `sorry` traversal, so a
+    // repository's deliberate `Challenge.lean` `sorry` does not fail the gate.
+    let (scope, scope_source) = crate::axioms::sorry_scope(root, &audit_impl);
+    let scan = scan_sources(&modules, &scope, &scope_source);
 
     let report = Report {
         schema: SCHEMA.to_string(),
@@ -142,7 +146,7 @@ pub fn inspect(root: &Path, opts: &InspectOptions) -> Result<Report> {
                 status::OK.to_string()
             },
         },
-        audit_impl: detect_audit_impl(root),
+        audit_impl,
         manifests: crate::manifest::discover_and_verify(root, opts.verify_hashes),
         receipts: parse_receipts(root),
         scan,
@@ -232,24 +236,45 @@ fn module_name(rel: &Path) -> String {
     parts.join(".")
 }
 
-fn scan_sources(modules: &[Module]) -> ScanSummary {
+fn scan_sources(modules: &[Module], scope: &[String], scope_source: &str) -> ScanSummary {
     let mut flags = Vec::new();
     for m in modules {
+        let in_scope = m
+            .name
+            .split('.')
+            .next()
+            .is_some_and(|root| scope.iter().any(|s| s == root));
         for (line, token) in lean_src::scan_forbidden(&m.stripped) {
             flags.push(Flag {
                 path: m.path.to_string_lossy().to_string(),
                 line,
                 token,
+                in_scope,
             });
         }
     }
+    let flags_in_scope = flags.iter().filter(|f| f.in_scope).count();
     ScanSummary {
         files_scanned: modules.len(),
+        scope: scope.to_vec(),
+        scope_source: scope_source.to_string(),
         flags,
-        status: status::OK.to_string(),
+        flags_in_scope,
+        status: if flags_in_scope == 0 {
+            status::OK.to_string()
+        } else {
+            status::MISMATCH.to_string()
+        },
         note: Some(format!(
-            "tokens checked: {}; comments and string literals are stripped first",
-            FORBIDDEN_TOKENS.join(", ")
+            "tokens checked: {}; comments and string literals are stripped first; \
+             the gate covers module roots {} ({})",
+            FORBIDDEN_TOKENS.join(", "),
+            if scope.is_empty() {
+                "(none)".to_string()
+            } else {
+                scope.join(", ")
+            },
+            scope_source
         )),
     }
 }

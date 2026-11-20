@@ -2,7 +2,7 @@
 
 > **This report verifies reproducibility of published claims. It does not establish mathematical correctness.**
 
-schema `lean-audit/v1` · tool `0.1.0` · generated `2026-11-20T02:11:15Z`
+schema `lean-audit/v1` · tool `0.1.0` · generated `2026-11-20T04:52:36Z`
 
 ## Source
 
@@ -89,9 +89,9 @@ _no `receipts/` directory_
 
 ## Forbidden-token scan
 
-- files scanned: 935 · flags: **0**
+- files scanned: 935 · flags: **0** (in scope: **0**)
 
-_tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first_
+_tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first; the gate covers module roots RubikSTM (audit_file)_
 
 ---
 

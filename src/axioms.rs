@@ -165,16 +165,7 @@ pub fn run_axioms(
     }
 
     // 4. Generate the audit program.
-    let local_modules = inspect::local_module_names(root);
-    let (dir_roots, all_roots) = local_roots(&local_modules);
-    let declared = declared_roots(&report.audit_impl);
-    let (scope, scope_source) = if !declared.is_empty() {
-        (declared, "audit_file".to_string())
-    } else if !dir_roots.is_empty() {
-        (dir_roots, "library_directories".to_string())
-    } else {
-        (all_roots, "all_local_modules".to_string())
-    };
+    let (scope, scope_source) = sorry_scope(root, &report.audit_impl);
     result.sorry_scope = scope.clone();
     result.sorry_scope_source = scope_source;
     if opts.mode == AxiomsMode::Print {
@@ -394,27 +385,30 @@ fn resolve_imports(root: &Path, report: &Report) -> Vec<String> {
     imports
 }
 
-/// Top-level name components of the repository's own modules.
+/// The module roots used to scope the `sorry` traversal and the token gate.
 ///
-/// Returns `(directory_roots, all_roots)`. A module name containing a dot means
-/// its root is a directory (`SierksmaLean/Main.lean` -> `SierksmaLean`), which in
-/// these repositories is the library, while root-level files (`Challenge.lean`,
-/// `Solution.lean`, `Audit.lean`, `Check.lean`) are scaffolding.
-fn local_roots(modules: &[String]) -> (Vec<String>, Vec<String>) {
-    let mut all: BTreeSet<String> = BTreeSet::new();
-    let mut dirs: BTreeSet<String> = BTreeSet::new();
+/// Only a scope the repository itself declares narrows the check. Without one,
+/// every local module is in scope: narrowing on our own judgement could hide a
+/// real `sorry`, whereas reporting a deliberate `Challenge.lean` `sorry` as a
+/// discrepancy is the lesser error when the repository has said nothing.
+pub fn sorry_scope(root: &Path, audit: &AuditImpl) -> (Vec<String>, String) {
+    let declared = declared_roots(audit);
+    if !declared.is_empty() {
+        return (declared, "audit_file".to_string());
+    }
+    let modules = inspect::local_module_names(root);
+    (local_roots(&modules), "all_local_modules".to_string())
+}
+
+/// Top-level name components of the repository's own modules.
+fn local_roots(modules: &[String]) -> Vec<String> {
+    let mut roots: BTreeSet<String> = BTreeSet::new();
     for m in modules {
-        match m.split_once('.') {
-            Some((root, _)) => {
-                all.insert(root.to_string());
-                dirs.insert(root.to_string());
-            }
-            None => {
-                all.insert(m.clone());
-            }
+        if let Some(root) = m.split('.').next() {
+            roots.insert(root.to_string());
         }
     }
-    (dirs.into_iter().collect(), all.into_iter().collect())
+    roots.into_iter().collect()
 }
 
 /// Roots the repository's own audit file scopes its `sorry` scan to, read from
@@ -748,16 +742,15 @@ info: some unrelated line
     }
 
     #[test]
-    fn local_roots_split_directories_from_root_level_files() {
-        let (dirs, all) = local_roots(&[
+    fn local_roots_are_the_first_name_components() {
+        let roots = local_roots(&[
             "RubikSTM.A.B".to_string(),
             "RubikSTM.C".to_string(),
             "Main".to_string(),
             "AxiomCheck".to_string(),
         ]);
-        assert_eq!(dirs, vec!["RubikSTM".to_string()]);
         assert_eq!(
-            all,
+            roots,
             vec![
                 "AxiomCheck".to_string(),
                 "Main".to_string(),

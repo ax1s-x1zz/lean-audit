@@ -246,14 +246,21 @@ pub fn inspect_markdown(r: &Report) -> String {
     // Scan
     s.push_str("\n## Forbidden-token scan\n\n");
     s.push_str(&format!(
-        "- files scanned: {} · flags: **{}**\n",
+        "- files scanned: {} · flags: **{}** (in scope: **{}**)\n",
         r.scan.files_scanned,
-        r.scan.flags.len()
+        r.scan.flags.len(),
+        r.scan.flags_in_scope
     ));
     if !r.scan.flags.is_empty() {
-        s.push_str("\n| file | line | token |\n|---|---|---|\n");
+        s.push_str("\n| file | line | token | in scope |\n|---|---|---|---|\n");
         for f in r.scan.flags.iter().take(50) {
-            s.push_str(&format!("| `{}` | {} | `{}` |\n", f.path, f.line, f.token));
+            s.push_str(&format!(
+                "| `{}` | {} | `{}` | {} |\n",
+                f.path,
+                f.line,
+                f.token,
+                if f.in_scope { "yes" } else { "no" }
+            ));
         }
         if r.scan.flags.len() > 50 {
             s.push_str(&format!(
@@ -289,10 +296,11 @@ pub fn batch_markdown(b: &BatchReport) -> String {
         b.generated_at
     ));
 
-    s.push_str("| project | lean | modules | depth | audit | commands | heads | flags | hashes | claims |\n");
+    s.push_str("| project | lean | modules | depth | audit | commands | heads | flags (in/all) | hashes | claims |\n");
     s.push_str("|---|---|---|---|---|---|---|---|---|---|\n");
     for r in &b.repos {
         let claims = published_claim_count(r);
+        let flags = format!("{}/{}", r.scan.flags_in_scope, r.scan.flags.len());
         s.push_str(&format!(
             "| `{}` | {} | {} | {} | `{}` | {} | {} | {} | {} | {} |\n",
             r.project,
@@ -313,7 +321,7 @@ pub fn batch_markdown(b: &BatchReport) -> String {
                 .as_ref()
                 .map(|h| h.len().to_string())
                 .unwrap_or_else(|| "—".to_string()),
-            r.scan.flags.len(),
+            flags,
             hash_summary(r),
             claims,
         ));
@@ -325,7 +333,7 @@ pub fn batch_markdown(b: &BatchReport) -> String {
     );
     s.push_str("- `claims` counts published axiom claims from both sources the tool reads: `AUDIT axioms <name>: [...]` lines in `receipts/**/build_summary.txt`, and the `*_exact_axioms` maps in `AXIOM_AUDIT.json`. Re-computing them is `lean-audit axioms`.\n");
     s.push_str("- `hashes` is `matched/checked` across every manifest in the repository; `⚠n` counts entries that are missing from the checkout or whose recomputed hash differs.\n");
-    s.push_str("- `flags` counts forbidden tokens (`sorry`, `admit`, `axiom`, `unsafe`, `implemented_by`, `extern`) in comment- and string-stripped source.\n");
+    s.push_str("- `flags` is `in scope / all`. The gate covers only the module roots the repository's own audit file compares against with `getRoot`, because each repository documents its `Challenge.lean` `sorry` as deliberate. Without a declared scope every local module is in scope.\n");
     s.push_str(&format!("\n---\n\n_{}_\n", b.disclaimer));
     s
 }
@@ -644,16 +652,29 @@ pub fn scan_markdown(r: &ScanReport) -> String {
     s.push_str(&format!("# lean-audit scan — {}\n\n", r.project));
     s.push_str(&format!("> **{}**\n\n", r.disclaimer));
     s.push_str(&format!(
-        "files scanned: {} · flags: **{}**\n\n",
+        "files scanned: {} · flags: **{}** (in scope: **{}**)\n\n",
         r.scan.files_scanned,
-        r.scan.flags.len()
+        r.scan.flags.len(),
+        r.scan.flags_in_scope
     ));
     if r.scan.flags.is_empty() {
         s.push_str("No forbidden tokens found in comments-stripped source.\n");
     } else {
-        s.push_str("| file | line | token |\n|---|---|---|\n");
+        s.push_str("| file | line | token | in scope |\n|---|---|---|---|\n");
         for f in &r.scan.flags {
-            s.push_str(&format!("| `{}` | {} | `{}` |\n", f.path, f.line, f.token));
+            s.push_str(&format!(
+                "| `{}` | {} | `{}` | {} |\n",
+                f.path,
+                f.line,
+                f.token,
+                if f.in_scope { "yes" } else { "no" }
+            ));
+        }
+        if r.scan.flags_in_scope == 0 {
+            s.push_str(
+                "\nEvery flag is outside the scope the repository declares for its library \
+                 (for example a `Challenge.lean` comparison statement), so the gate passes.\n",
+            );
         }
     }
     if let Some(note) = &r.scan.note {

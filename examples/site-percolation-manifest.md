@@ -2,7 +2,7 @@
 
 > **This report verifies reproducibility of published claims. It does not establish mathematical correctness.**
 
-tool `0.1.0` · generated `2026-11-20T02:11:14Z`
+tool `0.1.0` · generated `2026-11-20T04:52:34Z`
 
 | file | kind | entries | checked | matched | missing | mismatched | claims | status |
 |---|---|---|---|---|---|---|---|---|

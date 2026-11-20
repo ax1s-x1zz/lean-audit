@@ -150,7 +150,7 @@ fn main() -> Result<()> {
 
             // Non-zero exit when the repository contains forbidden tokens, so the
             // tool can gate CI. Absence of tokens is not a correctness claim.
-            if !report.scan.flags.is_empty() {
+            if report.scan.flags_in_scope > 0 {
                 std::process::exit(2);
             }
         }
@@ -205,7 +205,7 @@ fn main() -> Result<()> {
                 Format::Md => report::scan_markdown(&scan_report),
             };
             emit(&rendered, out.as_deref())?;
-            if !scan_report.scan.flags.is_empty() {
+            if scan_report.scan.flags_in_scope > 0 {
                 std::process::exit(2);
             }
         }
@@ -287,7 +287,7 @@ fn main() -> Result<()> {
             };
             emit(&rendered, out.as_deref())?;
 
-            if batch.repos.iter().any(|r| !r.scan.flags.is_empty()) {
+            if batch.repos.iter().any(|r| r.scan.flags_in_scope > 0) {
                 std::process::exit(2);
             }
         }

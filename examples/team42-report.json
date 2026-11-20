@@ -1,12 +1,12 @@
 {
   "schema": "lean-audit/v1/batch",
-  "generated_at": "2026-11-20T02:27:47Z",
+  "generated_at": "2026-11-20T04:52:34Z",
   "tool_version": "0.1.0",
   "root": "/home/x1zz/team42-repos",
   "repos": [
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T02:27:43Z",
+      "generated_at": "2026-11-20T04:51:59Z",
       "tool_version": "0.1.0",
       "project": "AngCounterexample",
       "source": {
@@ -356,32 +356,41 @@
       },
       "scan": {
         "files_scanned": 26,
+        "scope": [
+          "AngCounterexample",
+          "Solution"
+        ],
+        "scope_source": "audit_file",
         "flags": [
           {
             "path": "/home/x1zz/team42-repos/ang-subset-products-lean/Challenge.lean",
             "line": 38,
-            "token": "sorry"
+            "token": "sorry",
+            "in_scope": false
           },
           {
             "path": "/home/x1zz/team42-repos/ang-subset-products-lean/Challenge.lean",
             "line": 46,
-            "token": "sorry"
+            "token": "sorry",
+            "in_scope": false
           },
           {
             "path": "/home/x1zz/team42-repos/ang-subset-products-lean/Challenge.lean",
             "line": 54,
-            "token": "sorry"
+            "token": "sorry",
+            "in_scope": false
           }
         ],
+        "flags_in_scope": 0,
         "status": "ok",
-        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first"
+        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first; the gate covers module roots AngCounterexample, Solution (audit_file)"
       },
       "warnings": [],
       "disclaimer": "This report verifies reproducibility of published claims. It does not establish mathematical correctness."
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T02:27:43Z",
+      "generated_at": "2026-11-20T04:51:59Z",
       "tool_version": "0.1.0",
       "project": "coth_sums_barnes",
       "source": {
@@ -526,16 +535,22 @@
       },
       "scan": {
         "files_scanned": 4,
+        "scope": [
+          "CothSums",
+          "MainTheorem"
+        ],
+        "scope_source": "all_local_modules",
         "flags": [],
+        "flags_in_scope": 0,
         "status": "ok",
-        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first"
+        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first; the gate covers module roots CothSums, MainTheorem (all_local_modules)"
       },
       "warnings": [],
       "disclaimer": "This report verifies reproducibility of published claims. It does not establish mathematical correctness."
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T02:27:44Z",
+      "generated_at": "2026-11-20T04:51:59Z",
       "tool_version": "0.1.0",
       "project": "feigenbaum_scalar_duality",
       "source": {
@@ -694,16 +709,2605 @@
       },
       "scan": {
         "files_scanned": 5,
+        "scope": [
+          "AffineWordLog",
+          "Audit",
+          "Check"
+        ],
+        "scope_source": "all_local_modules",
         "flags": [],
+        "flags_in_scope": 0,
         "status": "ok",
-        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first"
+        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first; the gate covers module roots AffineWordLog, Audit, Check (all_local_modules)"
       },
       "warnings": [],
       "disclaimer": "This report verifies reproducibility of published claims. It does not establish mathematical correctness."
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T02:27:46Z",
+      "generated_at": "2026-11-20T04:52:01Z",
+      "tool_version": "0.1.0",
+      "project": "HardDiskB5Lean",
+      "source": {
+        "path": "/home/x1zz/team42-repos/hard-disk-b5-lean",
+        "git_commit": "229258e05db18ea64ef102e2baf444c414ca12af",
+        "git_dirty": false,
+        "git_note": null
+      },
+      "toolchain": {
+        "lean_toolchain": "leanprover/lean4:v4.33.1",
+        "lean_version": "4.33.1",
+        "status": "ok"
+      },
+      "mathlib": {
+        "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "tag": "v4.33.1",
+        "source": "lakefile require + lake-manifest.json",
+        "status": "ok"
+      },
+      "lakefile": {
+        "path": "/home/x1zz/team42-repos/hard-disk-b5-lean/lakefile.toml",
+        "kind": "toml",
+        "name": "HardDiskB5Lean",
+        "version": "0.1.0",
+        "default_targets": [
+          "HardDiskB5Lean",
+          "Challenge",
+          "Solution",
+          "Audit"
+        ],
+        "requires": [
+          {
+            "name": "mathlib",
+            "git": "https://github.com/leanprover-community/mathlib4",
+            "rev": "v4.33.1",
+            "path": null
+          }
+        ],
+        "lean_libs": [
+          "HardDiskB5Lean",
+          "Challenge",
+          "Solution",
+          "Audit"
+        ],
+        "status": "ok"
+      },
+      "manifest": {
+        "path": "/home/x1zz/team42-repos/hard-disk-b5-lean/lake-manifest.json",
+        "packages": [
+          {
+            "name": "mathlib",
+            "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+            "url": "https://github.com/leanprover-community/mathlib4",
+            "kind": "git"
+          },
+          {
+            "name": "plausible",
+            "rev": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+            "url": "https://github.com/leanprover-community/plausible",
+            "kind": "git"
+          },
+          {
+            "name": "LeanSearchClient",
+            "rev": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+            "url": "https://github.com/leanprover-community/LeanSearchClient",
+            "kind": "git"
+          },
+          {
+            "name": "importGraph",
+            "rev": "16f02aa7642864af59f1ff0e384a015994db9118",
+            "url": "https://github.com/leanprover-community/import-graph",
+            "kind": "git"
+          },
+          {
+            "name": "proofwidgets",
+            "rev": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+            "url": "https://github.com/leanprover-community/ProofWidgets4",
+            "kind": "git"
+          },
+          {
+            "name": "aesop",
+            "rev": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+            "url": "https://github.com/leanprover-community/aesop",
+            "kind": "git"
+          },
+          {
+            "name": "Qq",
+            "rev": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+            "url": "https://github.com/leanprover-community/quote4",
+            "kind": "git"
+          },
+          {
+            "name": "batteries",
+            "rev": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+            "url": "https://github.com/leanprover-community/batteries",
+            "kind": "git"
+          },
+          {
+            "name": "Cli",
+            "rev": "6130a47896ce867c6a4a55373441e59e565bad0f",
+            "url": "https://github.com/leanprover/lean4-cli",
+            "kind": "git"
+          }
+        ],
+        "status": "ok"
+      },
+      "modules": {
+        "count": 2067,
+        "roots": [
+          "Audit",
+          "Challenge",
+          "Check",
+          "HardDiskB5Lean"
+        ],
+        "import_edges_internal": 6508,
+        "external_imports": [
+          "Lean",
+          "Mathlib"
+        ],
+        "max_import_depth": 56,
+        "cycles": [],
+        "by_directory": [
+          {
+            "dir": "HardDiskB5Lean",
+            "files": 2062
+          },
+          {
+            "dir": "(root)",
+            "files": 5
+          }
+        ],
+        "status": "ok"
+      },
+      "audit_impl": {
+        "kind": "lean_audit",
+        "files": [
+          "/home/x1zz/team42-repos/hard-disk-b5-lean/Audit.lean"
+        ],
+        "command_names": [
+          "#repo_audit"
+        ],
+        "heads": [
+          "HardDiskB5Lean.theorem_1_1",
+          "theorem_1_1"
+        ],
+        "heads_source": "parsed",
+        "expected_direct_sorry": [],
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "in_default_targets": null,
+        "status": "ok"
+      },
+      "manifests": [],
+      "receipts": {
+        "dir": "receipts",
+        "files": [
+          "receipts/build.log",
+          "receipts/build.time",
+          "receipts/build_summary.txt",
+          "receipts/cache_get.time",
+          "receipts/check.out",
+          "receipts/comparator.log",
+          "receipts/comparator.time",
+          "receipts/machine.txt"
+        ],
+        "summaries": [
+          {
+            "file": "receipts/build_summary.txt",
+            "claimed_modules_built": 2066,
+            "claimed_errors": 0,
+            "claimed_sorry_warnings": 1,
+            "claimed_axioms": [
+              {
+                "name": "HardDiskB5Lean.theorem_1_1",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "theorem_1_1",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              }
+            ],
+            "claimed_placeholders": 0,
+            "claimed_direct_sorry": []
+          }
+        ],
+        "status": "parsed_only"
+      },
+      "scan": {
+        "files_scanned": 2067,
+        "scope": [
+          "HardDiskB5Lean"
+        ],
+        "scope_source": "audit_file",
+        "flags": [
+          {
+            "path": "/home/x1zz/team42-repos/hard-disk-b5-lean/Challenge.lean",
+            "line": 105,
+            "token": "sorry",
+            "in_scope": false
+          }
+        ],
+        "flags_in_scope": 0,
+        "status": "ok",
+        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first; the gate covers module roots HardDiskB5Lean (audit_file)"
+      },
+      "warnings": [],
+      "disclaimer": "This report verifies reproducibility of published claims. It does not establish mathematical correctness."
+    },
+    {
+      "schema": "lean-audit/v1",
+      "generated_at": "2026-11-20T04:52:02Z",
+      "tool_version": "0.1.0",
+      "project": "HardSphereB5Lean",
+      "source": {
+        "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean",
+        "git_commit": "ce7fdff1b303f757b346c94350d99b277ddcbe2a",
+        "git_dirty": false,
+        "git_note": null
+      },
+      "toolchain": {
+        "lean_toolchain": "leanprover/lean4:v4.33.1",
+        "lean_version": "4.33.1",
+        "status": "ok"
+      },
+      "mathlib": {
+        "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "tag": "v4.33.1",
+        "source": "lakefile require + lake-manifest.json",
+        "status": "ok"
+      },
+      "lakefile": {
+        "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/lakefile.toml",
+        "kind": "toml",
+        "name": "HardSphereB5Lean",
+        "version": "0.1.0",
+        "default_targets": [
+          "HardSphereB5Lean",
+          "Challenge",
+          "Solution",
+          "Audit"
+        ],
+        "requires": [
+          {
+            "name": "mathlib",
+            "git": "https://github.com/leanprover-community/mathlib4",
+            "rev": "v4.33.1",
+            "path": null
+          }
+        ],
+        "lean_libs": [
+          "HardSphereB5Lean",
+          "Challenge",
+          "Solution",
+          "Audit"
+        ],
+        "status": "ok"
+      },
+      "manifest": {
+        "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/lake-manifest.json",
+        "packages": [
+          {
+            "name": "mathlib",
+            "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+            "url": "https://github.com/leanprover-community/mathlib4",
+            "kind": "git"
+          },
+          {
+            "name": "plausible",
+            "rev": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+            "url": "https://github.com/leanprover-community/plausible",
+            "kind": "git"
+          },
+          {
+            "name": "LeanSearchClient",
+            "rev": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+            "url": "https://github.com/leanprover-community/LeanSearchClient",
+            "kind": "git"
+          },
+          {
+            "name": "importGraph",
+            "rev": "16f02aa7642864af59f1ff0e384a015994db9118",
+            "url": "https://github.com/leanprover-community/import-graph",
+            "kind": "git"
+          },
+          {
+            "name": "proofwidgets",
+            "rev": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+            "url": "https://github.com/leanprover-community/ProofWidgets4",
+            "kind": "git"
+          },
+          {
+            "name": "aesop",
+            "rev": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+            "url": "https://github.com/leanprover-community/aesop",
+            "kind": "git"
+          },
+          {
+            "name": "Qq",
+            "rev": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+            "url": "https://github.com/leanprover-community/quote4",
+            "kind": "git"
+          },
+          {
+            "name": "batteries",
+            "rev": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+            "url": "https://github.com/leanprover-community/batteries",
+            "kind": "git"
+          },
+          {
+            "name": "Cli",
+            "rev": "6130a47896ce867c6a4a55373441e59e565bad0f",
+            "url": "https://github.com/leanprover/lean4-cli",
+            "kind": "git"
+          }
+        ],
+        "status": "ok"
+      },
+      "modules": {
+        "count": 1096,
+        "roots": [
+          "Audit",
+          "Challenge",
+          "Check",
+          "HardSphereB5Lean"
+        ],
+        "import_edges_internal": 2958,
+        "external_imports": [
+          "Lean",
+          "Mathlib",
+          "Mathlib.Analysis.Convex.GaugeRescale",
+          "Mathlib.Analysis.InnerProductSpace.PiL2",
+          "Mathlib.Analysis.Normed.Module.Ball.Homeomorph",
+          "Mathlib.Analysis.Normed.Module.Connected",
+          "Mathlib.Analysis.SpecialFunctions.Complex.Arg",
+          "Mathlib.Analysis.SpecialFunctions.Trigonometric.Angle",
+          "Mathlib.Data.Set.Card",
+          "Mathlib.Geometry.Manifold.Instances.Sphere",
+          "Mathlib.MeasureTheory.Integral.IntervalIntegral.Periodic",
+          "Mathlib.MeasureTheory.Integral.Prod"
+        ],
+        "max_import_depth": 37,
+        "cycles": [],
+        "by_directory": [
+          {
+            "dir": "HardSphereB5Lean",
+            "files": 1091
+          },
+          {
+            "dir": "(root)",
+            "files": 5
+          }
+        ],
+        "status": "ok"
+      },
+      "audit_impl": {
+        "kind": "lean_audit",
+        "files": [
+          "/home/x1zz/team42-repos/hard-sphere-b5-lean/Audit.lean"
+        ],
+        "command_names": [
+          "#repo_audit"
+        ],
+        "heads": [
+          "HardSphereB5Lean.lensVolFormula",
+          "HardSphereB5Lean.threeBallVolume",
+          "HardSphereB5Lean.pathFaceQ_pos",
+          "HardSphereB5Lean.kernel_constants",
+          "HardSphereB5Lean.kernel_split",
+          "HardSphereB5Lean.cutoff_order_two",
+          "HardSphereB5Lean.phiK_nonneg",
+          "HardSphereB5Lean.primitive_explicit",
+          "HardSphereB5Lean.rho_rational",
+          "HardSphereB5Lean.sigma_axis_cases",
+          "HardSphereB5Lean.near_as_spherical",
+          "HardSphereB5Lean.circInt_isometry_invariant",
+          "HardSphereB5Lean.rho_squared_distance",
+          "HardSphereB5Lean.Aface_eq_poly",
+          "HardSphereB5Lean.Qface_eq_poly",
+          "HardSphereB5Lean.adjacent_unit_halfwidths",
+          "HardSphereB5Lean.apex_position_contraction",
+          "HardSphereB5Lean.bulk_apex_anchor",
+          "HardSphereB5Lean.bulk_incidence",
+          "HardSphereB5Lean.circumcenter_unique",
+          "HardSphereB5Lean.circumradius_sq",
+          "HardSphereB5Lean.common_pair_halfwidth_sum",
+          "HardSphereB5Lean.coordinate_realization",
+          "HardSphereB5Lean.divergence_path",
+          "HardSphereB5Lean.equal_sliver_halves",
+          "HardSphereB5Lean.face_circumcenter_identities",
+          "HardSphereB5Lean.face_circumradius_certificate",
+          "HardSphereB5Lean.labeled_patch_continuous_distinct",
+          "HardSphereB5Lean.midpoint_values",
+          "HardSphereB5Lean.near_arc_inventory",
+          "HardSphereB5Lean.near_common_pair_acute_obtuse",
+          "HardSphereB5Lean.near_dihedral_identity",
+          "HardSphereB5Lean.near_face_inventory",
+          "HardSphereB5Lean.near_moving_point_width",
+          "HardSphereB5Lean.near_pair23_halfwidths_acute",
+          "HardSphereB5Lean.near_selector_certificates",
+          "HardSphereB5Lean.near_selector_counts",
+          "HardSphereB5Lean.near_selector_factorization",
+          "HardSphereB5Lean.near_selector_sliver_order",
+          "HardSphereB5Lean.near_selector_wall_bulk",
+          "HardSphereB5Lean.no_near_sliver_on_diagonal",
+          "HardSphereB5Lean.no_sliver_at_s_one",
+          "HardSphereB5Lean.obtuse_point_values",
+          "HardSphereB5Lean.obtuse_sentence_counterexample",
+          "HardSphereB5Lean.pair_arc_normalizer",
+          "HardSphereB5Lean.pair_replacement_body",
+          "HardSphereB5Lean.pair_replacement_conditional",
+          "HardSphereB5Lean.pair_replacement_unrestricted_false",
+          "HardSphereB5Lean.pair_width",
+          "HardSphereB5Lean.positive_volume_active_patches",
+          "HardSphereB5Lean.raw_arc_decompositions_exist",
+          "HardSphereB5Lean.raw_endpoint_contraction",
+          "HardSphereB5Lean.realizable",
+          "HardSphereB5Lean.retained_vertex_count",
+          "HardSphereB5Lean.sliver_incidence",
+          "HardSphereB5Lean.sliver_lens_covered",
+          "HardSphereB5Lean.sliver_patch_valuation",
+          "HardSphereB5Lean.sliver_table",
+          "HardSphereB5Lean.sliver_volume",
+          "HardSphereB5Lean.support_factor_identities",
+          "HardSphereB5Lean.tetrahedron_metric",
+          "HardSphereB5Lean.triple_patch_area",
+          "HardSphereB5Lean.triple_patch_moment",
+          "HardSphereB5Lean.triple_patch_moment_scalar",
+          "HardSphereB5Lean.triple_retention_test",
+          "HardSphereB5Lean.volume_continuous",
+          "HardSphereB5Lean.walls_null",
+          "HardSphereB5Lean.walls_pathMeasure_null",
+          "HardSphereB5Lean.weighted_apex_coefficient",
+          "HardSphereB5Lean.AB_chain",
+          "HardSphereB5Lean.Rsame_label_symmetry",
+          "HardSphereB5Lean.capInter_isRegularRegionCrofton",
+          "HardSphereB5Lean.chord_length_integral",
+          "HardSphereB5Lean.chord_representation",
+          "HardSphereB5Lean.coarea_transport",
+          "HardSphereB5Lean.crofton_decomposition",
+          "HardSphereB5Lean.cross_arc_by_parts",
+          "HardSphereB5Lean.definition_chain",
+          "HardSphereB5Lean.flat_measure_general",
+          "HardSphereB5Lean.flat_measure_reflection_even",
+          "HardSphereB5Lean.flat_measure_target",
+          "HardSphereB5Lean.hit_mass",
+          "HardSphereB5Lean.literal_crofton_false",
+          "HardSphereB5Lean.literal_remainder_excess",
+          "HardSphereB5Lean.sigma_support",
+          "HardSphereB5Lean.spherical_remainder_split",
+          "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_area",
+          "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_moment",
+          "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_volume",
+          "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_near_volume_inventory",
+          "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_patch",
+          "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_volume",
+          "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_raw_endpoint_volume",
+          "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_weighted_channel_normal_form",
+          "HardSphereB5Lean.pair_replacement_patch_ae",
+          "HardSphereB5Lean.realizable_classification",
+          "lensVolFormula",
+          "threeBallVolume",
+          "pathFaceQ_pos",
+          "kernel_constants",
+          "kernel_split",
+          "cutoff_order_two",
+          "phiK_nonneg",
+          "primitive_explicit",
+          "rho_rational",
+          "sigma_axis_cases",
+          "near_as_spherical",
+          "circInt_isometry_invariant",
+          "rho_squared_distance",
+          "Aface_eq_poly",
+          "Qface_eq_poly",
+          "adjacent_unit_halfwidths",
+          "apex_position_contraction",
+          "bulk_apex_anchor",
+          "bulk_incidence",
+          "circumcenter_unique",
+          "circumradius_sq",
+          "common_pair_halfwidth_sum",
+          "coordinate_realization",
+          "divergence_path",
+          "equal_sliver_halves",
+          "face_circumcenter_identities",
+          "face_circumradius_certificate",
+          "labeled_patch_continuous_distinct",
+          "midpoint_values",
+          "near_arc_inventory",
+          "near_common_pair_acute_obtuse",
+          "near_dihedral_identity",
+          "near_face_inventory",
+          "near_moving_point_width",
+          "near_pair23_halfwidths_acute",
+          "near_selector_certificates",
+          "near_selector_counts",
+          "near_selector_factorization",
+          "near_selector_sliver_order",
+          "near_selector_wall_bulk",
+          "no_near_sliver_on_diagonal",
+          "no_sliver_at_s_one",
+          "obtuse_point_values",
+          "obtuse_sentence_counterexample",
+          "pair_arc_normalizer",
+          "pair_replacement_body",
+          "pair_replacement_conditional",
+          "pair_replacement_unrestricted_false",
+          "pair_width",
+          "positive_volume_active_patches",
+          "raw_arc_decompositions_exist",
+          "raw_endpoint_contraction",
+          "realizable",
+          "retained_vertex_count",
+          "sliver_incidence",
+          "sliver_lens_covered",
+          "sliver_patch_valuation",
+          "sliver_table",
+          "sliver_volume",
+          "support_factor_identities",
+          "tetrahedron_metric",
+          "triple_patch_area",
+          "triple_patch_moment",
+          "triple_patch_moment_scalar",
+          "triple_retention_test",
+          "volume_continuous",
+          "walls_null",
+          "walls_pathMeasure_null",
+          "weighted_apex_coefficient",
+          "AB_chain",
+          "Rsame_label_symmetry",
+          "capInter_isRegularRegionCrofton",
+          "chord_length_integral",
+          "chord_representation",
+          "coarea_transport",
+          "crofton_decomposition",
+          "cross_arc_by_parts",
+          "definition_chain",
+          "flat_measure_general",
+          "flat_measure_reflection_even",
+          "flat_measure_target",
+          "hit_mass",
+          "literal_crofton_false",
+          "literal_remainder_excess",
+          "sigma_support",
+          "spherical_remainder_split",
+          "HardSphereB5_Lean_Geometry_PathCore_bulk_patch_area",
+          "HardSphereB5_Lean_Geometry_PathCore_bulk_patch_moment",
+          "HardSphereB5_Lean_Geometry_PathCore_bulk_volume",
+          "HardSphereB5_Lean_Geometry_PathCore_near_volume_inventory",
+          "HardSphereB5_Lean_Geometry_PathCore_normal_form_patch",
+          "HardSphereB5_Lean_Geometry_PathCore_normal_form_volume",
+          "HardSphereB5_Lean_Geometry_PathCore_raw_endpoint_volume",
+          "HardSphereB5_Lean_Geometry_PathCore_weighted_channel_normal_form",
+          "pair_replacement_patch_ae",
+          "realizable_classification"
+        ],
+        "heads_source": "parsed",
+        "expected_direct_sorry": [],
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "in_default_targets": null,
+        "status": "ok"
+      },
+      "manifests": [
+        {
+          "file": "MANUSCRIPT_BINDING.json",
+          "kind": "manuscript_binding",
+          "entries": 0,
+          "checked": null,
+          "matched": null,
+          "mismatched": [],
+          "missing": [],
+          "axiom_claims": null,
+          "status": "unsupported",
+          "note": "no recognised hash table"
+        }
+      ],
+      "receipts": {
+        "dir": "receipts",
+        "files": [
+          "receipts/build.log",
+          "receipts/build.time",
+          "receipts/build_summary.txt",
+          "receipts/check.out",
+          "receipts/comparator.log",
+          "receipts/comparator.time",
+          "receipts/machine.txt"
+        ],
+        "summaries": [
+          {
+            "file": "receipts/build_summary.txt",
+            "claimed_modules_built": 1095,
+            "claimed_errors": 0,
+            "claimed_sorry_warnings": 96,
+            "claimed_axioms": [
+              {
+                "name": "HardSphereB5Lean.lensVolFormula",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.threeBallVolume",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.pathFaceQ_pos",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.kernel_constants",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.kernel_split",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.cutoff_order_two",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.phiK_nonneg",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.primitive_explicit",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.rho_rational",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.sigma_axis_cases",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.near_as_spherical",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.circInt_isometry_invariant",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.rho_squared_distance",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.Aface_eq_poly",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.Qface_eq_poly",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.adjacent_unit_halfwidths",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.apex_position_contraction",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.bulk_apex_anchor",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.bulk_incidence",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.circumcenter_unique",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.circumradius_sq",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.common_pair_halfwidth_sum",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.coordinate_realization",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.divergence_path",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.equal_sliver_halves",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.face_circumcenter_identities",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.face_circumradius_certificate",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.labeled_patch_continuous_distinct",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.midpoint_values",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.near_arc_inventory",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.near_common_pair_acute_obtuse",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.near_dihedral_identity",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.near_face_inventory",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.near_moving_point_width",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.near_pair23_halfwidths_acute",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.near_selector_certificates",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.near_selector_counts",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.near_selector_factorization",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.near_selector_sliver_order",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.near_selector_wall_bulk",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.no_near_sliver_on_diagonal",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.no_sliver_at_s_one",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.obtuse_point_values",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.obtuse_sentence_counterexample",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.pair_arc_normalizer",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.pair_replacement_body",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.pair_replacement_conditional",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.pair_replacement_unrestricted_false",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.pair_width",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.positive_volume_active_patches",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.raw_arc_decompositions_exist",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.raw_endpoint_contraction",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.realizable",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.retained_vertex_count",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.sliver_incidence",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.sliver_lens_covered",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.sliver_patch_valuation",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.sliver_table",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.sliver_volume",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.support_factor_identities",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.tetrahedron_metric",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.triple_patch_area",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.triple_patch_moment",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.triple_patch_moment_scalar",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.triple_retention_test",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.volume_continuous",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.walls_null",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.walls_pathMeasure_null",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.weighted_apex_coefficient",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.AB_chain",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.Rsame_label_symmetry",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.capInter_isRegularRegionCrofton",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.chord_length_integral",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.chord_representation",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.coarea_transport",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.crofton_decomposition",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.cross_arc_by_parts",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.definition_chain",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.flat_measure_general",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.flat_measure_reflection_even",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.flat_measure_target",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.hit_mass",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.literal_crofton_false",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.literal_remainder_excess",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.sigma_support",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5Lean.spherical_remainder_split",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_area",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_moment",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_volume",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_near_volume_inventory",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_patch",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_volume",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_raw_endpoint_volume",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_weighted_channel_normal_form",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.pair_replacement_patch_ae",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5Lean.realizable_classification",
+                "axioms": []
+              },
+              {
+                "name": "lensVolFormula",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "threeBallVolume",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "pathFaceQ_pos",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "kernel_constants",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "kernel_split",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "cutoff_order_two",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "phiK_nonneg",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "primitive_explicit",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "rho_rational",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "sigma_axis_cases",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_as_spherical",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "circInt_isometry_invariant",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "rho_squared_distance",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "Aface_eq_poly",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "Qface_eq_poly",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "adjacent_unit_halfwidths",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "apex_position_contraction",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "bulk_apex_anchor",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "bulk_incidence",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "circumcenter_unique",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "circumradius_sq",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "common_pair_halfwidth_sum",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "coordinate_realization",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "divergence_path",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "equal_sliver_halves",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "face_circumcenter_identities",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "face_circumradius_certificate",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "labeled_patch_continuous_distinct",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "midpoint_values",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_arc_inventory",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_common_pair_acute_obtuse",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_dihedral_identity",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_face_inventory",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_moving_point_width",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_pair23_halfwidths_acute",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_selector_certificates",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_selector_counts",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_selector_factorization",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_selector_sliver_order",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "near_selector_wall_bulk",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "no_near_sliver_on_diagonal",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "no_sliver_at_s_one",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "obtuse_point_values",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "obtuse_sentence_counterexample",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "pair_arc_normalizer",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "pair_replacement_body",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "pair_replacement_conditional",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "pair_replacement_unrestricted_false",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "pair_width",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "positive_volume_active_patches",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "raw_arc_decompositions_exist",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "raw_endpoint_contraction",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "realizable",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "retained_vertex_count",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "sliver_incidence",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "sliver_lens_covered",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "sliver_patch_valuation",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "sliver_table",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "sliver_volume",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "support_factor_identities",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "tetrahedron_metric",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "triple_patch_area",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "triple_patch_moment",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "triple_patch_moment_scalar",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "triple_retention_test",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "volume_continuous",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "walls_null",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "walls_pathMeasure_null",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "weighted_apex_coefficient",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "AB_chain",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "Rsame_label_symmetry",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "capInter_isRegularRegionCrofton",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "chord_length_integral",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "chord_representation",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "coarea_transport",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "crofton_decomposition",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "cross_arc_by_parts",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "definition_chain",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "flat_measure_general",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "flat_measure_reflection_even",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "flat_measure_target",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "hit_mass",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "literal_crofton_false",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "literal_remainder_excess",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "sigma_support",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "spherical_remainder_split",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "HardSphereB5_Lean_Geometry_PathCore_bulk_patch_area",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5_Lean_Geometry_PathCore_bulk_patch_moment",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5_Lean_Geometry_PathCore_bulk_volume",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5_Lean_Geometry_PathCore_near_volume_inventory",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5_Lean_Geometry_PathCore_normal_form_patch",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5_Lean_Geometry_PathCore_normal_form_volume",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5_Lean_Geometry_PathCore_raw_endpoint_volume",
+                "axioms": []
+              },
+              {
+                "name": "HardSphereB5_Lean_Geometry_PathCore_weighted_channel_normal_form",
+                "axioms": []
+              },
+              {
+                "name": "pair_replacement_patch_ae",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "realizable_classification",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              }
+            ],
+            "claimed_placeholders": 0,
+            "claimed_direct_sorry": []
+          }
+        ],
+        "status": "parsed_only"
+      },
+      "scan": {
+        "files_scanned": 1096,
+        "scope": [
+          "HardSphereB5Lean"
+        ],
+        "scope_source": "audit_file",
+        "flags": [
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 23,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 50,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 67,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 79,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 90,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 102,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 113,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 125,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 136,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 150,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 161,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 172,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 184,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 194,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 205,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 217,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 229,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 242,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 253,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 264,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 275,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 288,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 301,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 314,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 327,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 341,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 354,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 367,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 381,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 396,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 410,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 422,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 434,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 450,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 462,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 479,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 494,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 507,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 519,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 531,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 542,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 553,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 564,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 576,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 589,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 604,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 618,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 631,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 646,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 658,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 670,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 684,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 695,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 707,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 721,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 733,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 748,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 761,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 773,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 785,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 798,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 811,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 827,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 844,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 860,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 872,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 883,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 895,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 907,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 919,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 930,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 943,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 954,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 965,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 979,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 990,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1002,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1013,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1030,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1046,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1059,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1070,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1083,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1094,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1107,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1118,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1129,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1144,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1157,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1170,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1191,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1206,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1220,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1235,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1251,
+            "token": "sorry",
+            "in_scope": false
+          },
+          {
+            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "line": 1264,
+            "token": "sorry",
+            "in_scope": false
+          }
+        ],
+        "flags_in_scope": 0,
+        "status": "ok",
+        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first; the gate covers module roots HardSphereB5Lean (audit_file)"
+      },
+      "warnings": [],
+      "disclaimer": "This report verifies reproducibility of published claims. It does not establish mathematical correctness."
+    },
+    {
+      "schema": "lean-audit/v1",
+      "generated_at": "2026-11-20T04:52:03Z",
       "tool_version": "0.1.0",
       "project": "RubikSTM",
       "source": {
@@ -915,16 +3519,257 @@
       },
       "scan": {
         "files_scanned": 935,
+        "scope": [
+          "RubikSTM"
+        ],
+        "scope_source": "audit_file",
         "flags": [],
+        "flags_in_scope": 0,
         "status": "ok",
-        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first"
+        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first; the gate covers module roots RubikSTM (audit_file)"
       },
       "warnings": [],
       "disclaimer": "This report verifies reproducibility of published claims. It does not establish mathematical correctness."
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T02:27:47Z",
+      "generated_at": "2026-11-20T04:52:33Z",
+      "tool_version": "0.1.0",
+      "project": "SierksmaLean",
+      "source": {
+        "path": "/home/x1zz/team42-repos/sierksma33",
+        "git_commit": "c1db5b6d6c1cf478b868e44e87906aa1f1e621a6",
+        "git_dirty": false,
+        "git_note": null
+      },
+      "toolchain": {
+        "lean_toolchain": "leanprover/lean4:v4.33.1",
+        "lean_version": "4.33.1",
+        "status": "ok"
+      },
+      "mathlib": {
+        "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "tag": "v4.33.1",
+        "source": "lakefile require + lake-manifest.json",
+        "status": "ok"
+      },
+      "lakefile": {
+        "path": "/home/x1zz/team42-repos/sierksma33/lakefile.toml",
+        "kind": "toml",
+        "name": "SierksmaLean",
+        "version": "1.0.0",
+        "default_targets": [
+          "SierksmaLean",
+          "Challenge",
+          "Solution",
+          "Audit"
+        ],
+        "requires": [
+          {
+            "name": "mathlib",
+            "git": "https://github.com/leanprover-community/mathlib4",
+            "rev": "v4.33.1",
+            "path": null
+          }
+        ],
+        "lean_libs": [
+          "SierksmaLean",
+          "Challenge",
+          "Solution",
+          "Audit"
+        ],
+        "status": "ok"
+      },
+      "manifest": {
+        "path": "/home/x1zz/team42-repos/sierksma33/lake-manifest.json",
+        "packages": [
+          {
+            "name": "mathlib",
+            "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+            "url": "https://github.com/leanprover-community/mathlib4",
+            "kind": "git"
+          },
+          {
+            "name": "plausible",
+            "rev": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+            "url": "https://github.com/leanprover-community/plausible",
+            "kind": "git"
+          },
+          {
+            "name": "LeanSearchClient",
+            "rev": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+            "url": "https://github.com/leanprover-community/LeanSearchClient",
+            "kind": "git"
+          },
+          {
+            "name": "importGraph",
+            "rev": "16f02aa7642864af59f1ff0e384a015994db9118",
+            "url": "https://github.com/leanprover-community/import-graph",
+            "kind": "git"
+          },
+          {
+            "name": "proofwidgets",
+            "rev": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+            "url": "https://github.com/leanprover-community/ProofWidgets4",
+            "kind": "git"
+          },
+          {
+            "name": "aesop",
+            "rev": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+            "url": "https://github.com/leanprover-community/aesop",
+            "kind": "git"
+          },
+          {
+            "name": "Qq",
+            "rev": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+            "url": "https://github.com/leanprover-community/quote4",
+            "kind": "git"
+          },
+          {
+            "name": "batteries",
+            "rev": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+            "url": "https://github.com/leanprover-community/batteries",
+            "kind": "git"
+          },
+          {
+            "name": "Cli",
+            "rev": "6130a47896ce867c6a4a55373441e59e565bad0f",
+            "url": "https://github.com/leanprover/lean4-cli",
+            "kind": "git"
+          }
+        ],
+        "status": "ok"
+      },
+      "modules": {
+        "count": 3684,
+        "roots": [
+          "Audit",
+          "Challenge",
+          "Check",
+          "SierksmaLean"
+        ],
+        "import_edges_internal": 15323,
+        "external_imports": [
+          "Lean",
+          "Lean.Elab.Command",
+          "Mathlib",
+          "Mathlib.Analysis.Convex.Hull",
+          "Mathlib.Data.Nat.Bitwise",
+          "Mathlib.Data.Real.Basic",
+          "Mathlib.LinearAlgebra.Matrix.Kronecker",
+          "Mathlib.LinearAlgebra.Matrix.NonsingularInverse"
+        ],
+        "max_import_depth": 33,
+        "cycles": [],
+        "by_directory": [
+          {
+            "dir": "SierksmaLean",
+            "files": 3679
+          },
+          {
+            "dir": "(root)",
+            "files": 5
+          }
+        ],
+        "status": "ok"
+      },
+      "audit_impl": {
+        "kind": "lean_audit",
+        "files": [
+          "/home/x1zz/team42-repos/sierksma33/Audit.lean"
+        ],
+        "command_names": [
+          "#sierksma_audit"
+        ],
+        "heads": [
+          "SierksmaLean.main_theorem",
+          "SierksmaLean.sierksma_three_three",
+          "sierksma_three_three"
+        ],
+        "heads_source": "parsed",
+        "expected_direct_sorry": [],
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "in_default_targets": null,
+        "status": "ok"
+      },
+      "manifests": [],
+      "receipts": {
+        "dir": "receipts",
+        "files": [
+          "receipts/build.log",
+          "receipts/build.time",
+          "receipts/build_summary.txt",
+          "receipts/check.out",
+          "receipts/comparator.log",
+          "receipts/comparator.time",
+          "receipts/machine.txt"
+        ],
+        "summaries": [
+          {
+            "file": "receipts/build_summary.txt",
+            "claimed_modules_built": 3683,
+            "claimed_errors": 0,
+            "claimed_sorry_warnings": 1,
+            "claimed_axioms": [
+              {
+                "name": "SierksmaLean.main_theorem",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "SierksmaLean.sierksma_three_three",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              },
+              {
+                "name": "sierksma_three_three",
+                "axioms": [
+                  "propext",
+                  "Classical.choice",
+                  "Quot.sound"
+                ]
+              }
+            ],
+            "claimed_placeholders": 0,
+            "claimed_direct_sorry": []
+          }
+        ],
+        "status": "parsed_only"
+      },
+      "scan": {
+        "files_scanned": 3684,
+        "scope": [
+          "SierksmaLean"
+        ],
+        "scope_source": "audit_file",
+        "flags": [
+          {
+            "path": "/home/x1zz/team42-repos/sierksma33/Challenge.lean",
+            "line": 14,
+            "token": "sorry",
+            "in_scope": false
+          }
+        ],
+        "flags_in_scope": 0,
+        "status": "ok",
+        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first; the gate covers module roots SierksmaLean (audit_file)"
+      },
+      "warnings": [],
+      "disclaimer": "This report verifies reproducibility of published claims. It does not establish mathematical correctness."
+    },
+    {
+      "schema": "lean-audit/v1",
+      "generated_at": "2026-11-20T04:52:34Z",
       "tool_version": "0.1.0",
       "project": "site_perc_upper",
       "source": {
@@ -1227,9 +4072,15 @@
       },
       "scan": {
         "files_scanned": 56,
+        "scope": [
+          "SitePerc",
+          "checker"
+        ],
+        "scope_source": "all_local_modules",
         "flags": [],
+        "flags_in_scope": 0,
         "status": "ok",
-        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first"
+        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first; the gate covers module roots SitePerc, checker (all_local_modules)"
       },
       "warnings": [],
       "disclaimer": "This report verifies reproducibility of published claims. It does not establish mathematical correctness."
