@@ -219,6 +219,42 @@ fn skipping_verification_is_reported_as_parsed_only_never_ok() {
 }
 
 #[test]
+fn batch_counts_axiom_claims_from_axiom_audit_json_not_only_receipts() {
+    let Some(root) = repos_root() else {
+        eprintln!("skipping: ../team42-repos not present");
+        return;
+    };
+    let out = Command::new(env!("CARGO_BIN_EXE_lean-audit"))
+        .arg("batch")
+        .arg(&root)
+        .args(["--format", "md"])
+        .output()
+        .expect("run lean-audit batch");
+    let md = String::from_utf8_lossy(&out.stdout);
+
+    // site-percolation-square-lattice-lean publishes 42 axiom claims, all of them
+    // in data/AXIOM_AUDIT.json rather than in receipts/.
+    let row = md
+        .lines()
+        .find(|l| l.contains("site_perc_upper"))
+        .expect("site-percolation row present in the batch table");
+    assert!(
+        row.ends_with("| 42 |"),
+        "expected 42 published claims in the row, got: {row}"
+    );
+
+    // ang publishes 9 claims per architecture summary, from receipts/.
+    let row = md
+        .lines()
+        .find(|l| l.contains("AngCounterexample"))
+        .expect("ang row present in the batch table");
+    assert!(
+        row.ends_with("| 18 |"),
+        "expected 18 published claims (9 x 2 architectures), got: {row}"
+    );
+}
+
+#[test]
 fn every_lean_repository_avoids_forbidden_tokens_outside_comments() {
     let Some(root) = repos_root() else {
         eprintln!("skipping: ../team42-repos not present");

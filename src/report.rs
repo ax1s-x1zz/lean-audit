@@ -292,12 +292,7 @@ pub fn batch_markdown(b: &BatchReport) -> String {
     s.push_str("| project | lean | modules | depth | audit | commands | heads | flags | hashes | claims |\n");
     s.push_str("|---|---|---|---|---|---|---|---|---|---|\n");
     for r in &b.repos {
-        let claims: usize = r
-            .receipts
-            .summaries
-            .iter()
-            .map(|x| x.claimed_axioms.len())
-            .sum();
+        let claims = published_claim_count(r);
         s.push_str(&format!(
             "| `{}` | {} | {} | {} | `{}` | {} | {} | {} | {} | {} |\n",
             r.project,
@@ -328,7 +323,7 @@ pub fn batch_markdown(b: &BatchReport) -> String {
     s.push_str(
         "- `heads` is the number of head theorems found in the repository's own audit file.\n",
     );
-    s.push_str("- `claims` is the number of published `AUDIT axioms <name>: [...]` lines parsed from `receipts/`. Re-computing them is M3.\n");
+    s.push_str("- `claims` counts published axiom claims from both sources the tool reads: `AUDIT axioms <name>: [...]` lines in `receipts/**/build_summary.txt`, and the `*_exact_axioms` maps in `AXIOM_AUDIT.json`. Re-computing them is `lean-audit axioms`.\n");
     s.push_str("- `hashes` is `matched/checked` across every manifest in the repository; `⚠n` counts entries that are missing from the checkout or whose recomputed hash differs.\n");
     s.push_str("- `flags` counts forbidden tokens (`sorry`, `admit`, `axiom`, `unsafe`, `implemented_by`, `extern`) in comment- and string-stripped source.\n");
     s.push_str(&format!("\n---\n\n_{}_\n", b.disclaimer));
@@ -592,6 +587,27 @@ fn manifest_details(manifests: &[ManifestInfo]) -> String {
         }
     }
     s
+}
+
+/// Published axiom claims from both sources the tool reads: the `AUDIT axioms`
+/// lines in `receipts/**/build_summary.txt`, and the `*_exact_axioms` maps bound
+/// by `AXIOM_AUDIT.json`.
+///
+/// Counting only the receipts under-reported `site-percolation-square-lattice-lean`
+/// as zero, because its 42 claims live in `AXIOM_AUDIT.json`.
+fn published_claim_count(r: &Report) -> usize {
+    let from_receipts: usize = r
+        .receipts
+        .summaries
+        .iter()
+        .map(|s| s.claimed_axioms.len())
+        .sum();
+    let from_manifests: usize = r
+        .manifests
+        .iter()
+        .map(|m| m.axiom_claims.unwrap_or(0))
+        .sum();
+    from_receipts + from_manifests
 }
 
 fn short(hash: &str) -> String {
