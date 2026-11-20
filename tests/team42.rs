@@ -254,6 +254,75 @@ fn batch_counts_axiom_claims_from_axiom_audit_json_not_only_receipts() {
     );
 }
 
+/// A `lake` stub that exits 0 without producing output. Used to exercise the
+/// non-Lean half of `axioms` (head extraction, imports, sorry scope, claim
+/// matching) against a real repository without building it.
+fn noop_lake() -> (tempfile::TempDir, PathBuf) {
+    let dir = tempfile::tempdir().expect("tempdir");
+    let path = dir.path().join("lake");
+    std::fs::write(&path, "#!/bin/sh\nexit 0\n").unwrap();
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::PermissionsExt;
+        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o755)).unwrap();
+    }
+    (dir, path)
+}
+
+#[test]
+fn ang_axioms_plumbing_matches_its_own_audit_file() {
+    let Some(root) = repos_root() else {
+        eprintln!("skipping: ../team42-repos not present");
+        return;
+    };
+    let repo = root.join("ang-subset-products-lean");
+    if !repo.is_dir() {
+        eprintln!("skipping: ang not cloned");
+        return;
+    }
+
+    let (_guard, lake) = noop_lake();
+    let out = Command::new(env!("CARGO_BIN_EXE_lean-audit"))
+        .arg("axioms")
+        .arg(&repo)
+        .arg("--lake")
+        .arg(&lake)
+        .args(["--format", "json"])
+        .output()
+        .expect("run lean-audit axioms");
+    let v: serde_json::Value = serde_json::from_slice(&out.stdout).unwrap();
+    let r = &v["result"];
+
+    assert_eq!(r["heads_source"], "audit_file");
+    assert_eq!(r["heads"].as_array().map(Vec::len), Some(9));
+    assert_eq!(r["imports"], serde_json::json!(["Solution", "Lean"]));
+    assert_eq!(r["allowed_axioms"].as_array().map(Vec::len), Some(3));
+
+    // Audit.lean scopes its sorry scan with
+    // `m.getRoot == \`AngCounterexample || m == \`Solution`; the tool must read
+    // exactly that, so Challenge.lean's deliberate sorry stays out of scope.
+    assert_eq!(
+        r["sorry_scope"],
+        serde_json::json!(["AngCounterexample", "Solution"])
+    );
+    assert_eq!(r["sorry_scope_source"], "audit_file");
+
+    // All nine heads carry a published claim, and the two architectures' receipts
+    // agree, so there is no conflict to report.
+    let matched = r["heads"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .filter(|h| !h["claimed"].is_null())
+        .count();
+    assert_eq!(matched, 9);
+    assert!(r["claim_conflicts"].as_array().unwrap().is_empty());
+
+    // The stub produced no output, so nothing was resolved: that must be a
+    // mismatch, never an `ok`.
+    assert_eq!(r["status"], "mismatch");
+}
+
 #[test]
 fn every_lean_repository_avoids_forbidden_tokens_outside_comments() {
     let Some(root) = repos_root() else {
