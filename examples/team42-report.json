@@ -1,12 +1,12 @@
 {
   "schema": "lean-audit/v1/batch",
-  "generated_at": "2026-11-23T03:08:53Z",
+  "generated_at": "2026-11-23T04:55:20Z",
   "tool_version": "0.1.0",
   "root": "/home/x1zz/team42-repos",
   "repos": [
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-23T03:08:17Z",
+      "generated_at": "2026-11-23T04:52:29Z",
       "tool_version": "0.1.0",
       "project": "AngCounterexample",
       "source": {
@@ -390,7 +390,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-23T03:08:17Z",
+      "generated_at": "2026-11-23T04:52:29Z",
       "tool_version": "0.1.0",
       "project": "coth_sums_barnes",
       "source": {
@@ -550,7 +550,195 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-23T03:08:17Z",
+      "generated_at": "2026-11-23T04:52:30Z",
+      "tool_version": "0.1.0",
+      "project": "RuleHRelease",
+      "source": {
+        "path": "/home/x1zz/team42-repos/divisor-graph-longest-path-lean",
+        "git_commit": "40c2b7bfd935e4aace72ccf397c7d1410e80cd03",
+        "git_dirty": false,
+        "git_note": null
+      },
+      "toolchain": {
+        "lean_toolchain": "leanprover/lean4:v4.33.1",
+        "lean_version": "4.33.1",
+        "status": "ok"
+      },
+      "mathlib": {
+        "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "tag": "v4.33.1",
+        "source": "lakefile require + lake-manifest.json",
+        "status": "ok"
+      },
+      "lakefile": {
+        "path": "lakefile.toml",
+        "kind": "toml",
+        "name": "RuleHRelease",
+        "version": "0.1.0",
+        "default_targets": [
+          "RuleHRelease",
+          "Challenge",
+          "Solution",
+          "Audit",
+          "ExactStatements",
+          "RequiredAxioms",
+          "ruleH",
+          "PublicStatements"
+        ],
+        "requires": [
+          {
+            "name": "mathlib",
+            "git": "https://github.com/leanprover-community/mathlib4.git",
+            "rev": "v4.33.1",
+            "path": null
+          }
+        ],
+        "lean_libs": [
+          "RuleHRelease",
+          "Challenge",
+          "Solution",
+          "Audit",
+          "ExactStatements",
+          "RequiredAxioms",
+          "PublicStatements"
+        ],
+        "status": "ok"
+      },
+      "manifest": {
+        "path": "lake-manifest.json",
+        "packages": [
+          {
+            "name": "mathlib",
+            "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+            "url": "https://github.com/leanprover-community/mathlib4.git",
+            "kind": "git"
+          },
+          {
+            "name": "plausible",
+            "rev": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+            "url": "https://github.com/leanprover-community/plausible",
+            "kind": "git"
+          },
+          {
+            "name": "LeanSearchClient",
+            "rev": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+            "url": "https://github.com/leanprover-community/LeanSearchClient",
+            "kind": "git"
+          },
+          {
+            "name": "importGraph",
+            "rev": "16f02aa7642864af59f1ff0e384a015994db9118",
+            "url": "https://github.com/leanprover-community/import-graph",
+            "kind": "git"
+          },
+          {
+            "name": "proofwidgets",
+            "rev": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+            "url": "https://github.com/leanprover-community/ProofWidgets4",
+            "kind": "git"
+          },
+          {
+            "name": "aesop",
+            "rev": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+            "url": "https://github.com/leanprover-community/aesop",
+            "kind": "git"
+          },
+          {
+            "name": "Qq",
+            "rev": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+            "url": "https://github.com/leanprover-community/quote4",
+            "kind": "git"
+          },
+          {
+            "name": "batteries",
+            "rev": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+            "url": "https://github.com/leanprover-community/batteries",
+            "kind": "git"
+          },
+          {
+            "name": "Cli",
+            "rev": "6130a47896ce867c6a4a55373441e59e565bad0f",
+            "url": "https://github.com/leanprover/lean4-cli",
+            "kind": "git"
+          }
+        ],
+        "status": "ok"
+      },
+      "modules": {
+        "count": 35,
+        "roots": [
+          "Audit",
+          "Challenge",
+          "Check",
+          "Main",
+          "PublicStatements",
+          "RequiredAxioms",
+          "RuleHRelease"
+        ],
+        "import_edges_internal": 90,
+        "external_imports": [
+          "Lean",
+          "Mathlib"
+        ],
+        "max_import_depth": 16,
+        "cycles": [],
+        "by_directory": [
+          {
+            "dir": "RuleHRelease",
+            "files": 26
+          },
+          {
+            "dir": "(root)",
+            "files": 9
+          }
+        ],
+        "status": "ok"
+      },
+      "audit_impl": {
+        "kind": "lean_audit",
+        "files": [
+          "Audit.lean"
+        ],
+        "command_names": [
+          "#repo_audit"
+        ],
+        "heads": [
+          "RuleHRelease.C_offer"
+        ],
+        "heads_source": "parsed",
+        "expected_direct_sorry": [],
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "in_default_targets": null,
+        "status": "ok"
+      },
+      "manifests": [],
+      "receipts": {
+        "dir": null,
+        "files": [],
+        "summaries": [],
+        "status": "absent"
+      },
+      "scan": {
+        "files_scanned": 35,
+        "scope": [
+          "RuleHRelease"
+        ],
+        "scope_source": "audit_file",
+        "flags": [],
+        "flags_in_scope": 0,
+        "status": "ok",
+        "note": "tokens checked: sorry, admit, axiom, unsafe, implemented_by, extern; comments and string literals are stripped first; the gate covers module roots RuleHRelease (audit_file)"
+      },
+      "warnings": [],
+      "disclaimer": "This report verifies reproducibility of published claims. It does not establish mathematical correctness."
+    },
+    {
+      "schema": "lean-audit/v1",
+      "generated_at": "2026-11-23T04:52:30Z",
       "tool_version": "0.1.0",
       "project": "feigenbaum_scalar_duality",
       "source": {
@@ -725,7 +913,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-23T03:08:19Z",
+      "generated_at": "2026-11-23T04:52:34Z",
       "tool_version": "0.1.0",
       "project": "HardDiskB5Lean",
       "source": {
@@ -947,7 +1135,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-23T03:08:21Z",
+      "generated_at": "2026-11-23T04:52:39Z",
       "tool_version": "0.1.0",
       "project": "HardSphereB5Lean",
       "source": {
@@ -3307,7 +3495,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-23T03:08:21Z",
+      "generated_at": "2026-11-23T04:52:43Z",
       "tool_version": "0.1.0",
       "project": "RubikSTM",
       "source": {
@@ -3533,7 +3721,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-23T03:08:53Z",
+      "generated_at": "2026-11-23T04:55:17Z",
       "tool_version": "0.1.0",
       "project": "SierksmaLean",
       "source": {
@@ -3769,12 +3957,12 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-23T03:08:53Z",
+      "generated_at": "2026-11-23T04:55:20Z",
       "tool_version": "0.1.0",
       "project": "site_perc_upper",
       "source": {
         "path": "/home/x1zz/team42-repos/site-percolation-square-lattice-lean",
-        "git_commit": "078ea687449befc75280ef2759a6b7881678a601",
+        "git_commit": "61c0b721c23617d8bc3c62da0e54a5083b313160",
         "git_dirty": false,
         "git_note": null
       },
@@ -3983,19 +4171,11 @@
           "kind": "sha256sum",
           "entries": 3,
           "checked": 3,
-          "matched": 2,
-          "mismatched": [
-            {
-              "path": "checker/sharded/shards.py",
-              "expected": "ebffeff982904971148461c0bcc9f74169907c0e3701c383c893ad0ddea48d6d",
-              "actual": "29a58b724bc44fe4cef3038ea2edfd27d5334214a82f70ef6b42c7701101ce99",
-              "bytes_expected": null,
-              "bytes_actual": 21633
-            }
-          ],
+          "matched": 3,
+          "mismatched": [],
           "missing": [],
           "axiom_claims": null,
-          "status": "mismatch",
+          "status": "ok",
           "note": "3 entries resolved relative to the repository root"
         },
         {
