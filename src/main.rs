@@ -2,6 +2,7 @@
 
 mod axioms;
 mod claims;
+mod drift;
 mod graph;
 mod hash;
 mod inspect;
@@ -110,6 +111,17 @@ enum Command {
         /// Skip SHA-256 re-computation of the repositories' manifests.
         #[arg(long)]
         no_verify: bool,
+    },
+    /// Compare two report JSON files and report what changed between them.
+    Drift {
+        /// The earlier report (an `inspect` or `batch` JSON).
+        old: PathBuf,
+        /// The later report (an `inspect` or `batch` JSON).
+        new: PathBuf,
+        #[arg(long, value_enum, default_value_t = Format::Md)]
+        format: Format,
+        #[arg(long)]
+        out: Option<PathBuf>,
     },
 }
 
@@ -289,6 +301,25 @@ fn main() -> Result<()> {
 
             if batch.repos.iter().any(|r| r.scan.flags_in_scope > 0) {
                 std::process::exit(2);
+            }
+        }
+        Command::Drift {
+            old,
+            new,
+            format,
+            out,
+        } => {
+            let report = drift::run(&old, &new)?;
+            let rendered = match format {
+                Format::Json => report::to_json(&report)?,
+                Format::Md => report::drift_markdown(&report),
+            };
+            emit(&rendered, out.as_deref())?;
+
+            // Exit 3 on any difference, so a tag watcher can gate on it.
+            // "no drift" is not a correctness claim; it means the two reports agree.
+            if report.has_drift() {
+                std::process::exit(3);
             }
         }
     }

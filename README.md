@@ -54,9 +54,10 @@ Every report carries this disclaimer:
 ## Status
 
 Working against real repositories, and against real Lean. `inspect`, `manifest`,
-`scan`, `batch` and `axioms` are implemented. `axioms` calls Lean's own
+`scan`, `batch`, `axioms` and `drift` are implemented. `axioms` calls Lean's own
 `collectAxioms` and `env.constants` traversal through a generated file run with
-`lake env lean`. See `docs/requirements.md` for the reference-implementation
+`lake env lean`. `drift` compares two report JSON files so a tag watcher can
+report only what changed. See `docs/requirements.md` for the reference-implementation
 analysis, `docs/method.md` for the exact verification contract, and `NEXT.md` for
 the working queue.
 
@@ -84,19 +85,27 @@ lean-audit scan ../team42-repos/ang-subset-products-lean
 
 # every Lean project under a directory, summarised together
 lean-audit batch ../team42-repos
+
+# compare two reports and show only what changed (exit 3 when anything changed)
+lean-audit drift before.json after.json
+
+# watch a group's tags and diff each new tag against the previous observation
+scripts/watch-tags.sh ../team42-repos .watch TEAM-42KR
 ```
 
 Exit codes: `0` success, `2` forbidden tokens found, `3` mismatch (manifest or
-axiom), `4` the check could not be run. The tool is therefore usable as a CI gate.
-Finding nothing is not a correctness claim.
+axiom) or drift between two reports, `4` the check could not be run. The tool is
+therefore usable as a CI gate. Finding nothing is not a correctness claim.
 
 ### Example output
 
-`examples/team42-report.md` is a real batch run over the eight Lean repositories
+`examples/team42-report.md` is a real batch run over the nine Lean repositories
 of one research group. `examples/site-percolation-manifest.md` and
 `examples/hard-sphere-scan.md` are the manifest and scan reports for two of them,
-and `examples/ang-axioms.md` is a real Lean run. Together they report, among other
-things:
+`examples/divisor-graph-report.md` and `examples/divisor-graph-python-manifest.md`
+cover two more added after the first pass, and `examples/ang-axioms.md` is a real
+Lean run. `examples/drift-example.md` diffs the batch report across a release.
+Together they report, among other things:
 
 - the group spans **three Lean toolchains** (4.33.0, 4.33.1, 4.35.0) and **five
   distinct audit command names**, plus a `run_cmd` variant, a Python script, and
@@ -110,10 +119,13 @@ things:
   `extern` declaration, and every `sorry` token sits in a `Challenge.lean` file
   that the repository documents as deliberate;
 - in `site-percolation-square-lattice-lean`, the hash recorded in
-  `checker/sharded/PATCH.sha256` for `checker/sharded/shards.py` **does not match
-  the shipped file**, which is unmodified relative to git HEAD. That file is not a
-  leftover — `SOURCE_MANIFEST.json` hashes it and `scripts/export_source.py` ships
-  it — so it is an exported receipt whose recorded hash is stale;
+  `checker/sharded/PATCH.sha256` for `checker/sharded/shards.py` **did not match
+  the shipped file** at v1.1.1, which is unmodified relative to git HEAD. That file
+  is not a leftover — `SOURCE_MANIFEST.json` hashes it and
+  `scripts/export_source.py` ships it — so it was an exported receipt whose
+  recorded hash was stale. The maintainer confirmed this and regenerated it in
+  v1.1.2; the check now reports **3/3**
+  (`examples/site-percolation-v1.1.2-manifest.md`);
 - 15 entries in `data/MANIFEST.sha256` and `data/FLOW_MANIFEST.sha256` are absent
   from the checkout; they are the `inputs/` and `certificates/` data of the
   certificate archive published with the paper (530,966,191 bytes, 9.9 GB

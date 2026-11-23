@@ -170,12 +170,14 @@ fn site_percolation_reports_python_audit_and_pins_lean_435() {
     assert_eq!(laws["missing"].as_array().map(Vec::len), Some(11));
     assert_eq!(laws["status"], "mismatch");
 
-    // One recorded hash does not match the shipped file. This is a genuine
-    // discrepancy: the file is unmodified relative to git HEAD.
+    // One recorded hash did not match the shipped file at v1.1.1 (the file was
+    // unmodified relative to git HEAD, so it was a stale receipt, not a false
+    // positive). The report was filed, and v1.1.2 regenerated the receipt:
+    // the entry now matches. This test locks the resolved state.
     let patch = find("checker/sharded/PATCH.sha256");
-    assert_eq!(patch["mismatched"].as_array().map(Vec::len), Some(1));
-    assert_eq!(patch["matched"], 2);
-    assert_eq!(patch["status"], "mismatch");
+    assert_eq!(patch["mismatched"].as_array().map(Vec::len), Some(0));
+    assert_eq!(patch["matched"], 3);
+    assert_eq!(patch["status"], "ok");
 }
 
 #[test]

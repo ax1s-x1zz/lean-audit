@@ -695,6 +695,67 @@ fn opt_num(v: Option<usize>) -> String {
     v.map(|n| n.to_string()).unwrap_or_else(|| "?".to_string())
 }
 
+pub fn drift_markdown(r: &crate::drift::DriftReport) -> String {
+    let mut s = String::new();
+    s.push_str("# lean-audit drift report\n\n");
+    s.push_str(&format!("> **{}**\n\n", r.disclaimer));
+    s.push_str(&format!(
+        "tool `{}` · generated `{}`\n\n",
+        r.tool_version, r.generated_at
+    ));
+    s.push_str(&format!("old `{}` · new `{}`\n\n", r.old, r.new));
+
+    if !r.has_drift() {
+        s.push_str("**No drift.** The two reports agree on every compared field.\n");
+        s.push_str(&format!("\n---\n\n_{}_\n", r.disclaimer));
+        return s;
+    }
+
+    s.push_str(&format!(
+        "**{} change(s)** across {} project(s).\n\n",
+        r.change_count(),
+        r.projects.len()
+    ));
+
+    if !r.only_in_old.is_empty() {
+        s.push_str(&format!("- only in old: {}\n", r.only_in_old.join(", ")));
+    }
+    if !r.only_in_new.is_empty() {
+        s.push_str(&format!("- only in new: {}\n", r.only_in_new.join(", ")));
+    }
+    s.push('\n');
+
+    for p in &r.projects {
+        s.push_str(&format!("## {}\n\n", p.project));
+        s.push_str("| field | old | new |\n|---|---|---|\n");
+        for c in &p.changes {
+            s.push_str(&format!(
+                "| `{}` | {} | {} |\n",
+                c.field,
+                cell(&c.old),
+                cell(&c.new)
+            ));
+        }
+        s.push('\n');
+    }
+
+    s.push_str(&format!("\n---\n\n_{}_\n", r.disclaimer));
+    s
+}
+
+/// Escape a Markdown table cell and cap very long value lists (a 192-head list
+/// would otherwise dominate the table; the JSON keeps the full value).
+fn cell(v: &str) -> String {
+    const MAX: usize = 300;
+    let escaped = v.replace('|', "\\|");
+    if escaped.chars().count() > MAX {
+        let head: String = escaped.chars().take(MAX).collect();
+        format!("{head}…")
+    } else {
+        escaped
+    }
+}
+
 fn preview(items: &[String], n: usize) -> String {
     if items.is_empty() {
         return "none".to_string();

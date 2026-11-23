@@ -5,6 +5,26 @@ All notable changes to `lean-audit`. Milestone names (M0–M6) refer to
 
 ## [Unreleased]
 
+### Added — M5: drift between two reports
+
+- `lean-audit drift <old.json> <new.json>` compares two `inspect` or `batch`
+  reports and prints only the fields that changed: toolchain and Mathlib pins, the
+  source commit, lakefile targets and requires, module counts and import depth,
+  audit command names and head theorems, allowed and expected-sorry lists,
+  forbidden-token flags, per-manifest status and counts, and published axiom
+  claims from receipts. Batch reports are matched by project name; a project
+  present in only one side is reported as such.
+- Exit code 3 when anything changed, so a watcher can gate on it. "No drift" means
+  the two reports agree, not that the repository is correct.
+- `scripts/watch-tags.sh` watches a set of clones for new tags, runs `inspect`
+  (which re-computes manifest hashes) on each new tag, diffs against the previous
+  observation, and stays silent when nothing changed. `AXIOMS=1` adds the slow
+  `axioms --build` check.
+- `tests/drift.rs` drives the real binary: identical reports exit 0, one changed
+  field exits 3.
+- `examples/drift-example.md` is a real diff of the batch report across the
+  v1.1.1 → v1.1.2 release.
+
 ### Added — M7: composite action for CI
 
 - `action.yml` builds the tool from the pinned ref with `--locked` and a cache keyed
