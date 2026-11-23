@@ -42,6 +42,12 @@ inputs:
     description: Directory to write the Markdown reports into.
     required: false
     default: "lean-audit-report"
+  artifact-name:
+    description: >-
+      Name of the uploaded artifact. Using the action more than once in a workflow
+      run needs a distinct name per use; the upload overwrites otherwise.
+    required: false
+    default: "lean-audit-report"
 
 outputs:
   status:
@@ -102,6 +108,8 @@ runs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: lean-audit-report
+        name: ${{ inputs.artifact-name }}
         path: ${{ inputs.report-dir }}
         if-no-files-found: ignore
+        # Two uses of this action in one run would otherwise collide on the name.
+        overwrite: true

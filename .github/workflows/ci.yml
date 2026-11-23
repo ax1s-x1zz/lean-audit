@@ -91,6 +91,7 @@ jobs:
         with:
           path: tests/fixtures/out-of-scope-sorry
           checks: inspect,scan
+          artifact-name: lean-audit-passing
 
       - name: The composite action reports a mismatch without failing
         id: soft
@@ -99,6 +100,7 @@ jobs:
           path: tests/fixtures/in-scope-sorry
           checks: scan
           fail-on-mismatch: "false"
+          artifact-name: lean-audit-mismatch
 
       - name: The soft run still reported the mismatch
         run: test "${{ steps.soft.outputs.status }}" = "mismatch"

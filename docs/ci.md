@@ -78,6 +78,7 @@ To install elan on the runner first:
 | `axioms-args` | *(empty)* | extra arguments for `axioms`, e.g. `--build --mode print` |
 | `fail-on-mismatch` | `true` | set `false` to report a mismatch without failing the job |
 | `report-dir` | `lean-audit-report` | where the Markdown reports are written |
+| `artifact-name` | `lean-audit-report` | name of the uploaded artifact. **Using the action more than once in one workflow run needs a distinct name per use**; the upload overwrites the previous artifact otherwise |
 
 ## Outputs
 
@@ -110,6 +111,10 @@ not be run always fails the job**, because that is not a pass.
 
 ## Notes for consumers
 
+- **Using the action twice in one workflow run** (a matrix over repositories, say)
+  needs a distinct `artifact-name` per use. The upload sets `overwrite: true` so a
+  repeat run does not fail, but two uses in the same run would otherwise leave you
+  with only one set of reports. This is exercised by this repository's own CI.
 - The action builds the tool from source with `--locked` and caches the build. If you
   prefer to pin third-party actions by commit SHA, add your own checkout of this
   repository and build it, or pin `ax1s-x1zz/lean-audit@<sha>`.
