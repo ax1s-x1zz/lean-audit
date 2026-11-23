@@ -1,0 +1,107 @@
+name: lean-audit
+description: >-
+  Re-compute the verification claims a Lean 4 repository publishes about itself:
+  toolchain and Mathlib pins, manifest SHA-256 hashes, forbidden tokens, and the
+  head theorems' axiom dependencies. Read-only; it never modifies the repository
+  and never replaces a build-time audit.
+author: ax1s-x1zz
+
+branding:
+  icon: check-circle
+  color: blue
+
+inputs:
+  path:
+    description: Repository root to audit.
+    required: false
+    default: "."
+  checks:
+    description: >-
+      Comma-separated subset of: inspect, manifest, scan, axioms. The first three
+      take seconds and need nothing but the sources; `axioms` needs elan and a
+      built repository, so pass its arguments through `axioms-args`.
+    required: false
+    default: "inspect,manifest,scan"
+  verify-hashes:
+    description: Recompute every manifest SHA-256. Set to false to report entry counts only.
+    required: false
+    default: "true"
+  axioms-args:
+    description: >-
+      Extra arguments for the `axioms` check, for example "--build --mode print".
+      `--build` runs `lake build` in the target repository first.
+    required: false
+    default: ""
+  fail-on-mismatch:
+    description: >-
+      Fail the job when a check reports a mismatch. A check that could not be run
+      always fails the job, because that is not a pass.
+    required: false
+    default: "true"
+  report-dir:
+    description: Directory to write the Markdown reports into.
+    required: false
+    default: "lean-audit-report"
+
+outputs:
+  status:
+    description: ok, mismatch, or error, the worst across the checks.
+    value: ${{ steps.audit.outputs.status }}
+  report-dir:
+    description: Directory holding the Markdown reports.
+    value: ${{ steps.audit.outputs.report-dir }}
+
+runs:
+  using: composite
+  steps:
+    - name: Check for a Rust toolchain
+      shell: bash
+      run: |
+        if ! command -v cargo >/dev/null 2>&1; then
+          echo "::error::cargo was not found. GitHub-hosted runners include Rust;" \
+               "on a self-hosted runner add dtolnay/rust-toolchain before this step."
+          exit 1
+        fi
+        cargo --version
+
+    - name: Work out the cache key from the action's own Cargo.lock
+      id: key
+      shell: bash
+      run: |
+        echo "key=lean-audit-${{ runner.os }}-$(sha256sum "${{ github.action_path }}/Cargo.lock" | cut -c1-16)" >>"$GITHUB_OUTPUT"
+
+    - name: Cache the lean-audit build
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          ${{ github.action_path }}/target
+        key: ${{ steps.key.outputs.key }}
+
+    - name: Build lean-audit
+      shell: bash
+      run: |
+        cargo build --release --locked \
+          --manifest-path "${{ github.action_path }}/Cargo.toml"
+
+    - name: Run the audit
+      id: audit
+      shell: bash
+      env:
+        LEAN_AUDIT_BIN: ${{ github.action_path }}/target/release/lean-audit
+        LEAN_AUDIT_TARGET: ${{ inputs.path }}
+        LEAN_AUDIT_CHECKS: ${{ inputs.checks }}
+        LEAN_AUDIT_VERIFY_HASHES: ${{ inputs.verify-hashes }}
+        LEAN_AUDIT_AXIOMS_ARGS: ${{ inputs.axioms-args }}
+        LEAN_AUDIT_REPORT_DIR: ${{ inputs.report-dir }}
+        LEAN_AUDIT_FAIL_ON_MISMATCH: ${{ inputs.fail-on-mismatch }}
+      run: "${{ github.action_path }}/scripts/ci.sh"
+
+    - name: Upload the reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: lean-audit-report
+        path: ${{ inputs.report-dir }}
+        if-no-files-found: ignore

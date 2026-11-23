@@ -1,0 +1,104 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-test:
+    name: fmt, clippy, unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: cargo-${{ runner.os }}-${{ hashFiles('Cargo.lock') }}
+      - run: cargo fmt --all --check
+      - run: cargo clippy --all-targets -- -D warnings
+      - run: cargo test
+
+  lean-tests:
+    name: real-Lean integration tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: cargo-${{ runner.os }}-${{ hashFiles('Cargo.lock') }}
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$HOME/.elan/bin" >>"$GITHUB_PATH"
+      - name: Install the toolchain the fixture pins
+        run: elan toolchain install "$(cat tests/fixtures/leanfix/lean-toolchain)"
+      - name: Run the tests that need Lean
+        run: cargo test --test lean
+
+  action:
+    name: composite action self-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: cargo-${{ runner.os }}-${{ hashFiles('Cargo.lock') }}
+      - name: Build for the direct script tests
+        run: cargo build --release --locked
+
+      # The gate must pass when the only forbidden token sits outside the scope
+      # the audit file declares -- which is the situation in the real
+      # repositories, where Challenge.lean's `sorry` is deliberate.
+      - name: The gate passes when the only tokens are out of scope
+        run: |
+          LEAN_AUDIT_BIN=target/release/lean-audit \
+          LEAN_AUDIT_TARGET=tests/fixtures/out-of-scope-sorry \
+          LEAN_AUDIT_CHECKS=inspect,manifest,scan \
+          bash scripts/ci.sh
+
+      # And it must fail when a `sorry` lands inside that scope.
+      - name: The gate fails on an in-scope sorry
+        run: |
+          set +e
+          LEAN_AUDIT_BIN=target/release/lean-audit \
+          LEAN_AUDIT_TARGET=tests/fixtures/in-scope-sorry \
+          LEAN_AUDIT_CHECKS=scan \
+          bash scripts/ci.sh
+          rc=$?
+          set -e
+          echo "gate exit=$rc"
+          test "$rc" = "2"
+
+      - name: The composite action runs end to end
+        uses: ./
+        with:
+          path: tests/fixtures/out-of-scope-sorry
+          checks: inspect,scan
+
+      - name: The composite action reports a mismatch without failing
+        id: soft
+        uses: ./
+        with:
+          path: tests/fixtures/in-scope-sorry
+          checks: scan
+          fail-on-mismatch: "false"
+
+      - name: The soft run still reported the mismatch
+        run: test "${{ steps.soft.outputs.status }}" = "mismatch"

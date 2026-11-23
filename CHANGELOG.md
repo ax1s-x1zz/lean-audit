@@ -5,6 +5,23 @@ All notable changes to `lean-audit`. Milestone names (M0–M6) refer to
 
 ## [Unreleased]
 
+### Added — M7: composite action for CI
+
+- `action.yml` builds the tool from the pinned ref with `--locked` and a cache keyed
+  on its own `Cargo.lock`, runs the requested checks, writes a Markdown report per
+  check, summarises them on the job page, and fails the job on a mismatch. It never
+  modifies the audited repository.
+- `scripts/ci.sh` holds the gate logic, so it is testable without GitHub.
+- Inputs: `path`, `checks`, `verify-hashes`, `axioms-args`, `fail-on-mismatch`,
+  `report-dir`. Outputs: `status`, `report-dir`.
+- A check that **cannot be run** always fails the job, whatever `fail-on-mismatch`
+  says, because that is not a pass.
+- `docs/ci.md` documents usage, exit codes, the scoping rule, and what the tool will
+  not tell you.
+- Two new fixtures, `out-of-scope-sorry` (the gate passes) and `in-scope-sorry` (the
+  gate fails), with `tests/gate.rs` covering both paths plus unknown checks, a
+  missing binary, report writing, and the cannot-run case.
+
 ### Added — M3: axiom re-computation (`axioms`)
 
 - `lean-audit axioms <repo>` generates a Lean file that calls
@@ -44,10 +61,11 @@ All notable changes to `lean-audit`. Milestone names (M0–M6) refer to
 
 ### Verified
 
-- 88 tests: 66 unit, 11 stub-based `axioms` integration tests, 4 real-Lean
-  integration tests, 7 TEAM42 repository integration tests.
+- 99 tests: 66 unit, 11 stub-based `axioms` integration tests, 7 gate tests, 4
+  real-Lean integration tests, 11 TEAM42 repository integration tests.
 - `tests/fixtures/leanfix` is a project shaped like a TEAM42 repository, used by
-  the real-Lean tests.
+  the real-Lean tests. `tests/fixtures/{out-of-scope-sorry,in-scope-sorry}` cover
+  the CI gate's passing and failing paths without needing Lean.
 
 ### Findings on real repositories
 

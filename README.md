@@ -125,6 +125,29 @@ TEAM42 repository, with a library directory, a `Challenge.lean` whose `sorry` is
 intentional, and an audit file that scopes its `sorry` scan with
 `getRoot == \`LeanFix`.
 
+## Using it in CI
+
+The repository ships a composite action that builds the tool from the pinned ref,
+runs the checks you ask for, writes a Markdown report per check, and fails the job on
+a mismatch. It never modifies your repository.
+
+```yaml
+name: lean-audit
+on:
+  push:
+    tags: ['v*']
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ax1s-x1zz/lean-audit@v0.1.0
+```
+
+`inspect`, `manifest` and `scan` take seconds and need neither Lean nor a build. The
+`axioms` check is opt-in and slower. Inputs, outputs, exit codes and the scoping rule
+are documented in [`docs/ci.md`](docs/ci.md).
+
 ## Report conventions
 
 Every path inside a report is **relative to `source.path`**, which appears exactly
