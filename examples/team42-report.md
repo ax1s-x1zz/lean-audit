@@ -2,7 +2,7 @@
 
 > **This report verifies reproducibility of published claims. It does not establish mathematical correctness.**
 
-root `/home/x1zz/team42-repos` · 8 repositories · tool `0.1.0` · generated `2026-11-20T04:51:59Z`
+root `/home/x1zz/team42-repos` · 8 repositories · tool `0.1.0` · generated `2026-11-23T03:08:17Z`
 
 | project | lean | modules | depth | audit | commands | heads | flags (in/all) | hashes | claims |
 |---|---|---|---|---|---|---|---|---|---|

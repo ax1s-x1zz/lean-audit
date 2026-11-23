@@ -92,27 +92,49 @@ Finding nothing is not a correctness claim.
 
 ### Example output
 
-`examples/team42-report.md` is a real batch run over five TEAM42 research
-repositories. `examples/site-percolation-manifest.md` is the manifest report for
-one of them. Together they report, among other things:
+`examples/team42-report.md` is a real batch run over the eight Lean repositories
+of one research group. `examples/site-percolation-manifest.md` and
+`examples/hard-sphere-scan.md` are the manifest and scan reports for two of them,
+and `examples/ang-axioms.md` is a real Lean run. Together they report, among other
+things:
 
-- the family spans **three Lean toolchains** (4.33.0, 4.33.1, 4.35.0);
-- one repository documents its axiom check manually in the README rather than
-  enforcing it at build time;
+- the group spans **three Lean toolchains** (4.33.0, 4.33.1, 4.35.0) and **five
+  distinct audit command names**, plus a `run_cmd` variant, a Python script, and
+  two repositories with no audit at all;
 - `rubik-stm-entropy-lean` verifies **939/939** published source hashes, and
   `site-percolation-square-lattice-lean` verifies **105/105**;
+- all **nine head theorems** of `ang-subset-products-lean` recompute to exactly the
+  axioms its `receipts/` publish, and `env.constants` reports zero direct `sorry`
+  users;
+- across **7,873 Lean files** there is no `axiom`, `unsafe`, `implemented_by` or
+  `extern` declaration, and every `sorry` token sits in a `Challenge.lean` file
+  that the repository documents as deliberate;
 - in `site-percolation-square-lattice-lean`, the hash recorded in
   `checker/sharded/PATCH.sha256` for `checker/sharded/shards.py` **does not match
-  the shipped file**, which is unmodified relative to git HEAD;
-- 15 entries in `data/MANIFEST.sha256` and `data/FLOW_MANIFEST.sha256` are **not
-  present in the checkout** — the README states that data is distributed with the
-  paper.
+  the shipped file**, which is unmodified relative to git HEAD. That file is not a
+  leftover — `SOURCE_MANIFEST.json` hashes it and `scripts/export_source.py` ships
+  it — so it is an exported receipt whose recorded hash is stale;
+- 15 entries in `data/MANIFEST.sha256` and `data/FLOW_MANIFEST.sha256` are absent
+  from the checkout; they are the `inputs/` and `certificates/` data of the
+  certificate archive published with the paper (530,966,191 bytes, 9.9 GB
+  uncompressed).
 
 `axioms` is exercised end to end against real Lean by
 `tests/lean.rs`, which builds `tests/fixtures/leanfix` — a project shaped like a
 TEAM42 repository, with a library directory, a `Challenge.lean` whose `sorry` is
 intentional, and an audit file that scopes its `sorry` scan with
 `getRoot == \`LeanFix`.
+
+## Report conventions
+
+Every path inside a report is **relative to `source.path`**, which appears exactly
+once and identifies the checkout that was audited. That keeps a published report
+portable and free of the machine's directory layout. `axioms` reports the path of
+the generated Lean file it used, and the import graph lists module names only.
+
+Exit codes: `0` success, `2` forbidden tokens found in scope, `3` mismatch
+(manifest or axiom), `4` the check could not be run. The tool is therefore usable
+as a CI gate. Finding nothing is not a correctness claim.
 
 ## License
 

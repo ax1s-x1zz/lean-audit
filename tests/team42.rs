@@ -390,6 +390,46 @@ fn the_token_gate_is_scoped_to_each_repositorys_declared_library() {
 }
 
 #[test]
+fn reported_paths_are_relative_to_the_repository_root() {
+    let Some(root) = repos_root() else {
+        eprintln!("skipping: ../team42-repos not present");
+        return;
+    };
+    let Some(v) = inspect_json(&root.join("site-percolation-square-lattice-lean")) else {
+        eprintln!("skipping: could not inspect");
+        return;
+    };
+
+    // The absolute root appears exactly once, in source.path. Everything else is
+    // relative, so a published report does not leak the machine's layout.
+    let source_path = v["source"]["path"].as_str().unwrap();
+    assert!(
+        source_path.starts_with('/'),
+        "source.path is the absolute root"
+    );
+
+    for flag in v["scan"]["flags"].as_array().unwrap() {
+        let p = flag["path"].as_str().unwrap();
+        assert!(!p.starts_with('/'), "flag path must be relative: {p}");
+    }
+    for file in v["audit_impl"]["files"].as_array().unwrap() {
+        let p = file.as_str().unwrap();
+        assert!(!p.starts_with('/'), "audit file path must be relative: {p}");
+    }
+    for file in v["receipts"]["files"].as_array().unwrap() {
+        let p = file.as_str().unwrap();
+        assert!(!p.starts_with('/'), "receipt path must be relative: {p}");
+    }
+    for m in v["manifests"].as_array().unwrap() {
+        let p = m["file"].as_str().unwrap();
+        assert!(!p.starts_with('/'), "manifest path must be relative: {p}");
+    }
+
+    // And the relative audit path still resolves: heads were parsed from it.
+    assert_eq!(v["audit_impl"]["files"][0], "scripts/audit_axioms.py");
+}
+
+#[test]
 fn every_lean_repository_avoids_forbidden_tokens_outside_comments() {
     let Some(root) = repos_root() else {
         eprintln!("skipping: ../team42-repos not present");

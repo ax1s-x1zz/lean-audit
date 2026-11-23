@@ -1,12 +1,12 @@
 {
   "schema": "lean-audit/v1/batch",
-  "generated_at": "2026-11-20T04:52:34Z",
+  "generated_at": "2026-11-23T03:08:53Z",
   "tool_version": "0.1.0",
   "root": "/home/x1zz/team42-repos",
   "repos": [
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T04:51:59Z",
+      "generated_at": "2026-11-23T03:08:17Z",
       "tool_version": "0.1.0",
       "project": "AngCounterexample",
       "source": {
@@ -27,7 +27,7 @@
         "status": "ok"
       },
       "lakefile": {
-        "path": "/home/x1zz/team42-repos/ang-subset-products-lean/lakefile.toml",
+        "path": "lakefile.toml",
         "kind": "toml",
         "name": "AngCounterexample",
         "version": "2.0.0",
@@ -54,7 +54,7 @@
         "status": "ok"
       },
       "manifest": {
-        "path": "/home/x1zz/team42-repos/ang-subset-products-lean/lake-manifest.json",
+        "path": "lake-manifest.json",
         "packages": [
           {
             "name": "mathlib",
@@ -143,7 +143,7 @@
       "audit_impl": {
         "kind": "lean_audit",
         "files": [
-          "/home/x1zz/team42-repos/ang-subset-products-lean/Audit.lean"
+          "Audit.lean"
         ],
         "command_names": [
           "#ang_audit",
@@ -363,19 +363,19 @@
         "scope_source": "audit_file",
         "flags": [
           {
-            "path": "/home/x1zz/team42-repos/ang-subset-products-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 38,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/ang-subset-products-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 46,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/ang-subset-products-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 54,
             "token": "sorry",
             "in_scope": false
@@ -390,7 +390,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T04:51:59Z",
+      "generated_at": "2026-11-23T03:08:17Z",
       "tool_version": "0.1.0",
       "project": "coth_sums_barnes",
       "source": {
@@ -411,7 +411,7 @@
         "status": "ok"
       },
       "lakefile": {
-        "path": "/home/x1zz/team42-repos/coth-sums-barnes-lean/lakefile.toml",
+        "path": "lakefile.toml",
         "kind": "toml",
         "name": "coth_sums_barnes",
         "version": "1.0.0",
@@ -433,7 +433,7 @@
         "status": "ok"
       },
       "manifest": {
-        "path": "/home/x1zz/team42-repos/coth-sums-barnes-lean/lake-manifest.json",
+        "path": "lake-manifest.json",
         "packages": [
           {
             "name": "plausible",
@@ -550,7 +550,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T04:51:59Z",
+      "generated_at": "2026-11-23T03:08:17Z",
       "tool_version": "0.1.0",
       "project": "feigenbaum_scalar_duality",
       "source": {
@@ -571,7 +571,7 @@
         "status": "ok"
       },
       "lakefile": {
-        "path": "/home/x1zz/team42-repos/feigenbaum-scalar-duality-lean/lakefile.toml",
+        "path": "lakefile.toml",
         "kind": "toml",
         "name": "feigenbaum_scalar_duality",
         "version": "1.0.0",
@@ -594,7 +594,7 @@
         "status": "ok"
       },
       "manifest": {
-        "path": "/home/x1zz/team42-repos/feigenbaum-scalar-duality-lean/lake-manifest.json",
+        "path": "lake-manifest.json",
         "packages": [
           {
             "name": "mathlib",
@@ -680,7 +680,7 @@
       "audit_impl": {
         "kind": "lean_audit",
         "files": [
-          "/home/x1zz/team42-repos/feigenbaum-scalar-duality-lean/Audit.lean"
+          "Audit.lean"
         ],
         "command_names": [],
         "heads": [
@@ -725,7 +725,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T04:52:01Z",
+      "generated_at": "2026-11-23T03:08:19Z",
       "tool_version": "0.1.0",
       "project": "HardDiskB5Lean",
       "source": {
@@ -746,7 +746,7 @@
         "status": "ok"
       },
       "lakefile": {
-        "path": "/home/x1zz/team42-repos/hard-disk-b5-lean/lakefile.toml",
+        "path": "lakefile.toml",
         "kind": "toml",
         "name": "HardDiskB5Lean",
         "version": "0.1.0",
@@ -773,7 +773,7 @@
         "status": "ok"
       },
       "manifest": {
-        "path": "/home/x1zz/team42-repos/hard-disk-b5-lean/lake-manifest.json",
+        "path": "lake-manifest.json",
         "packages": [
           {
             "name": "mathlib",
@@ -862,7 +862,7 @@
       "audit_impl": {
         "kind": "lean_audit",
         "files": [
-          "/home/x1zz/team42-repos/hard-disk-b5-lean/Audit.lean"
+          "Audit.lean"
         ],
         "command_names": [
           "#repo_audit"
@@ -932,7 +932,7 @@
         "scope_source": "audit_file",
         "flags": [
           {
-            "path": "/home/x1zz/team42-repos/hard-disk-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 105,
             "token": "sorry",
             "in_scope": false
@@ -947,7 +947,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T04:52:02Z",
+      "generated_at": "2026-11-23T03:08:21Z",
       "tool_version": "0.1.0",
       "project": "HardSphereB5Lean",
       "source": {
@@ -968,7 +968,7 @@
         "status": "ok"
       },
       "lakefile": {
-        "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/lakefile.toml",
+        "path": "lakefile.toml",
         "kind": "toml",
         "name": "HardSphereB5Lean",
         "version": "0.1.0",
@@ -995,7 +995,7 @@
         "status": "ok"
       },
       "manifest": {
-        "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/lake-manifest.json",
+        "path": "lake-manifest.json",
         "packages": [
           {
             "name": "mathlib",
@@ -1094,7 +1094,7 @@
       "audit_impl": {
         "kind": "lean_audit",
         "files": [
-          "/home/x1zz/team42-repos/hard-sphere-b5-lean/Audit.lean"
+          "Audit.lean"
         ],
         "command_names": [
           "#repo_audit"
@@ -2722,577 +2722,577 @@
         "scope_source": "audit_file",
         "flags": [
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 23,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 50,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 67,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 79,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 90,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 102,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 113,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 125,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 136,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 150,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 161,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 172,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 184,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 194,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 205,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 217,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 229,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 242,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 253,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 264,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 275,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 288,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 301,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 314,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 327,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 341,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 354,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 367,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 381,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 396,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 410,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 422,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 434,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 450,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 462,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 479,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 494,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 507,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 519,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 531,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 542,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 553,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 564,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 576,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 589,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 604,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 618,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 631,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 646,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 658,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 670,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 684,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 695,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 707,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 721,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 733,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 748,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 761,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 773,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 785,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 798,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 811,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 827,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 844,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 860,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 872,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 883,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 895,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 907,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 919,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 930,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 943,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 954,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 965,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 979,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 990,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1002,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1013,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1030,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1046,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1059,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1070,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1083,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1094,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1107,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1118,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1129,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1144,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1157,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1170,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1191,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1206,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1220,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1235,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1251,
             "token": "sorry",
             "in_scope": false
           },
           {
-            "path": "/home/x1zz/team42-repos/hard-sphere-b5-lean/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 1264,
             "token": "sorry",
             "in_scope": false
@@ -3307,7 +3307,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T04:52:03Z",
+      "generated_at": "2026-11-23T03:08:21Z",
       "tool_version": "0.1.0",
       "project": "RubikSTM",
       "source": {
@@ -3328,7 +3328,7 @@
         "status": "ok"
       },
       "lakefile": {
-        "path": "/home/x1zz/team42-repos/rubik-stm-entropy-lean/lakefile.toml",
+        "path": "lakefile.toml",
         "kind": "toml",
         "name": "RubikSTM",
         "version": "1.3.0",
@@ -3353,7 +3353,7 @@
         "status": "ok"
       },
       "manifest": {
-        "path": "/home/x1zz/team42-repos/rubik-stm-entropy-lean/lake-manifest.json",
+        "path": "lake-manifest.json",
         "packages": [
           {
             "name": "mathlib",
@@ -3450,7 +3450,7 @@
       "audit_impl": {
         "kind": "lean_axiomcheck",
         "files": [
-          "/home/x1zz/team42-repos/rubik-stm-entropy-lean/AxiomCheck.lean"
+          "AxiomCheck.lean"
         ],
         "command_names": [
           "#check_axioms"
@@ -3533,7 +3533,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T04:52:33Z",
+      "generated_at": "2026-11-23T03:08:53Z",
       "tool_version": "0.1.0",
       "project": "SierksmaLean",
       "source": {
@@ -3554,7 +3554,7 @@
         "status": "ok"
       },
       "lakefile": {
-        "path": "/home/x1zz/team42-repos/sierksma33/lakefile.toml",
+        "path": "lakefile.toml",
         "kind": "toml",
         "name": "SierksmaLean",
         "version": "1.0.0",
@@ -3581,7 +3581,7 @@
         "status": "ok"
       },
       "manifest": {
-        "path": "/home/x1zz/team42-repos/sierksma33/lake-manifest.json",
+        "path": "lake-manifest.json",
         "packages": [
           {
             "name": "mathlib",
@@ -3676,7 +3676,7 @@
       "audit_impl": {
         "kind": "lean_audit",
         "files": [
-          "/home/x1zz/team42-repos/sierksma33/Audit.lean"
+          "Audit.lean"
         ],
         "command_names": [
           "#sierksma_audit"
@@ -3754,7 +3754,7 @@
         "scope_source": "audit_file",
         "flags": [
           {
-            "path": "/home/x1zz/team42-repos/sierksma33/Challenge.lean",
+            "path": "Challenge.lean",
             "line": 14,
             "token": "sorry",
             "in_scope": false
@@ -3769,7 +3769,7 @@
     },
     {
       "schema": "lean-audit/v1",
-      "generated_at": "2026-11-20T04:52:34Z",
+      "generated_at": "2026-11-23T03:08:53Z",
       "tool_version": "0.1.0",
       "project": "site_perc_upper",
       "source": {
@@ -3790,7 +3790,7 @@
         "status": "ok"
       },
       "lakefile": {
-        "path": "/home/x1zz/team42-repos/site-percolation-square-lattice-lean/lakefile.toml",
+        "path": "lakefile.toml",
         "kind": "toml",
         "name": "site_perc_upper",
         "version": "1.1.1",
@@ -3814,7 +3814,7 @@
         "status": "ok"
       },
       "manifest": {
-        "path": "/home/x1zz/team42-repos/site-percolation-square-lattice-lean/lake-manifest.json",
+        "path": "lake-manifest.json",
         "packages": [
           {
             "name": "mathlib",
@@ -3955,7 +3955,7 @@
       "audit_impl": {
         "kind": "python_script",
         "files": [
-          "/home/x1zz/team42-repos/site-percolation-square-lattice-lean/scripts/audit_axioms.py"
+          "scripts/audit_axioms.py"
         ],
         "command_names": [],
         "heads": null,

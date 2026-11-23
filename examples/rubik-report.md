@@ -2,7 +2,7 @@
 
 > **This report verifies reproducibility of published claims. It does not establish mathematical correctness.**
 
-schema `lean-audit/v1` · tool `0.1.0` · generated `2026-11-20T04:52:36Z`
+schema `lean-audit/v1` · tool `0.1.0` · generated `2026-11-23T03:08:56Z`
 
 ## Source
 
@@ -41,7 +41,7 @@ schema `lean-audit/v1` · tool `0.1.0` · generated `2026-11-20T04:52:36Z`
 ## Audit implementation
 
 - kind: `lean_axiomcheck`
-- files: `/home/x1zz/team42-repos/rubik-stm-entropy-lean/AxiomCheck.lean`
+- files: `AxiomCheck.lean`
 - command: `#check_axioms`
 - heads: **30** (source: `parsed`)
   - `RubikSTM.rubik_stm_diameter_entropy`

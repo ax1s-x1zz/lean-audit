@@ -361,8 +361,8 @@ fn resolve_imports(root: &Path, report: &Report) -> Vec<String> {
     };
 
     for file in &report.audit_impl.files {
-        let path = Path::new(file);
-        let Ok(text) = std::fs::read_to_string(path) else {
+        // `audit_impl.files` is relative to the repository root.
+        let Ok(text) = std::fs::read_to_string(root.join(file)) else {
             continue;
         };
         if let Ok(stripped) = lean_src::strip_comments_and_strings(&text) {
@@ -392,7 +392,7 @@ fn resolve_imports(root: &Path, report: &Report) -> Vec<String> {
 /// real `sorry`, whereas reporting a deliberate `Challenge.lean` `sorry` as a
 /// discrepancy is the lesser error when the repository has said nothing.
 pub fn sorry_scope(root: &Path, audit: &AuditImpl) -> (Vec<String>, String) {
-    let declared = declared_roots(audit);
+    let declared = declared_roots(root, audit);
     if !declared.is_empty() {
         return (declared, "audit_file".to_string());
     }
@@ -417,10 +417,11 @@ fn local_roots(modules: &[String]) -> Vec<String> {
 /// Using the repository's declared scope matters: `Challenge.lean` deliberately
 /// contains `sorry`, and the repositories exclude it on purpose. Scanning
 /// everything would report a discrepancy that is not one.
-fn declared_roots(audit: &AuditImpl) -> Vec<String> {
+fn declared_roots(root: &Path, audit: &AuditImpl) -> Vec<String> {
     let mut out: Vec<String> = Vec::new();
     for file in &audit.files {
-        let Ok(text) = std::fs::read_to_string(file) else {
+        // `audit.files` is relative to the repository root.
+        let Ok(text) = std::fs::read_to_string(root.join(file)) else {
             continue;
         };
         let Ok(stripped) = lean_src::strip_comments_and_strings(&text) else {

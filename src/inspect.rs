@@ -120,7 +120,7 @@ pub fn inspect(root: &Path, opts: &InspectOptions) -> Result<Report> {
     // The token gate uses the same scope as the `sorry` traversal, so a
     // repository's deliberate `Challenge.lean` `sorry` does not fail the gate.
     let (scope, scope_source) = crate::axioms::sorry_scope(root, &audit_impl);
-    let scan = scan_sources(&modules, &scope, &scope_source);
+    let scan = scan_sources(root, &modules, &scope, &scope_source);
 
     let report = Report {
         schema: SCHEMA.to_string(),
@@ -236,7 +236,12 @@ fn module_name(rel: &Path) -> String {
     parts.join(".")
 }
 
-fn scan_sources(modules: &[Module], scope: &[String], scope_source: &str) -> ScanSummary {
+fn scan_sources(
+    root: &Path,
+    modules: &[Module],
+    scope: &[String],
+    scope_source: &str,
+) -> ScanSummary {
     let mut flags = Vec::new();
     for m in modules {
         let in_scope = m
@@ -244,9 +249,10 @@ fn scan_sources(modules: &[Module], scope: &[String], scope_source: &str) -> Sca
             .split('.')
             .next()
             .is_some_and(|root| scope.iter().any(|s| s == root));
+        let path = util::relative(root, &m.path).unwrap_or_else(|| m.path.display().to_string());
         for (line, token) in lean_src::scan_forbidden(&m.stripped) {
             flags.push(Flag {
-                path: m.path.to_string_lossy().to_string(),
+                path: path.clone(),
                 line,
                 token,
                 in_scope,
@@ -316,13 +322,15 @@ fn parse_lean_version(toolchain: &str) -> Option<String> {
 fn parse_lakefile(root: &Path) -> Lakefile {
     let toml_path = root.join("lakefile.toml");
     let lean_path = root.join("lakefile.lean");
+    // Paths in the report are relative to `source.path`.
+    let rel = |p: &Path| util::relative(root, p).unwrap_or_else(|| p.display().to_string());
 
     if toml_path.is_file() {
         let text = std::fs::read_to_string(&toml_path).unwrap_or_default();
         return match text.parse::<toml::Value>() {
-            Ok(v) => lakefile_from_toml(&toml_path, &v),
+            Ok(v) => lakefile_from_toml(&rel(&toml_path), &v),
             Err(e) => Lakefile {
-                path: Some(toml_path.to_string_lossy().to_string()),
+                path: Some(rel(&toml_path)),
                 kind: "toml".to_string(),
                 name: None,
                 version: None,
@@ -336,7 +344,7 @@ fn parse_lakefile(root: &Path) -> Lakefile {
 
     if lean_path.is_file() {
         return Lakefile {
-            path: Some(lean_path.to_string_lossy().to_string()),
+            path: Some(rel(&lean_path)),
             kind: "lean".to_string(),
             name: None,
             version: None,
@@ -359,7 +367,7 @@ fn parse_lakefile(root: &Path) -> Lakefile {
     }
 }
 
-fn lakefile_from_toml(path: &Path, v: &toml::Value) -> Lakefile {
+fn lakefile_from_toml(path: &str, v: &toml::Value) -> Lakefile {
     let s = |k: &str| v.get(k).and_then(|x| x.as_str()).map(str::to_string);
 
     let default_targets = v
@@ -401,7 +409,7 @@ fn lakefile_from_toml(path: &Path, v: &toml::Value) -> Lakefile {
         .unwrap_or_default();
 
     Lakefile {
-        path: Some(path.to_string_lossy().to_string()),
+        path: Some(path.to_string()),
         kind: "toml".to_string(),
         name: s("name"),
         version: s("version"),
@@ -416,6 +424,7 @@ fn lakefile_from_toml(path: &Path, v: &toml::Value) -> Lakefile {
 
 fn parse_lake_manifest(root: &Path) -> ManifestPins {
     let path = root.join("lake-manifest.json");
+    let rel = util::relative(root, &path).unwrap_or_else(|| path.display().to_string());
     if !path.is_file() {
         return ManifestPins {
             path: None,
@@ -427,7 +436,7 @@ fn parse_lake_manifest(root: &Path) -> ManifestPins {
         Ok(t) => t,
         Err(e) => {
             return ManifestPins {
-                path: Some(path.to_string_lossy().to_string()),
+                path: Some(rel.clone()),
                 packages: Vec::new(),
                 status: format!("{}: {e}", status::ERROR),
             };
@@ -437,7 +446,7 @@ fn parse_lake_manifest(root: &Path) -> ManifestPins {
         Ok(v) => v,
         Err(e) => {
             return ManifestPins {
-                path: Some(path.to_string_lossy().to_string()),
+                path: Some(rel.clone()),
                 packages: Vec::new(),
                 status: format!("{}: {e}", status::ERROR),
             };
@@ -475,7 +484,7 @@ fn parse_lake_manifest(root: &Path) -> ManifestPins {
         .unwrap_or_default();
 
     ManifestPins {
-        path: Some(path.to_string_lossy().to_string()),
+        path: Some(rel),
         packages,
         status: status::OK.to_string(),
     }
@@ -578,9 +587,12 @@ fn detect_audit_impl(root: &Path) -> AuditImpl {
 
     AuditImpl {
         kind,
+        // Stored relative to the repository root: every path in the report is
+        // relative to `source.path`, so a public report does not leak the
+        // machine's directory layout.
         files: present
             .iter()
-            .map(|(p, _)| p.to_string_lossy().to_string())
+            .map(|(p, _)| util::relative(root, p).unwrap_or_else(|| p.display().to_string()))
             .collect(),
         command_names,
         heads,
