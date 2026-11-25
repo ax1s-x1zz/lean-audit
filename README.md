@@ -54,12 +54,14 @@ Every report carries this disclaimer:
 ## Status
 
 Working against real repositories, and against real Lean. `inspect`, `manifest`,
-`scan`, `batch`, `axioms` and `drift` are implemented. `axioms` calls Lean's own
-`collectAxioms` and `env.constants` traversal through a generated file run with
-`lake env lean`. `drift` compares two report JSON files so a tag watcher can
-report only what changed. See `docs/requirements.md` for the reference-implementation
-analysis, `docs/method.md` for the exact verification contract, and `NEXT.md` for
-the working queue.
+`scan`, `batch`, `axioms`, `build` and `drift` are implemented. `axioms` calls
+Lean's own `collectAxioms` and `env.constants` traversal through a generated file
+run with `lake env lean`. `build` runs `lake build`, collects per-module times,
+and compares the repository's `receipts/**/build_summary.txt` numbers against the
+fresh run. `drift` compares two report JSON files so a tag watcher can report only
+what changed. See `docs/requirements.md` for the reference-implementation analysis,
+`docs/method.md` for the exact verification contract, and `NEXT.md` for the working
+queue.
 
 ## Usage
 
@@ -86,6 +88,11 @@ lean-audit scan ../team42-repos/ang-subset-products-lean
 # every Lean project under a directory, summarised together
 lean-audit batch ../team42-repos
 
+# run a build, collect per-module times, and compare the receipts' numbers
+# (--clean makes the module count comparable to the receipt; without it the
+#  count reflects only what lake rebuilt, and the comparison is reported not_run)
+lean-audit build ../team42-repos/sierksma33 --clean --top 20
+
 # compare two reports and show only what changed (exit 3 when anything changed)
 lean-audit drift before.json after.json
 
@@ -93,9 +100,10 @@ lean-audit drift before.json after.json
 scripts/watch-tags.sh ../team42-repos .watch TEAM-42KR
 ```
 
-Exit codes: `0` success, `2` forbidden tokens found, `3` mismatch (manifest or
-axiom) or drift between two reports, `4` the check could not be run. The tool is
-therefore usable as a CI gate. Finding nothing is not a correctness claim.
+Exit codes: `0` success, `2` forbidden tokens found, `3` mismatch (manifest,
+axiom or receipt claim) or drift between two reports, `4` the check could not be
+run. The tool is therefore usable as a CI gate. Finding nothing is not a
+correctness claim.
 
 ### Example output
 

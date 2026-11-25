@@ -310,6 +310,61 @@ pub struct UnexpectedAxiom {
     pub axiom: String,
 }
 
+// ── M6: build + receipts re-computation ─────────────────────────────────────
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ModuleTime {
+    pub module: String,
+    /// Elaboration seconds, when lake printed them.
+    pub seconds: Option<f64>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BuildLog {
+    /// Whether `lake build` was actually executed.
+    pub run: bool,
+    /// Whether `lake clean` ran first (needed for a comparable module count).
+    pub clean: bool,
+    pub lake: String,
+    pub returncode: Option<i32>,
+    pub timed_out: bool,
+    pub wall_ms: u64,
+    pub modules_built: usize,
+    pub errors: usize,
+    pub sorry_warnings: usize,
+    /// Slowest modules, capped by `--top`.
+    pub slowest: Vec<ModuleTime>,
+    /// Sum of the per-module times lake printed.
+    pub total_module_seconds: f64,
+    pub note: Option<String>,
+    pub stderr_tail: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BuildClaim {
+    /// `modules_built`, `errors` or `sorry_warnings`.
+    pub metric: String,
+    /// The receipt that published the number.
+    pub source: String,
+    pub claimed: Option<i64>,
+    pub measured: i64,
+    /// `None` when the comparison could not be made (e.g. incremental build).
+    pub matches: Option<bool>,
+    pub note: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BuildReport {
+    pub schema: String,
+    pub generated_at: String,
+    pub tool_version: String,
+    pub project: String,
+    pub result: BuildLog,
+    pub claims: Vec<BuildClaim>,
+    pub status: String,
+    pub disclaimer: String,
+}
+
 /// A minimal UTC ISO-8601 timestamp, avoiding a `chrono` dependency.
 pub fn now_iso8601() -> String {
     let secs = std::time::SystemTime::now()

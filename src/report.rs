@@ -756,6 +756,85 @@ fn cell(v: &str) -> String {
     }
 }
 
+pub fn build_markdown(r: &BuildReport) -> String {
+    let mut s = String::new();
+    let l = &r.result;
+    s.push_str(&format!("# lean-audit build report — {}\n\n", r.project));
+    s.push_str(&format!("> **{}**\n\n", r.disclaimer));
+    s.push_str(&format!(
+        "tool `{}` · generated `{}` · status **{}**\n\n",
+        r.tool_version, r.generated_at, r.status
+    ));
+
+    s.push_str("| lake | clean | ran | exit | wall | modules built | errors | sorry warnings | module seconds |\n");
+    s.push_str("|---|---|---|---|---|---|---|---|---|\n");
+    s.push_str(&format!(
+        "| `{}` | {} | {} | {} | {:.1}s | {} | {} | {} | {:.1} |\n",
+        l.lake,
+        l.clean,
+        l.run,
+        l.returncode
+            .map(|c| c.to_string())
+            .unwrap_or_else(|| "—".to_string()),
+        l.wall_ms as f64 / 1000.0,
+        l.modules_built,
+        l.errors,
+        l.sorry_warnings,
+        l.total_module_seconds
+    ));
+
+    if !r.claims.is_empty() {
+        s.push_str("\n**Receipt claims vs this run**\n\n");
+        s.push_str("| metric | source | claimed | measured | matches |\n|---|---|---|---|---|\n");
+        for c in &r.claims {
+            let matches = match c.matches {
+                Some(true) => "yes",
+                Some(false) => "**no**",
+                None => "not_run",
+            };
+            let note = c
+                .note
+                .as_ref()
+                .map(|n| format!(" ({n})"))
+                .unwrap_or_default();
+            s.push_str(&format!(
+                "| {} | `{}` | {} | {} | {}{} |\n",
+                c.metric,
+                c.source,
+                c.claimed
+                    .map(|v| v.to_string())
+                    .unwrap_or_else(|| "—".to_string()),
+                c.measured,
+                matches,
+                note
+            ));
+        }
+    }
+
+    if !l.slowest.is_empty() {
+        s.push_str("\n**Slowest modules**\n\n");
+        s.push_str("| module | seconds |\n|---|---|\n");
+        for m in &l.slowest {
+            s.push_str(&format!(
+                "| `{}` | {} |\n",
+                m.module,
+                m.seconds
+                    .map(|x| format!("{x:.1}"))
+                    .unwrap_or_else(|| "—".to_string())
+            ));
+        }
+    }
+
+    if let Some(note) = &l.note {
+        s.push_str(&format!("\n_{note}_\n"));
+    }
+    if let Some(tail) = &l.stderr_tail {
+        s.push_str(&format!("\n```\n{tail}\n```\n"));
+    }
+    s.push_str(&format!("\n---\n\n_{}_\n", r.disclaimer));
+    s
+}
+
 fn preview(items: &[String], n: usize) -> String {
     if items.is_empty() {
         return "none".to_string();

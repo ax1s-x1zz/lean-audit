@@ -1,6 +1,7 @@
 //! `lean-audit` — read-only auditor for Lean 4 research repositories.
 
 mod axioms;
+mod build;
 mod claims;
 mod drift;
 mod graph;
@@ -14,6 +15,7 @@ mod run;
 mod util;
 
 use std::path::PathBuf;
+use std::time::Duration;
 
 use anyhow::{Context, Result};
 use clap::{Parser, Subcommand, ValueEnum};
@@ -111,6 +113,27 @@ enum Command {
         /// Skip SHA-256 re-computation of the repositories' manifests.
         #[arg(long)]
         no_verify: bool,
+    },
+    /// Run `lake build`, collect per-module times, and compare receipt numbers.
+    Build {
+        /// Path to the repository root.
+        path: PathBuf,
+        /// The lake executable to invoke.
+        #[arg(long, default_value = "lake")]
+        lake: String,
+        /// Run `lake clean` first, so the module count is comparable.
+        #[arg(long)]
+        clean: bool,
+        /// Timeout for `lake build`, in seconds.
+        #[arg(long, default_value_t = 3600)]
+        timeout: u64,
+        /// How many slowest modules to list.
+        #[arg(long, default_value_t = 15)]
+        top: usize,
+        #[arg(long, value_enum, default_value_t = Format::Md)]
+        format: Format,
+        #[arg(long)]
+        out: Option<PathBuf>,
     },
     /// Compare two report JSON files and report what changed between them.
     Drift {
@@ -301,6 +324,41 @@ fn main() -> Result<()> {
 
             if batch.repos.iter().any(|r| r.scan.flags_in_scope > 0) {
                 std::process::exit(2);
+            }
+        }
+        Command::Build {
+            path,
+            lake,
+            clean,
+            timeout,
+            top,
+            format,
+            out,
+        } => {
+            let report = inspect::inspect(
+                &path,
+                &inspect::InspectOptions {
+                    emit_graph: None,
+                    verify_hashes: false,
+                },
+            )?;
+            let opts = build::BuildOptions {
+                lake,
+                clean,
+                timeout: Duration::from_secs(timeout),
+                top,
+            };
+            let build_report = build::run_build(&path, &report, &opts);
+            let rendered = match format {
+                Format::Json => report::to_json(&build_report)?,
+                Format::Md => report::build_markdown(&build_report),
+            };
+            emit(&rendered, out.as_deref())?;
+
+            match build_report.status.as_str() {
+                "ok" => {}
+                "mismatch" => std::process::exit(3),
+                _ => std::process::exit(4),
             }
         }
         Command::Drift {

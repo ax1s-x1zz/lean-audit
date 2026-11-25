@@ -36,6 +36,11 @@ files it takes seconds, because none of those three need Lean or a build.
 | `scan` | forbidden tokens (`sorry`, `admit`, `axiom`, `unsafe`, `implemented_by`, `extern`) in comment- and string-stripped sources, scoped to the module roots your audit file declares with `getRoot` | seconds |
 | `axioms` | the head theorems' axiom dependencies, via Lean's own `Lean.collectAxioms`, plus direct `sorryAx` users from `env.constants` | minutes; needs elan and a built repository |
 
+`lean-audit build` (M6) runs `lake build` and compares the repository's
+`receipts/**/build_summary.txt` numbers against the fresh run. It is deliberately
+**not** offered as a CI check: it is the expensive operation that the cheap checks
+exist to avoid, and a full build may not finish at all on a small runner.
+
 `scan` reports every token it finds, but the **exit code reflects only tokens inside
 the scope your audit file declares**. That matters: each of the TEAM42 repositories
 documents its `Challenge.lean` `sorry` as deliberate, and a gate that fails on a

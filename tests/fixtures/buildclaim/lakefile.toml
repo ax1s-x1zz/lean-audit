@@ -1,0 +1,6 @@
+name = "buildclaim"
+version = "0.1.0"
+defaultTargets = ["BuildClaim"]
+
+[[lean_lib]]
+name = "BuildClaim"

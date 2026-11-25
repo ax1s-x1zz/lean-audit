@@ -5,6 +5,25 @@ All notable changes to `lean-audit`. Milestone names (M0–M6) refer to
 
 ## [Unreleased]
 
+### Added — M6: build + receipts re-computation (`build`)
+
+- `lean-audit build <repo>` runs `lake build`, parses the `[k/n] Built <module>
+  (Xs)` progress lines into per-module times, counts `error:` lines and
+  `declaration uses 'sorry'` warnings, and compares those against the numbers the
+  repository publishes in `receipts/**/build_summary.txt`.
+- `--clean` runs `lake clean` first. Without it the module count reflects only
+  what lake rebuilt, so the count comparison is reported as **`not_run`**, never
+  as a match — the receipt was produced from a clean build.
+- `--top N` caps the slowest-modules table; `--timeout` bounds the build.
+- Exit code 3 on a claim mismatch, 4 when the build could not run or failed.
+- The parser handles `(1.8s)`, `(12s)` and `(171ms)`; the millisecond case was a
+  real bug found by running against the fixture.
+- `tests/build.rs` drives the real binary against `tests/fixtures/buildclaim`
+  (one module + a receipt): a matching claim exits 0, a wrong count exits 3.
+  `tests/fixtures/buildclaim/` is the first fixture that ships a `receipts/`.
+- `docs/method.md` §7 records that a full build may not finish on a small host,
+  so `build`/`axioms` can stay `not_run` for large repositories.
+
 ### Added — M5: drift between two reports
 
 - `lean-audit drift <old.json> <new.json>` compares two `inspect` or `batch`
