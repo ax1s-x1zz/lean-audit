@@ -137,7 +137,12 @@ Together they report, among other things:
 - 15 entries in `data/MANIFEST.sha256` and `data/FLOW_MANIFEST.sha256` are absent
   from the checkout; they are the `inputs/` and `certificates/` data of the
   certificate archive published with the paper (530,966,191 bytes, 9.9 GB
-  uncompressed).
+  uncompressed);
+- `divisor-graph-longest-path-lean`'s head theorem recomputes to exactly
+  `propext`, `Classical.choice`, `Quot.sound`, with **zero** direct `sorry` users
+  (`examples/divisor-graph-axioms.md`). That run needed the repository built
+  first; on an 8 GB host the build was the bottleneck (hours), while the axiom
+  check itself took 232 s.
 
 `axioms` is exercised end to end against real Lean by
 `tests/lean.rs`, which builds `tests/fixtures/leanfix` — a project shaped like a
