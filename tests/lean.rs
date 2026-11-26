@@ -27,10 +27,22 @@ fn fixture() -> PathBuf {
     Path::new(env!("CARGO_MANIFEST_DIR")).join("tests/fixtures/leanfix")
 }
 
-fn run_fixture(lake: &Path, extra: &[&str]) -> (serde_json::Value, i32) {
+/// A private copy of the fixture, so tests never share one `.lake` directory.
+///
+/// The tests below each run `lake build`. On a shared directory those builds run
+/// concurrently and one can observe a half-built tree (an empty head list),
+/// which is a test race, not a tool bug: seen in CI on 2026-11-25, where
+/// `print_mode_agrees_with_collect_mode_on_real_lean` read 0 heads against 2.
+fn fixture_copy() -> tempfile::TempDir {
+    let dir = tempfile::tempdir().unwrap();
+    copy_tree(&fixture(), dir.path());
+    dir
+}
+
+fn run_fixture(dir: &Path, lake: &Path, extra: &[&str]) -> (serde_json::Value, i32) {
     let out = Command::new(env!("CARGO_BIN_EXE_lean-audit"))
         .arg("axioms")
-        .arg(fixture())
+        .arg(dir)
         .arg("--lake")
         .arg(lake)
         .args(["--format", "json"])
@@ -50,7 +62,8 @@ fn computes_axioms_with_real_lean() {
     };
 
     // --build is needed on a fresh checkout; it is a no-op afterwards.
-    let (v, code) = run_fixture(&lake, &["--build"]);
+    let dir = fixture_copy();
+    let (v, code) = run_fixture(dir.path(), &lake, &["--build"]);
     let r = &v["result"];
 
     assert_eq!(r["run"], true, "Lean should have been executed: {r}");
@@ -95,7 +108,12 @@ fn reports_a_missing_head_instead_of_guessing() {
         eprintln!("skipping: no lake on PATH or in ~/.elan/bin");
         return;
     };
-    let (v, code) = run_fixture(&lake, &["--build", "--heads", "head_true,does_not_exist"]);
+    let dir = fixture_copy();
+    let (v, code) = run_fixture(
+        dir.path(),
+        &lake,
+        &["--build", "--heads", "head_true,does_not_exist"],
+    );
     let r = &v["result"];
     assert_eq!(r["missing"], serde_json::json!(["does_not_exist"]));
     assert_eq!(r["status"], "mismatch");
@@ -112,8 +130,9 @@ fn print_mode_agrees_with_collect_mode_on_real_lean() {
     // Two independent Lean code paths: `Lean.collectAxioms` in a generated elab
     // command, and the `#print axioms` messages the reference implementation
     // parses. They must produce the same axiom lists.
-    let (collect, _) = run_fixture(&lake, &["--build"]);
-    let (print, _) = run_fixture(&lake, &["--mode", "print"]);
+    let dir = fixture_copy();
+    let (collect, _) = run_fixture(dir.path(), &lake, &["--build"]);
+    let (print, _) = run_fixture(dir.path(), &lake, &["--mode", "print"]);
 
     let collect_heads = collect["result"]["heads"].as_array().unwrap();
     let print_heads = print["result"]["heads"].as_array().unwrap();
